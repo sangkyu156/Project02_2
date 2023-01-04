@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using System;
 
-public class ItemManager : MonoBehaviour
+public class ItemManager : Singleton<ItemManager>
 {
     GameObject[] items;
     string[] skillNameArray; //스킬명 모와두는곳
@@ -81,7 +81,7 @@ public class ItemManager : MonoBehaviour
         overlap = skillList.GroupBy(x => x).All(g => g.Count() == 1);
         if(overlap == false)
         {
-            Redraw();
+            OverlapRedraw();
         }
     }
 
@@ -96,6 +96,27 @@ public class ItemManager : MonoBehaviour
 
     //다시 뽑기
     public void Redraw()
+    {
+        if (Player.Instance.money < 200)
+        {
+            //돈모잘라서 버튼 흔들리는 애니매이션
+            return;
+        }
+
+        Player.Instance.money -= 200; //돈차감
+
+        for (int i = 0; i < items.Length; i++)
+        {
+            Destroy(items[i].transform.GetChild(0).gameObject);
+        }
+        SetSkills();
+        Item.itemAction();
+
+        StoreManager.Instance.PlayerMoneyPrint(); //돈 다시 출력
+    }
+
+    //생성할때 스킬이 중복으로 걸렸을때 다시뽑기
+    void OverlapRedraw()
     {
         for (int i = 0; i < items.Length; i++)
         {

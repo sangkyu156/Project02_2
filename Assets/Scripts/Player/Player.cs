@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
     public float moveSpeed = 10;
+    public int money = 0;
     float dist = 0f;
     //bool moveCheck = true;
 
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
         Up, Down, Left, Right
     }
     Eirection eirection = Eirection.Down;
+
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -28,8 +30,10 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-
+        money = 999;
+        StoreManager.Instance.PlayerMoneyPrint();
     }
+
     void Update()
     {
         dist = Vector2.Distance(mainCamera.position, transform.position);
@@ -117,4 +121,6 @@ public class Player : MonoBehaviour
             animator.SetBool("L_Idle", false);
         }
     }
+
+
 }
