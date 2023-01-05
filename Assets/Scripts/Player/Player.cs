@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : Singleton<Player>
 {
+    #region 스킬변수
+    public int fireBallLevel = 0;
+    #endregion
+
     public float moveSpeed = 10;
     public int money = 0;
     float dist = 0f;

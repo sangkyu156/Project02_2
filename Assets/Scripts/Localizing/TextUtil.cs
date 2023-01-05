@@ -38,34 +38,7 @@ public class TextUtil : MonoBehaviour
 
         return GetText(textData);
     }
-    //static void BuildTextIDBaseData()
-    //{
-    //    if (Application.platform == RuntimePlatform.Android)
-    //    {
-    //        Debug.Log("안드로이드에서 로드0");
 
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("PC에서 로드0");
-    //        textIDBaseData.Clear();
-
-    //        DirectoryInfo directoryInfo = new DirectoryInfo(Application.streamingAssetsPath + "/DataBase/");
-    //        FileInfo[] fileInfo = directoryInfo.GetFiles();
-    //        int i;
-    //        for (i = 0; i < fileInfo.Length; i++)
-    //        {
-    //            if (fileInfo[i].FullName.Contains(".meta"))
-    //                continue;
-
-    //            if (fileInfo[i].FullName.Contains("TextDB"))
-    //            {
-    //                Debug.Log("BuildTextIDBaseData = " + fileInfo[i].FullName);
-    //                Load(fileInfo[i].FullName);
-    //            }
-    //        }
-    //    }
-    //}
     static public string GetText(TextDB.Data data)
     {
         //TextDB.Data data = TextDB.GetData(id);
@@ -117,7 +90,7 @@ public class TextUtil : MonoBehaviour
 
             // 안전장치!
             cnt++;
-            if (cnt > 3000)
+            if (cnt > 30000)
                 break;
         }
 

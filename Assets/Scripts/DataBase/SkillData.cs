@@ -8,7 +8,7 @@ public static class SkillData
     public enum Skills
     {
         /**********1000**********/
-        A = 1000,B,C,D,
+        FireBall = 1000,B,C,D,
         /**********900***********/
 
         /**********800***********/

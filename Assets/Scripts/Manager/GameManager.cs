@@ -16,7 +16,15 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            TextUtil.languageNumber = 2; //미국어
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            TextUtil.languageNumber = 1; //한국어
+        }
     }
 
     public void ExitButton()

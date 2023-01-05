@@ -28,15 +28,7 @@ public class ItemManager : Singleton<ItemManager>
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            Redraw();
-        }
 
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            Item.itemAction();
-        }
     }
 
     //랜덤으로 뽑을 스킬 추가
@@ -75,7 +67,7 @@ public class ItemManager : Singleton<ItemManager>
             prefeb = Resources.Load<GameObject>($"Skills/{skillName}");//프리펩 찾음
             skill = Instantiate(prefeb);//프리펩 생성
             skill.transform.SetParent(items[i].transform, false);//부모 지정
-            skill.transform.SetAsFirstSibling();//버튼은 RectTransform 이라 내려도 GameObject가 더 내려감 그래서 그냥 게임오브젝트를 젤 위로 올림
+            skill.transform.SetAsFirstSibling();//생성된 오브젝트 맨위로
         }
 
         overlap = skillList.GroupBy(x => x).All(g => g.Count() == 1);
@@ -110,7 +102,6 @@ public class ItemManager : Singleton<ItemManager>
             Destroy(items[i].transform.GetChild(0).gameObject);
         }
         SetSkills();
-        Item.itemAction();
 
         StoreManager.Instance.PlayerMoneyPrint(); //돈 다시 출력
     }
@@ -123,6 +114,5 @@ public class ItemManager : Singleton<ItemManager>
             Destroy(items[i].transform.GetChild(0).gameObject);
         }
         SetSkills();
-        Item.itemAction();
     }
 }
