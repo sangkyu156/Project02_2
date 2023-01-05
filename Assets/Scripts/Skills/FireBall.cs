@@ -27,14 +27,20 @@ public class FireBall : FireBall_Skill
     {
         if(Player.Instance.fireBallLevel == 0)
         {
-            explanation.text = TextUtil.GetText("game:skill:explanation:fireball0");
+            explanation.text = TextUtil.GetText("game:skill:explanation:fireball");
         }
         else
         {
-            SetAbility();
-            
-            string asd = TextUtil.GetText("game:skill:explanation:fireball1");
-            explanation.text = asd;
+            if(TextUtil.languageNumber == 0 || TextUtil.languageNumber == 1) //한국
+            {
+                SetAbility();
+                explanation.text = $"<size=120%><#E7E7E7>파이어볼</color></size>\n<size=70%>Level {Player.Instance.fireBallLevel} -> <#3EFF3E>{Player.Instance.fireBallLevel + 1}</color></size>\n\n공격력 {curPower} -> <#3EFF3E>{nextPower}</color>\n공격속도 {curCooldown} -> <#3EFF3E>{nextCooldown}</color>";
+            }
+            else if(TextUtil.languageNumber == 2) //미국
+            {
+                SetAbility();
+                explanation.text = $"<size=120%><#E7E7E7>FireBall</color></size>\n<size=70%>Level {Player.Instance.fireBallLevel} -> <#3EFF3E>{Player.Instance.fireBallLevel + 1}</color></size>\n\nPower {curPower} -> <#3EFF3E>{nextPower}</color>\nCooldown {curCooldown} -> <#3EFF3E>{nextCooldown}</color>";
+            }
         }
     }
 
