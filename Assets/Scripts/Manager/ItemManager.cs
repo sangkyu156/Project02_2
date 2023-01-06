@@ -103,7 +103,7 @@ public class ItemManager : Singleton<ItemManager>
         }
         SetSkills();
 
-        StoreManager.Instance.PlayerMoneyPrint(); //돈 다시 출력
+        StoreManager.Instance.PrintPlayerMoney(); //돈 다시 출력
     }
 
     //생성할때 스킬이 중복으로 걸렸을때 다시뽑기

@@ -437,7 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: {fileID: 1217979831911787638}
   explanation: {fileID: 6137137855010473577}
-  buyButton: {fileID: 1262063695578963642}
+  buyButton: {fileID: 7536324789351728323}
 --- !u!1 &6137137853742563066
 GameObject:
   m_ObjectHideFlags: 0

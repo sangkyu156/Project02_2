@@ -8,15 +8,27 @@ public class FireBall_Skill : MonoBehaviour
     protected int nextPower = 0;
     protected float curCooldown = 0;
     protected float nextCooldown = 0;
+    float fireballSpeed = 0;
 
-    void Start()
+    SpriteRenderer playerFlip;
+    Rigidbody2D rigidbody2D;
+
+    private void Awake()
     {
         SetAbility();
     }
 
+    void Start()
+    {
+        playerFlip = Player.Instance.GetComponent<SpriteRenderer>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        fireballSpeed = Player.Instance.moveSpeed + 2;
+    }
+
     void Update()
     {
-        
+        if(rigidbody2D != null)
+            RightShoot();
     }
 
     //레벨에 따라서 능력치 세팅
@@ -73,5 +85,11 @@ public class FireBall_Skill : MonoBehaviour
                 nextCooldown = 0.7f;
                 break;
         }
+    }
+
+    //오른쪽으로 발사
+    void RightShoot()
+    {
+        rigidbody2D.velocity = new Vector3(fireballSpeed, 0, 0);
     }
 }

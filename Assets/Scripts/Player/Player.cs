@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.EditorTools;
+using UnityEditor.Presets;
 using UnityEngine;
+using Redcode.Pools;
 
 public class Player : Singleton<Player>
 {
     #region 스킬변수
     public int fireBallLevel = 0;
+    public float fireBallCooldown = 0;
+    //public float fireBallPower = 0;
     #endregion
 
     public float moveSpeed = 10;
@@ -14,6 +19,7 @@ public class Player : Singleton<Player>
     //bool moveCheck = true;
 
     public Transform mainCamera;
+    public GameObject skillPos;//발사스킬 시작지점
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
     Animator animator;
@@ -35,13 +41,13 @@ public class Player : Singleton<Player>
     void Start()
     {
         money = 999;
-        StoreManager.Instance.PlayerMoneyPrint();
+        StoreManager.Instance.PrintPlayerMoney();
     }
 
     void Update()
     {
         dist = Vector2.Distance(mainCamera.position, transform.position);
-        if (dist > 23)
+        if (dist > 23) //왼쪽으로 더이상 못가게 막음
         {
             float posY = transform.position.y;
             transform.position = mainCamera.position + new Vector3(-21f, posY, +10);
@@ -124,6 +130,22 @@ public class Player : Singleton<Player>
             animator.SetBool("D_Idle", false);
             animator.SetBool("L_Idle", false);
         }
+    }
+
+    //파이어볼 발사 시작
+    public void FireBallAction()
+    {
+        InvokeRepeating("FireBallCreate", 0, fireBallCooldown);
+    }
+
+    void FireBallCreate()
+    {
+        GameObject prefeb;
+        GameObject fireball;
+
+        prefeb = Resources.Load<GameObject>($"Skills/FireBall_Skill");//프리펩 찾음
+        fireball = Instantiate(prefeb);//프리펩 생성
+        fireball.transform.SetParent(skillPos.transform, false);//부모 지정
     }
 
 

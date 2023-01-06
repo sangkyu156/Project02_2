@@ -9,20 +9,10 @@ public class StoreManager : Singleton<StoreManager>
 
     private void OnEnable()
     {
-        PlayerMoneyPrint();
+        PrintPlayerMoney();
     }
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
-
-    public void PlayerMoneyPrint()
+    public void PrintPlayerMoney()
     {
         playerMoney.text = $"{Player.Instance.money}";
     }
