@@ -1,27 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.EditorTools;
-using UnityEditor.Presets;
-using UnityEngine;
 using Redcode.Pools;
+using UnityEngine;
 
 public class Player : Singleton<Player>
 {
     #region 스킬변수
     public int fireBallLevel = 0;
     public float fireBallCooldown = 0;
-    //public float fireBallPower = 0;
     #endregion
 
     public float moveSpeed = 10;
     public int money = 0;
     float dist = 0f;
-    //bool moveCheck = true;
 
     public Transform mainCamera;
     public GameObject skillPos;//발사스킬 시작지점
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
+    PoolManager poolManager; //오브젝트 풀링 매니져
     Animator animator;
     Vector2 vector2;
 
@@ -36,6 +31,7 @@ public class Player : Singleton<Player>
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        poolManager = GetComponent<PoolManager>();
     }
 
     void Start()
@@ -135,17 +131,20 @@ public class Player : Singleton<Player>
     //파이어볼 발사 시작
     public void FireBallAction()
     {
-        InvokeRepeating("FireBallCreate", 0, fireBallCooldown);
+        //InvokeRepeating("Spawn", 0, fireBallCooldown);
+        InvokeRepeating("Spawn", 0, 0.05f);
     }
 
-    void FireBallCreate()
+    //오브젝트풀링 생성
+    void Spawn()
     {
-        GameObject prefeb;
-        GameObject fireball;
+        FireBall_Skill fireBall_Skill = poolManager.GetFromPool<FireBall_Skill>();
+    }
 
-        prefeb = Resources.Load<GameObject>($"Skills/FireBall_Skill");//프리펩 찾음
-        fireball = Instantiate(prefeb);//프리펩 생성
-        fireball.transform.SetParent(skillPos.transform, false);//부모 지정
+    //오브젝트 회수
+    public void ReturnPool(FireBall_Skill clone)
+    {
+        poolManager.TakeToPool<FireBall_Skill>(clone.idName, clone);
     }
 
 

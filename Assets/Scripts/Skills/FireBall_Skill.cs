@@ -1,21 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+using Redcode.Pools;
 using UnityEngine;
 
-public class FireBall_Skill : MonoBehaviour
+public class FireBall_Skill : MonoBehaviour, IPoolObject
 {
     protected int curPower = 0;
     protected int nextPower = 0;
     protected float curCooldown = 0;
     protected float nextCooldown = 0;
     float fireballSpeed = 0;
+    float deadTiem = 0;
+    bool first = false;
+    bool right = false;
+    bool left = false;
+
+    public string idName;
 
     SpriteRenderer playerFlip;
     Rigidbody2D rigidbody2D;
+    SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         SetAbility();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -23,12 +30,43 @@ public class FireBall_Skill : MonoBehaviour
         playerFlip = Player.Instance.GetComponent<SpriteRenderer>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         fireballSpeed = Player.Instance.moveSpeed + 2;
+        deadTiem = 5f;
     }
 
     void Update()
     {
-        if(rigidbody2D != null)
+        if (rigidbody2D != null)
+        {
+            if (first == false)
+            {
+                first = true;
+                if (playerFlip.flipX == true)
+                    right = true;
+                else
+                    left = true;
+            }
+        }
+
+        if (right == true)
+        {
             RightShoot();
+        }
+
+        if (left == true)
+        {
+            LeftShoot();
+        }
+
+        if (deadTiem > 0)
+        {
+            deadTiem -= Time.deltaTime;
+        }
+
+        if (deadTiem < 0)
+        {
+            deadTiem = 5f;
+            OnTargetReached();
+        }
     }
 
     //레벨에 따라서 능력치 세팅
@@ -91,5 +129,45 @@ public class FireBall_Skill : MonoBehaviour
     void RightShoot()
     {
         rigidbody2D.velocity = new Vector3(fireballSpeed, 0, 0);
+    }
+
+    //왼쪽으로 발사
+    void LeftShoot()
+    {
+        rigidbody2D.velocity = new Vector3(-fireballSpeed, 0, 0);
+        spriteRenderer.flipX = true;
+    }
+
+    //오브젝트 비활성화
+    void OnTargetReached()
+    {
+        Debug.Log("들어옴");
+        Player.Instance.ReturnPool(this);
+    }
+
+    //처음생성됬을때 실행되는 메소드
+    public void OnCreatedInPool()
+    {
+        first = false;
+        right = false;
+        left = false;
+        spriteRenderer.flipX = false;
+    }
+
+    //재사용되서 다시한번 실행될때마다 실행되는 메소드
+    public void OnGettingFromPool()
+    {
+        first = false;
+        right = false;
+        left = false;
+        spriteRenderer.flipX = false;
+        if (rigidbody2D != null)
+        {
+            //생성위치 지정
+            if (playerFlip.flipX == true)
+                transform.position = Player.Instance.skillPos.transform.position;
+            else
+                transform.position = Player.Instance.skillPos.transform.position - new Vector3(1.57f, 0, 0);
+        }
     }
 }

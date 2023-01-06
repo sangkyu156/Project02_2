@@ -1386,7 +1386,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 8793639957104055765, guid: 9c447c54c8e0416e9446cadb88c48fd3, type: 3}
+  m_Sprite: {fileID: -4766322925986528201, guid: acb8cab598694f619dd44693cb68fb4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1494,7 +1494,7 @@ MonoBehaviour:
   - _name: FireBall_Skill
     _component: {fileID: 2522135191755121747, guid: e371162ba47972b41889b4b1cb105ed1, type: 3}
     _count: 0
-    _container: {fileID: 2522135191755121751, guid: e371162ba47972b41889b4b1cb105ed1, type: 3}
+    _container: {fileID: 1533317759}
     _nonLazy: 0
 --- !u!1 &824688021
 GameObject:

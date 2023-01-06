@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37efe19fd8f2e54ca26178a2906a4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idName: FireBall_Skill
 --- !u!50 &2522135191755121746
 Rigidbody2D:
   serializedVersion: 4
@@ -134,7 +135,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
