@@ -43,10 +43,10 @@ public class Player : Singleton<Player>
     void Update()
     {
         dist = Vector2.Distance(mainCamera.position, transform.position);
-        if (dist > 23) //왼쪽으로 더이상 못가게 막음
+        if (dist > 19) //왼쪽으로 더이상 못가게 막음
         {
             float posY = transform.position.y;
-            transform.position = mainCamera.position + new Vector3(-21f, posY, +10);
+            transform.position = mainCamera.position + new Vector3(-17.2f, posY, +10);
         }
     }
 
@@ -131,8 +131,7 @@ public class Player : Singleton<Player>
     //파이어볼 발사 시작
     public void FireBallAction()
     {
-        //InvokeRepeating("Spawn", 0, fireBallCooldown);
-        InvokeRepeating("Spawn", 0, 0.05f);
+        InvokeRepeating("Spawn", 0, fireBallCooldown);
     }
 
     //오브젝트풀링 생성

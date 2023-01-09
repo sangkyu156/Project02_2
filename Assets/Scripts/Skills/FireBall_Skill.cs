@@ -141,7 +141,6 @@ public class FireBall_Skill : MonoBehaviour, IPoolObject
     //오브젝트 비활성화
     void OnTargetReached()
     {
-        Debug.Log("들어옴");
         Player.Instance.ReturnPool(this);
     }
 
@@ -152,6 +151,14 @@ public class FireBall_Skill : MonoBehaviour, IPoolObject
         right = false;
         left = false;
         spriteRenderer.flipX = false;
+        if (rigidbody2D != null)
+        {
+            //생성위치 지정
+            if (playerFlip.flipX == true)
+                transform.position = Player.Instance.skillPos.transform.position;
+            else
+                transform.position = Player.Instance.skillPos.transform.position - new Vector3(1.57f, 0, 0);
+        }
     }
 
     //재사용되서 다시한번 실행될때마다 실행되는 메소드
