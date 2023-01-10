@@ -8,10 +8,13 @@ public class Player : Singleton<Player>
     public float fireBallCooldown = 0;
     #endregion
 
+    public int maxHealth = 10;
+    public int currentHealth;
     public float moveSpeed = 10;
     public int money = 0;
     float dist = 0f;
 
+    public PlayerHealthBar healthBar;
     public Transform mainCamera;
     public GameObject skillPos;//발사스킬 시작지점
     Rigidbody2D rigidbody2D;
@@ -36,6 +39,8 @@ public class Player : Singleton<Player>
 
     void Start()
     {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         money = 999;
         StoreManager.Instance.PrintPlayerMoney();
     }
@@ -146,5 +151,10 @@ public class Player : Singleton<Player>
         poolManager.TakeToPool<FireBall_Skill>(clone.idName, clone);
     }
 
-
+    //데미지 받았을때
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetMaxHealth(currentHealth);
+    }
 }

@@ -15,6 +15,7 @@ public class FireBall_Skill : MonoBehaviour, IPoolObject
 
     public string idName;
 
+    Animator animator;
     SpriteRenderer playerFlip;
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
@@ -23,6 +24,7 @@ public class FireBall_Skill : MonoBehaviour, IPoolObject
     {
         SetAbility();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -175,6 +177,16 @@ public class FireBall_Skill : MonoBehaviour, IPoolObject
                 transform.position = Player.Instance.skillPos.transform.position;
             else
                 transform.position = Player.Instance.skillPos.transform.position - new Vector3(1.57f, 0, 0);
+        }
+    }
+
+    //¿¡³Ê¹Ì¶û ºÎµúÃÆÀ» ¶§
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Enemy")
+        {
+            animator.SetBool("boom", true);
+            transform.position = transform.position;
         }
     }
 }

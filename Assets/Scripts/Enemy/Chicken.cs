@@ -6,10 +6,15 @@ using UnityEngine;
 public class Chicken : EnemyBase, IPoolObject
 {
     public string idName;
+    public int maxHealth = 10;
+    public int currentHealth;
+
+    public HealthBar healthBar;
 
     void Start()
     {
-
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     void Update()
@@ -49,5 +54,12 @@ public class Chicken : EnemyBase, IPoolObject
         int ranPosX = Random.Range(30, 60);
         float ranPosY = Random.Range(0, -4);
         transform.position = Player.Instance.skillPos.transform.position + new Vector3(ranPosX, ranPosY, 0);
+    }
+
+    //데미지 받았을때
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetMaxHealth(currentHealth);
     }
 }
