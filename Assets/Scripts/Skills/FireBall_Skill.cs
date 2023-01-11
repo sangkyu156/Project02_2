@@ -19,12 +19,14 @@ public class FireBall_Skill : MonoBehaviour, IPoolObject
     SpriteRenderer playerFlip;
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
+    BoxCollider2D skillCollider;
 
     private void Awake()
     {
         SetAbility();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        skillCollider = GetComponent<BoxCollider2D>();
     }
 
     void Start()
@@ -130,20 +132,29 @@ public class FireBall_Skill : MonoBehaviour, IPoolObject
     //오른쪽으로 발사
     void RightShoot()
     {
-        rigidbody2D.velocity = new Vector3(fireballSpeed, 0, 0);
+        if (animator.GetBool("hit") == false)
+            rigidbody2D.velocity = new Vector3(fireballSpeed, 0, 0);
+        else if (animator.GetBool("hit") == true)
+            rigidbody2D.velocity = Vector3.zero;
     }
 
     //왼쪽으로 발사
     void LeftShoot()
     {
-        rigidbody2D.velocity = new Vector3(-fireballSpeed, 0, 0);
-        spriteRenderer.flipX = true;
+        if (animator.GetBool("hit") == false)
+        {
+            rigidbody2D.velocity = new Vector3(-fireballSpeed, 0, 0);
+            spriteRenderer.flipX = true;
+        }
+        else if (animator.GetBool("hit") == true)
+            rigidbody2D.velocity = Vector3.zero;
     }
 
     //오브젝트 비활성화
     void OnTargetReached()
     {
-        Player.Instance.ReturnPool(this);
+        if (gameObject.activeSelf)
+            Player.Instance.ReturnPool(this);
     }
 
     //처음생성됬을때 실행되는 메소드
@@ -170,6 +181,8 @@ public class FireBall_Skill : MonoBehaviour, IPoolObject
         right = false;
         left = false;
         spriteRenderer.flipX = false;
+        animator.SetBool("hit", false);
+        skillCollider.enabled = true;
         if (rigidbody2D != null)
         {
             //생성위치 지정
@@ -183,10 +196,27 @@ public class FireBall_Skill : MonoBehaviour, IPoolObject
     //에너미랑 부딪쳤을 때
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if (collision.tag == "Enemy")
         {
-            animator.SetBool("boom", true);
-            transform.position = transform.position;
+            animator.SetBool("hit", true);
+            Attack();
+
+            Invoke("OnTargetReached", 0.43f);//이펙트 애니메이션 길이 만큼 기다렸다 회수
+        }
+    }
+
+    void Attack()
+    {
+        Collider2D[] targets = Physics2D.OverlapBoxAll(transform.position, new Vector2(5, 5), 0);
+        skillCollider.enabled = false;
+        EnemyBase enemy;
+        for (int i = 0; i < targets.Length; i++)
+        {
+            if (targets[i].tag == "Enemy")
+            {
+                enemy = targets[i].GetComponent<EnemyBase>();
+                enemy.TakeDamage(curPower);
+            }
         }
     }
 }

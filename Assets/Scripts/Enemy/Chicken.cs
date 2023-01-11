@@ -7,19 +7,29 @@ public class Chicken : EnemyBase, IPoolObject
 {
     public string idName;
     public int maxHealth = 10;
-    public int currentHealth;
 
-    public HealthBar healthBar;
+    CapsuleCollider2D collider;
 
     void Start()
     {
+        collider = GetComponent<CapsuleCollider2D>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
 
     void Update()
     {
-        TargetConfirm();
+        if(currentHealth <= 0)
+        {
+            collider.enabled = false;
+            PositionStop();
+            animator.SetBool("Death", true);
+            Invoke("OnTargetReached", 0.7f);
+        }
+        else
+        {
+            TargetConfirm();
+        }
     }
 
     //능력 설정
@@ -33,7 +43,8 @@ public class Chicken : EnemyBase, IPoolObject
     //오브젝트 비활성화
     void OnTargetReached()
     {
-        GameManager.Instance.ReturnPool(this);
+        if (gameObject.activeSelf)
+            GameManager.Instance.ReturnPool(this);
     }
 
     //처음생성됬을때 실행되는 메소드
@@ -54,12 +65,5 @@ public class Chicken : EnemyBase, IPoolObject
         int ranPosX = Random.Range(30, 60);
         float ranPosY = Random.Range(0, -4);
         transform.position = Player.Instance.skillPos.transform.position + new Vector3(ranPosX, ranPosY, 0);
-    }
-
-    //데미지 받았을때
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        healthBar.SetMaxHealth(currentHealth);
     }
 }
