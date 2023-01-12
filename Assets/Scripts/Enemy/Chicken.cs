@@ -9,6 +9,7 @@ public class Chicken : EnemyBase, IPoolObject
     public int maxHealth = 10;
 
     CapsuleCollider2D collider;
+    //public GameObject body;
 
     void Start()
     {
@@ -28,11 +29,23 @@ public class Chicken : EnemyBase, IPoolObject
         }
         else
         {
+
             TargetConfirm();
         }
+
+        //if (Player.Instance.transform.position.x < transform.position.x)
+        //{
+        //    Debug.Log("í”Œë ˆì´ì–´ê°€ ë‚˜ë³´ë‹¤ ì™¼ìª½ì—ìžˆìŒ");
+        //    body.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        //}
+        //else
+        //{
+        //    Debug.Log("í”Œë ˆì´ì–´ê°€ ë‚˜ë³´ë‹¤ ì˜¤ë¥¸ìª½ì—ìžˆìŒ");
+        //    body.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+        //}
     }
 
-    //´É·Â ¼³Á¤
+    //ëŠ¥ë ¥ ì„¤ì •
     void SetAbility()
     {
         hp = 10;
@@ -40,14 +53,14 @@ public class Chicken : EnemyBase, IPoolObject
         power = 1;
     }
 
-    //¿ÀºêÁ§Æ® ºñÈ°¼ºÈ­
+    //ì˜¤ë¸Œì íŠ¸ ë¹„í™œì„±í™”
     void OnTargetReached()
     {
         if (gameObject.activeSelf)
             GameManager.Instance.ReturnPool(this);
     }
 
-    //Ã³À½»ý¼º‰çÀ»¶§ ½ÇÇàµÇ´Â ¸Þ¼Òµå
+    //ì²˜ìŒìƒì„±ë¬ì„ë•Œ ì‹¤í–‰ë˜ëŠ” ë©”ì†Œë“œ
     public void OnCreatedInPool()
     {
         SetAbility();
@@ -57,7 +70,7 @@ public class Chicken : EnemyBase, IPoolObject
         transform.position = Player.Instance.skillPos.transform.position + new Vector3(ranPosX, ranPosY, 0);
     }
 
-    //Àç»ç¿ëµÇ¼­ ´Ù½ÃÇÑ¹ø ½ÇÇàµÉ¶§¸¶´Ù ½ÇÇàµÇ´Â ¸Þ¼Òµå
+    //ìž¬ì‚¬ìš©ë˜ì„œ ë‹¤ì‹œí•œë²ˆ ì‹¤í–‰ë ë•Œë§ˆë‹¤ ì‹¤í–‰ë˜ëŠ” ë©”ì†Œë“œ
     public void OnGettingFromPool()
     {
         SetAbility();

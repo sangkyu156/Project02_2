@@ -435,6 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3305ca3bbe8e1bb4180ea08ea0410515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idName: 
   price: {fileID: 1217979831911787638}
   explanation: {fileID: 6137137855010473577}
   buyButton: {fileID: 7536324789351728323}
@@ -585,7 +586,7 @@ MonoBehaviour:
     TextNew TextNew TextNew TextNew TextNew
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dcc4d62f96d91c840990b9ce93631fc5, type: 2}
-  m_sharedMaterial: {fileID: 8474688061255408582, guid: dcc4d62f96d91c840990b9ce93631fc5, type: 2}
+  m_sharedMaterial: {fileID: -665495260332550161, guid: dcc4d62f96d91c840990b9ce93631fc5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -721,7 +722,7 @@ MonoBehaviour:
   m_text: "\uAD6C\uB9E4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e6bac119774fa6749ab1aa5ce3ba6a67, type: 2}
-  m_sharedMaterial: {fileID: 8258455596023980599, guid: e6bac119774fa6749ab1aa5ce3ba6a67, type: 2}
+  m_sharedMaterial: {fileID: -5692046167665791137, guid: e6bac119774fa6749ab1aa5ce3ba6a67, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -870,7 +871,7 @@ MonoBehaviour:
   m_text: "\uD30C\uC774\uC5B4 \uBCFC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dcc4d62f96d91c840990b9ce93631fc5, type: 2}
-  m_sharedMaterial: {fileID: 8474688061255408582, guid: dcc4d62f96d91c840990b9ce93631fc5, type: 2}
+  m_sharedMaterial: {fileID: -665495260332550161, guid: dcc4d62f96d91c840990b9ce93631fc5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1094,7 +1095,7 @@ MonoBehaviour:
   m_text: 000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e6bac119774fa6749ab1aa5ce3ba6a67, type: 2}
-  m_sharedMaterial: {fileID: 8258455596023980599, guid: e6bac119774fa6749ab1aa5ce3ba6a67, type: 2}
+  m_sharedMaterial: {fileID: -5692046167665791137, guid: e6bac119774fa6749ab1aa5ce3ba6a67, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1124,7 +1125,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
