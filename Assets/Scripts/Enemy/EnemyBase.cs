@@ -7,7 +7,7 @@ public class EnemyBase : MonoBehaviour
     protected int hp;
     protected int currentHealth;
     protected float speed;
-    protected float power;
+    protected int power;
 
     public HealthBar healthBar;
     public Transform textPostion;
@@ -24,22 +24,6 @@ public class EnemyBase : MonoBehaviour
     private void Start()
     {
 
-    }
-
-    private void Update()
-    {
-        //Debug.Log($"플레이어 x 값 = {target.transform.position.x}\n내 x값 = {transform.position.x}");
-        ////플레이어 위치에 따라 회전
-        //if (target.transform.position.x < transform.position.x)
-        //{
-        //    Debug.Log("플레이어가 나보다 왼쪽에있음");
-        //    this.transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-        //}
-        //else
-        //{
-        //    Debug.Log("플레이어가 나보다 오른쪽에있음");
-        //    this.transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-        //}
     }
 
     //플레이어 한테 이동

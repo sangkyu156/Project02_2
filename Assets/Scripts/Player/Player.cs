@@ -152,9 +152,11 @@ public class Player : Singleton<Player>
     }
 
     //데미지 받았을때
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage)//매개변수 bool값 으로 오른쪽으로 밀려날지 왼쪽으로 밀려날지 정해야함
     {
         currentHealth -= damage;
         healthBar.SetMaxHealth(currentHealth);
+
+
     }
 }

@@ -9,7 +9,7 @@ public class Chicken : EnemyBase, IPoolObject
     public int maxHealth = 10;
 
     CapsuleCollider2D collider;
-    //public GameObject body;
+    public GameObject Shadow;
 
     void Start()
     {
@@ -22,27 +22,30 @@ public class Chicken : EnemyBase, IPoolObject
     {
         if(currentHealth <= 0)
         {
-            collider.enabled = false;
-            PositionStop();
-            animator.SetBool("Death", true);
-            Invoke("OnTargetReached", 0.7f);
+            Shadow.SetActive(false);//그림자 x
+            collider.enabled = false;//콜라이더 x
+            PositionStop();//이동 x
+            animator.SetBool("Death", true);//죽는 애니메이션
+            Invoke("OnTargetReached", 0.7f);//0.7초뒤 회수
         }
         else
         {
-
             TargetConfirm();
         }
 
-        //if (Player.Instance.transform.position.x < transform.position.x)
-        //{
-        //    Debug.Log("플레이어가 나보다 왼쪽에있음");
-        //    body.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-        //}
-        //else
-        //{
-        //    Debug.Log("플레이어가 나보다 오른쪽에있음");
-        //    body.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
-        //}
+        //플레이어 위치에 따라 회전
+        if (Player.Instance.transform.position.x < transform.position.x)
+        {
+            Debug.Log("플레이어가 나보다 왼쪽에있음");
+            animator.SetBool("Left", true);
+            animator.SetBool("Right", false);
+        }
+        else
+        {
+            Debug.Log("플레이어가 나보다 오른쪽에있음");
+            animator.SetBool("Left", false);
+            animator.SetBool("Right", true);
+        }
     }
 
     //능력 설정
@@ -74,9 +77,19 @@ public class Chicken : EnemyBase, IPoolObject
     public void OnGettingFromPool()
     {
         SetAbility();
+        Shadow.SetActive(true);
 
         int ranPosX = Random.Range(30, 60);
         float ranPosY = Random.Range(0, -4);
         transform.position = Player.Instance.skillPos.transform.position + new Vector3(ranPosX, ranPosY, 0);
+    }
+
+    //플레이어 공격
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            Player.Instance.TakeDamage(power);
+        }
     }
 }
