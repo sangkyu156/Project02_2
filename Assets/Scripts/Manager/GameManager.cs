@@ -2,10 +2,12 @@ using Redcode.Pools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class GameManager : Singleton<GameManager>
 {
     public GameObject store;
+    public GameObject[] fieldUI;
+    public TextMeshProUGUI playerMoney;
     PoolManager poolManager; //오브젝트 풀링 매니져
 
     private void Awake()
@@ -19,6 +21,10 @@ public class GameManager : Singleton<GameManager>
 
         TextUtil.languageNumber = 2;//언어 설정
         store.SetActive(true);
+        for (int i = 0; i < fieldUI.Length; i++)
+        {
+            fieldUI[i].SetActive(false);
+        }
 
         Create_01();
     }
@@ -41,6 +47,10 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1;
 
         store.SetActive(false);
+        for (int i = 0; i < fieldUI.Length; i++)
+        {
+            fieldUI[i].SetActive(true);
+        }
     }
 
     void Create_01()
@@ -61,5 +71,25 @@ public class GameManager : Singleton<GameManager>
     public void ReturnPool(Chicken clone)
     {
         poolManager.TakeToPool<Chicken>(clone.idName, clone);
+    }
+
+    public void PrintPlayerMoney()
+    {
+        playerMoney.text = $"{Player.Instance.money}";
+    }
+
+    public void CreatePortal()
+    {
+        GameObject portal = Instantiate(Resources.Load<GameObject>("Field/Portal"));
+        portal.transform.position = new Vector3(Player.Instance.transform.position.x + 50, -3.5f, 0);
+    }
+
+    public void CreateStore()
+    {
+        store.SetActive(true);
+        for (int i = 0; i < fieldUI.Length; i++)
+        {
+            fieldUI[i].SetActive(false);
+        }
     }
 }

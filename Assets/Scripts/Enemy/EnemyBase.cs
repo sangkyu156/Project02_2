@@ -47,8 +47,9 @@ public class EnemyBase : MonoBehaviour
     {
         currentHealth -= damage_;
 
+        //데미지 출력
         GameObject damageUI = Instantiate(Resources.Load<GameObject>($"DamageTextCanvas")) as GameObject;
-        damageUI.GetComponentInChildren<DamageText>().damage = damage_;//GetComponent<DamageText>().damage = damage_;
+        damageUI.GetComponentInChildren<DamageText>().damage = damage_;
         damageUI.transform.SetParent(textPostion, false);
 
         healthBar.SetHealth(currentHealth);

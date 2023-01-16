@@ -11,6 +11,14 @@ public class ItemManager : Singleton<ItemManager>
     int[] skillWeightedArray; //스킬 가중치 모와두는곳
     WRandom.WeightedRandomPicker<string> weightedRandom = new WRandom.WeightedRandomPicker<string>(); //'가중치랜덤' 변수 생성 & 초기화
 
+
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+        AddSkills();
+        SetSkills();
+    }
+
     private void Awake()
     {
         items = new GameObject[4];
@@ -22,8 +30,7 @@ public class ItemManager : Singleton<ItemManager>
 
     void Start()
     {
-        AddSkills();
-        SetSkills();
+
     }
 
     void Update()
@@ -115,4 +122,13 @@ public class ItemManager : Singleton<ItemManager>
         }
         SetSkills();
     }
+
+    public void DestroyItem()
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            Destroy(items[i].transform.GetChild(0).gameObject);
+        }
+    }
+
 }

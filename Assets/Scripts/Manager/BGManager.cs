@@ -7,10 +7,12 @@ public class BGManager : MonoBehaviour
     public GameObject[] map;
     public GameObject player;
     float dist = 0f;
+    int countBG = 0;
 
     void Start()
     {
-        
+        countBG = 0;
+        dist = 0f;
     }
 
     void Update()
@@ -22,6 +24,11 @@ public class BGManager : MonoBehaviour
             if(dist > map[i].transform.position.x)
             {
                 map[i].transform.position += new Vector3(150, 0, 0);
+                countBG++;
+                if(countBG == 1)
+                {
+                    GameManager.Instance.CreatePortal();
+                }
             }
         }
     }

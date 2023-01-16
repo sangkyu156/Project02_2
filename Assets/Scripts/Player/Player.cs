@@ -16,11 +16,13 @@ public class Player : Singleton<Player>
 
     public PlayerHealthBar healthBar;
     public Transform mainCamera;
+    public Transform textPostion;
     public GameObject skillPos;//발사스킬 시작지점
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
     PoolManager poolManager; //오브젝트 풀링 매니져
     Animator animator;
+    BoxCollider2D collider;
     Vector2 vector2;
 
     public enum Eirection
@@ -35,6 +37,7 @@ public class Player : Singleton<Player>
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         poolManager = GetComponent<PoolManager>();
+        collider = GetComponent<BoxCollider2D>();
     }
 
     void Start()
@@ -52,6 +55,12 @@ public class Player : Singleton<Player>
         {
             float posY = transform.position.y;
             transform.position = mainCamera.position + new Vector3(-17.2f, posY, +10);
+        }
+
+        //버그로 인해 y값이 일정범위 넘어갔을때 다시 초기화
+        if (transform.position.y > -3.5f || transform.position.y < -11)
+        {
+            transform.position = new Vector3(transform.position.x, -7);
         }
     }
 
@@ -136,6 +145,7 @@ public class Player : Singleton<Player>
     //파이어볼 발사 시작
     public void FireBallAction()
     {
+        CancelInvoke();
         InvokeRepeating("Spawn", 0, fireBallCooldown);
     }
 
@@ -152,11 +162,50 @@ public class Player : Singleton<Player>
     }
 
     //데미지 받았을때
-    public void TakeDamage(int damage)//매개변수 bool값 으로 오른쪽으로 밀려날지 왼쪽으로 밀려날지 정해야함
+    public void TakeDamage(int damage_, bool direction)//매개변수 bool값 으로 오른쪽으로 밀려날지 왼쪽으로 밀려날지 정해야함
     {
-        currentHealth -= damage;
-        healthBar.SetMaxHealth(currentHealth);
+        currentHealth -= damage_;
+        healthBar.SetHealth(currentHealth);
+
+        //데미지 출력
+        GameObject damageUI = Instantiate(Resources.Load<GameObject>($"DamageTextCanvas")) as GameObject;
+        damageUI.GetComponentInChildren<DamageText>().damage = damage_;
+        damageUI.transform.SetParent(textPostion, false);
+
+        gameObject.tag = "NoDamage";
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+        Invoke("effect1", 0.2f);
+        Invoke("effect2", 0.3f); 
+        Invoke("effect1", 0.4f);
+        Invoke("effect2", 0.5f); 
+        Invoke("effect1", 0.6f);
+        Invoke("effect2", 0.7f);
+        Invoke("effect1", 0.8f);
+        Invoke("effect2", 0.9f);
 
 
+        if (direction)//오른쪽에서 데미지를 받음
+            this.rigidbody2D.AddForce(new Vector2(-1, 0) * 5000);
+        else
+            this.rigidbody2D.AddForce(new Vector2(1, 0) * 5000);
+
+        Invoke("OnDamage", 1f);
+    }
+
+    //무적 풀림
+    void OnDamage()
+    {
+        gameObject.tag = "Player";
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+    }
+
+    void effect1()
+    {
+        spriteRenderer.color = new Color(1, 1, 1, 0.6f);
+    }
+
+    void effect2()
+    {
+        spriteRenderer.color = new Color(1, 1, 1, 0.3f);
     }
 }

@@ -34,12 +34,12 @@ public class FireBall : FireBall_Skill
             if (TextUtil.languageNumber == 0 || TextUtil.languageNumber == 1) //한국
             {
                 SetAbility();
-                explanation.text = $"<size=120%><#E7E7E7>파이어볼</color></size>\n<size=70%>Level {Player.Instance.fireBallLevel} -> <#3EFF3E>{Player.Instance.fireBallLevel + 1}</color></size>\n\n공격력 {curPower} -> <#3EFF3E>{nextPower}</color>\n공격속도 {curCooldown} -> <#3EFF3E>{nextCooldown}</color>";
+                explanation.text = $"<size=120%><#E7E7E7>파이어볼</color></size>\n<size=70%>Level {Player.Instance.fireBallLevel} -> <#3EFF3E>{Player.Instance.fireBallLevel + 1}</color></size>\n\n공격력 {curPower} -> <#3EFF3E>{nextPower}</color>\n공격속도 {Player.Instance.fireBallCooldown} -> <#3EFF3E>{nextCooldown}</color>";
             }
             else if (TextUtil.languageNumber == 2) //미국
             {
                 SetAbility();
-                explanation.text = $"<size=120%><#E7E7E7>FireBall</color></size>\n<size=70%>Level {Player.Instance.fireBallLevel} -> <#3EFF3E>{Player.Instance.fireBallLevel + 1}</color></size>\n\nPower {curPower} -> <#3EFF3E>{nextPower}</color>\nCooldown {curCooldown} -> <#3EFF3E>{nextCooldown}</color>";
+                explanation.text = $"<size=120%><#E7E7E7>FireBall</color></size>\n<size=70%>Level {Player.Instance.fireBallLevel} -> <#3EFF3E>{Player.Instance.fireBallLevel + 1}</color></size>\n\nPower {curPower} -> <#3EFF3E>{nextPower}</color>\nCooldown {Player.Instance.fireBallCooldown} -> <#3EFF3E>{nextCooldown}</color>";
             }
         }
     }
@@ -77,6 +77,7 @@ public class FireBall : FireBall_Skill
         buyButton.interactable = false;
         PrintExplanation();
         StoreManager.Instance.PrintPlayerMoney();
+        GameManager.Instance.PrintPlayerMoney();
 
         Player.Instance.FireBallAction();
     }
