@@ -44,7 +44,7 @@ public class Player : Singleton<Player>
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        money = 999;
+        money = 3999;
         StoreManager.Instance.PrintPlayerMoney();
     }
 
@@ -54,7 +54,11 @@ public class Player : Singleton<Player>
         if (dist > 19) //왼쪽으로 더이상 못가게 막음
         {
             float posY = transform.position.y;
-            transform.position = mainCamera.position + new Vector3(-17.2f, posY, +10);
+            transform.position = mainCamera.position + new Vector3(-16.2f, posY, +10);//GuideTextCanvas
+
+            //가이드Text 출력
+            GameObject guideText = Instantiate(Resources.Load<GameObject>($"GuideTextCanvas")) as GameObject;
+            guideText.transform.SetParent(textPostion, false);
         }
 
         //버그로 인해 y값이 일정범위 넘어갔을때 다시 초기화
@@ -193,7 +197,7 @@ public class Player : Singleton<Player>
     }
 
     //무적 풀림
-    void OnDamage()
+    public void OnDamage()
     {
         gameObject.tag = "Player";
         spriteRenderer.color = new Color(1, 1, 1, 1);

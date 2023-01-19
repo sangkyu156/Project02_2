@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    protected int hp;
     protected int currentHealth;
     protected float speed;
     protected int power;
@@ -12,6 +11,7 @@ public class EnemyBase : MonoBehaviour
     public HealthBar healthBar;
     public Transform textPostion;
 
+    public CapsuleCollider2D collider;
     Transform target = null;
     protected Animator animator;
 
@@ -19,6 +19,7 @@ public class EnemyBase : MonoBehaviour
     {
         target = Player.Instance.transform;
         animator = GetComponent<Animator>();
+        collider = GetComponent<CapsuleCollider2D>();
     }
 
     private void Start()
@@ -32,7 +33,7 @@ public class EnemyBase : MonoBehaviour
         if (target != null)
         {
             //Vector3 direction = transform.position - target.position;
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position + new Vector3(0,1,0), speed * Time.deltaTime);
         }
     }
     

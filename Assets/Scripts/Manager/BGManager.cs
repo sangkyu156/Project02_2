@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BGManager : MonoBehaviour
+public class BGManager : Singleton<BGManager>
 {
     public GameObject[] map;
     public GameObject player;
     float dist = 0f;
-    int countBG = 0;
+    public int countBG = 0;
 
     void Start()
     {
         countBG = 0;
         dist = 0f;
+
+        TargetSpot.Instance.SetMaxProgress(30);
+
+        //GameManager.Instance.Create_01();
+        //GameManager.Instance.Create_02();
     }
 
     void Update()
@@ -25,9 +30,22 @@ public class BGManager : MonoBehaviour
             {
                 map[i].transform.position += new Vector3(150, 0, 0);
                 countBG++;
-                if(countBG == 1)
+
+                //진행률 증가
+                TargetSpot.Instance.SetProgress(countBG);
+
+                //이벤트
+                if (countBG == 1)
                 {
                     GameManager.Instance.CreatePortal();
+                }
+                else if(countBG == 2)
+                {
+                    GameManager.Instance.Create_03();
+                }
+                else if(countBG == 4)
+                {
+                    GameManager.Instance.Create_04();
                 }
             }
         }

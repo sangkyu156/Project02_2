@@ -12,15 +12,10 @@ public class ItemManager : Singleton<ItemManager>
     WRandom.WeightedRandomPicker<string> weightedRandom = new WRandom.WeightedRandomPicker<string>(); //'가중치랜덤' 변수 생성 & 초기화
 
 
-    private void OnEnable()
-    {
-        Time.timeScale = 0;
-        AddSkills();
-        SetSkills();
-    }
 
     private void Awake()
     {
+        AddSkills();
         items = new GameObject[4];
         for (int i = 0; i < items.Length; i++)
         {
@@ -28,14 +23,10 @@ public class ItemManager : Singleton<ItemManager>
         }
     }
 
-    void Start()
+    private void OnEnable()
     {
-
-    }
-
-    void Update()
-    {
-
+        Time.timeScale = 0;
+        SetSkills();
     }
 
     //랜덤으로 뽑을 스킬 추가

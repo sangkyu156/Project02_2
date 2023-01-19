@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DamageTextCanvas : MonoBehaviour
 {
-    public float destoryTime;
-    public float textUpSpeed;
+    public float destoryTime = 1.5f;
+    public float textUpSpeed = 0.5f;
 
     void Start()
     {

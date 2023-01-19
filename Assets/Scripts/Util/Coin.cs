@@ -5,11 +5,11 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Coin : MonoBehaviour
 {
-    int speed = 10;
+    int speed = 13;
 
     void Start()
     {
-        speed = 10;
+        speed = 13;
     }
 
     void Update()

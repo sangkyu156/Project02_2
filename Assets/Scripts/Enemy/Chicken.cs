@@ -7,15 +7,7 @@ public class Chicken : EnemyBase, IPoolObject
     public int maxHealth = 10;
     bool drop = false;
 
-    CapsuleCollider2D collider;
     public GameObject Shadow;
-
-    void Start()
-    {
-        collider = GetComponent<CapsuleCollider2D>();
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-    }
 
     void Update()
     {
@@ -25,7 +17,7 @@ public class Chicken : EnemyBase, IPoolObject
             collider.enabled = false;//콜라이더 x
             PositionStop();//이동 x
             animator.SetBool("Death", true);//죽는 애니메이션
-            Invoke("OnTargetReached", 0.4f);//0.7초뒤 회수
+            Invoke("OnTargetReached", 0.4f);//0.4초뒤 회수
         }
         else
         {
@@ -54,9 +46,13 @@ public class Chicken : EnemyBase, IPoolObject
     //능력 설정
     void SetAbility()
     {
-        hp = 10;
+        maxHealth = 10;
         speed = 3;
         power = 1;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+        drop = false;
+        Shadow.SetActive(true);
     }
 
     //오브젝트 비활성화
@@ -65,10 +61,10 @@ public class Chicken : EnemyBase, IPoolObject
         if (drop == false)
         {
             drop = true;
-            GameObject coin = Instantiate(Resources.Load<GameObject>("Field/Coin_1")) as GameObject;
-            float posX = Random.Range(-0.5f, 0.3f);
-            float posY = Random.Range(-0.5f, 0.3f);
-            coin.transform.position = new Vector2(transform.position.x + posX, transform.position.y + posY);
+            for (int i = 0; i < 1; i++)
+            {
+                Drop();
+            }
         }
 
         if (gameObject.activeSelf)
@@ -80,9 +76,8 @@ public class Chicken : EnemyBase, IPoolObject
     {
         SetAbility();
 
-        drop = false;
-        int ranPosX = Random.Range(30, 60);
-        float ranPosY = Random.Range(0, -4);
+        float ranPosX = Random.Range(30f, 60f);
+        float ranPosY = Random.Range(0f, -4f);
         transform.position = Player.Instance.skillPos.transform.position + new Vector3(ranPosX, ranPosY, 0);
     }
 
@@ -90,11 +85,11 @@ public class Chicken : EnemyBase, IPoolObject
     public void OnGettingFromPool()
     {
         SetAbility();
+        collider.enabled = true;
         Shadow.SetActive(true);
 
-        drop = false;
-        int ranPosX = Random.Range(30, 60);
-        float ranPosY = Random.Range(0, -4);
+        float ranPosX = Random.Range(30f, 60f);
+        float ranPosY = Random.Range(0f, -4f);
         transform.position = Player.Instance.skillPos.transform.position + new Vector3(ranPosX, ranPosY, 0);
     }
 
@@ -111,5 +106,14 @@ public class Chicken : EnemyBase, IPoolObject
 
             Player.Instance.TakeDamage(power, Right);
         }
+    }
+
+    //드랍
+    void Drop()
+    {
+        GameObject coin = Instantiate(Resources.Load<GameObject>("Field/Coin_1")) as GameObject;
+        float posX = Random.Range(-0.5f, 0.3f);
+        float posY = Random.Range(-0.5f, 0.3f);
+        coin.transform.position = new Vector2(transform.position.x + posX, transform.position.y + posY);
     }
 }
