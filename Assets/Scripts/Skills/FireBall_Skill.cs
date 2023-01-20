@@ -1,7 +1,7 @@
 using Redcode.Pools;
 using UnityEngine;
 
-public class FireBall_Skill : MonoBehaviour, IPoolObject
+public class FireBall_Skill : ProjectileSkill, IPoolObject
 {
     protected int curPower = 0;
     protected int nextPower = 0;

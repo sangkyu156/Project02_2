@@ -49,7 +49,7 @@ public class GameManager : Singleton<GameManager>
             reSpawnTime = 2f;
             if (0 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 8)
             {
-                RepeatCreate_02();
+                RepeatCreate_04();
             }
             else if(8 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 15)
             {
@@ -123,14 +123,14 @@ public class GameManager : Singleton<GameManager>
     {
         for (int i = 0; i < 2; i++)
         {
-            RepeatSpawn();
+            RepeatSpawn3();
         }
     }
     public void RepeatCreate_04()
     {
         for (int i = 0; i < 2; i++)
         {
-            RepeatSpawn();
+            RepeatSpawn4();
         }
     }
     #endregion
@@ -163,6 +163,14 @@ public class GameManager : Singleton<GameManager>
     void RepeatSpawn2()
     {
         Pig2 pig2 = poolManager.GetFromPool<Pig2>();
+    }
+    void RepeatSpawn3()
+    {
+        Pig3 pig3 = poolManager.GetFromPool<Pig3>();
+    }
+    void RepeatSpawn4()
+    {
+        Pig4 pig4 = poolManager.GetFromPool<Pig4>();
     }
     #endregion
 
@@ -202,6 +210,14 @@ public class GameManager : Singleton<GameManager>
     public void ReturnPool(Pig2 clone)
     {
         poolManager.TakeToPool<Pig2>(clone.idName, clone);
+    }
+    public void ReturnPool(Pig3 clone)
+    {
+        poolManager.TakeToPool<Pig3>(clone.idName, clone);
+    }
+    public void ReturnPool(Pig4 clone)
+    {
+        poolManager.TakeToPool<Pig4>(clone.idName, clone);
     }
     #endregion
 
