@@ -87,6 +87,7 @@ public class Chick : EnemyBase, IPoolObject
         SetAbility();
         collider.enabled = true;
         Shadow.SetActive(true);
+        knockback = false;
 
         float ranPosX = Random.Range(30f, 60f);
         float ranPosY = Random.Range(0f, -4f);

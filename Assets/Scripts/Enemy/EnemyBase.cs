@@ -7,6 +7,8 @@ public class EnemyBase : MonoBehaviour
     protected int currentHealth;
     protected float speed;
     protected int power;
+    public float knockbackTime = 1;
+    public bool knockback = false;
 
     public HealthBar healthBar;
     public Transform textPostion;

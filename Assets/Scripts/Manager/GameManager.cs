@@ -57,11 +57,11 @@ public class GameManager : Singleton<GameManager>
             }
             else if (15 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 23)
             {
-
+                RepeatCreate_03();
             }
             else if (23 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 30)
             {
-
+                RepeatCreate_04();
             }
         }
     }

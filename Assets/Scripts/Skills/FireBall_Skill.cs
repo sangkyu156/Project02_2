@@ -3,21 +3,13 @@ using UnityEngine;
 
 public class FireBall_Skill : ProjectileSkill, IPoolObject
 {
-    protected int curPower = 0;
-    protected int nextPower = 0;
-    protected float nextCooldown = 0;
     float fireballSpeed = 0;
-    float deadTiem = 0;
-    bool first = false;
-    bool right = false;
-    bool left = false;
-
     public string idName;
 
     Animator animator;
     SpriteRenderer playerFlip;
-    Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
+    Rigidbody2D rigidbody2D;
     BoxCollider2D skillCollider;
 
     private void Awake()
@@ -26,12 +18,12 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         skillCollider = GetComponent<BoxCollider2D>();
+        playerFlip = Player.Instance.GetComponent<SpriteRenderer>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     void Start()
     {
-        playerFlip = Player.Instance.GetComponent<SpriteRenderer>();
-        rigidbody2D = GetComponent<Rigidbody2D>();
         fireballSpeed = Player.Instance.moveSpeed + 2;
         deadTiem = 5f;
     }
@@ -73,7 +65,7 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
     }
 
     //레벨에 따라서 능력치 세팅
-    protected void SetAbility()
+    public override void SetAbility()
     {
         switch (Player.Instance.fireBallLevel)
         {
@@ -121,7 +113,7 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
     }
 
     //오른쪽으로 발사
-    void RightShoot()
+    public override void RightShoot()
     {
         if (animator.GetBool("hit") == false)
             rigidbody2D.velocity = new Vector3(fireballSpeed, 0, 0);
@@ -130,7 +122,7 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
     }
 
     //왼쪽으로 발사
-    void LeftShoot()
+    public override void LeftShoot()
     {
         if (animator.GetBool("hit") == false)
         {
@@ -141,8 +133,8 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
             rigidbody2D.velocity = Vector3.zero;
     }
 
-    //오브젝트 비활성화
-    void OnTargetReached()
+    //오브젝트 회수
+    public override void OnTargetReached()
     {
         if (this.gameObject.activeSelf)
             Player.Instance.ReturnPool(this);

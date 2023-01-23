@@ -41,6 +41,16 @@ public class Pig4 : EnemyBase, IPoolObject
         {
             transform.position = new Vector3(transform.position.x, -7);
         }
+
+        if (knockback == true)
+        {
+            knockbackTime -= Time.deltaTime;
+            if (knockbackTime <= 0)
+            {
+                knockbackTime = 1;
+                knockback = false;
+            }
+        }
     }
 
     //능력 설정
@@ -87,6 +97,7 @@ public class Pig4 : EnemyBase, IPoolObject
         SetAbility();
         collider.enabled = true;
         Shadow.SetActive(true);
+        knockback = false;
 
         float ranPosX = Random.Range(30f, 60f);
         float ranPosY = Random.Range(0f, -4f);

@@ -6,6 +6,8 @@ public class Player : Singleton<Player>
     #region 스킬변수
     public int fireBallLevel = 0;
     public float fireBallCooldown = 0;
+    public int tornadoLevel = 0;
+    public float tornadoCooldown = 0;
     #endregion
 
     public int maxHealth = 10;
@@ -149,8 +151,15 @@ public class Player : Singleton<Player>
     //파이어볼 발사 시작
     public void FireBallAction()
     {
-        CancelInvoke();
+        CancelInvoke("Spawn");
         InvokeRepeating("Spawn", 0, fireBallCooldown);
+    }
+
+    //토네이도 발사 시작
+    public void TornadoAction()
+    {
+        CancelInvoke("Spawn2");
+        InvokeRepeating("Spawn2", 0, tornadoCooldown);
     }
 
     //오브젝트풀링 생성
@@ -158,11 +167,19 @@ public class Player : Singleton<Player>
     {
         FireBall_Skill fireBall_Skill = poolManager.GetFromPool<FireBall_Skill>();
     }
+    void Spawn2()
+    {
+        Tornado_Skill tornado_Skill = poolManager.GetFromPool<Tornado_Skill>();
+    }
 
     //오브젝트 회수
     public void ReturnPool(FireBall_Skill clone)
     {
         poolManager.TakeToPool<FireBall_Skill>(clone.idName, clone);
+    }
+    public void ReturnPool(Tornado_Skill clone)
+    {
+        poolManager.TakeToPool<Tornado_Skill>(clone.idName, clone);
     }
 
     //데미지 받았을때

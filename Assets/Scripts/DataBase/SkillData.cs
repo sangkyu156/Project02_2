@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public static class SkillData
 {
     //스킬이름은 항상 Pefeb이름과 같아야 한다. 그래야 Resources 폴더에서 가져옴
     public enum Skills
     {
         /**********1000**********/
-        FireBall_Store = 1000,B,C,D,
+        FireBall_Store = 1000, Tornado_Store, B, C, D,
         /**********900***********/
 
         /**********800***********/
@@ -26,7 +22,7 @@ public static class SkillData
         /**********200***********/
 
         /**********100***********/
-        
+
         /**********90************/
 
         /**********80************/
