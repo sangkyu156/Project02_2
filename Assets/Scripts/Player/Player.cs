@@ -8,6 +8,8 @@ public class Player : Singleton<Player>
     public float fireBallCooldown = 0;
     public int tornadoLevel = 0;
     public float tornadoCooldown = 0;
+    public int blackholeLevel = 0;
+    public float blackholeCooldown = 0;
     #endregion
 
     public int maxHealth = 10;
@@ -162,6 +164,13 @@ public class Player : Singleton<Player>
         InvokeRepeating("Spawn2", 0, tornadoCooldown);
     }
 
+    //블랙홀 발사 시작
+    public void BlackHoleAction()
+    {
+        CancelInvoke("Spawn3");
+        InvokeRepeating("Spawn3", 0, blackholeCooldown);
+    }
+
     //오브젝트풀링 생성
     void Spawn()
     {
@@ -170,6 +179,10 @@ public class Player : Singleton<Player>
     void Spawn2()
     {
         Tornado_Skill tornado_Skill = poolManager.GetFromPool<Tornado_Skill>();
+    }
+    void Spawn3()
+    {
+        BlackHole_Skill blackHole_Skill = poolManager.GetFromPool<BlackHole_Skill>();
     }
 
     //오브젝트 회수
@@ -180,6 +193,10 @@ public class Player : Singleton<Player>
     public void ReturnPool(Tornado_Skill clone)
     {
         poolManager.TakeToPool<Tornado_Skill>(clone.idName, clone);
+    }
+    public void ReturnPool(BlackHole_Skill clone)
+    {
+        poolManager.TakeToPool<BlackHole_Skill>(clone.idName, clone);
     }
 
     //데미지 받았을때

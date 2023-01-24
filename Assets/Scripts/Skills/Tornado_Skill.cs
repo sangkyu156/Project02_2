@@ -5,26 +5,24 @@ using UnityEngine;
 
 public class Tornado_Skill : ProjectileSkill, IPoolObject
 {
-    float fireballSpeed = 0;
+    float tornadoSpeed = 0;
     public string idName;
 
     SpriteRenderer playerFlip;
     SpriteRenderer spriteRenderer;
     Rigidbody2D rigidbody2D;
-    BoxCollider2D skillCollider;
 
     private void Awake()
     {
         SetAbility();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        skillCollider = GetComponent<BoxCollider2D>();
         playerFlip = Player.Instance.GetComponent<SpriteRenderer>();
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     void Start()
     {
-        fireballSpeed = 15;
+        tornadoSpeed = 15;
         deadTiem = 0.8f;
     }
 
@@ -90,12 +88,12 @@ public class Tornado_Skill : ProjectileSkill, IPoolObject
 
     public override void RightShoot()
     {
-        rigidbody2D.velocity = new Vector3(fireballSpeed, 0, 0);
+        rigidbody2D.velocity = new Vector3(tornadoSpeed, 0, 0);
     }
 
     public override void LeftShoot()
     {
-        rigidbody2D.velocity = new Vector3(-fireballSpeed, 0, 0);
+        rigidbody2D.velocity = new Vector3(-tornadoSpeed, 0, 0);
     }
 
     //처음생성됬을때 실행되는 메소드
@@ -123,7 +121,6 @@ public class Tornado_Skill : ProjectileSkill, IPoolObject
         right = false;
         left = false;
         spriteRenderer.flipX = false;
-        skillCollider.enabled = true;
         deadTiem = 0.8f;
         SetAbility();
         if (rigidbody2D != null)
@@ -190,5 +187,4 @@ public class Tornado_Skill : ProjectileSkill, IPoolObject
                 break;
         }
     }
-
 }
