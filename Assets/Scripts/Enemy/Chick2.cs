@@ -17,6 +17,16 @@ public class Chick2 : EnemyBase, IPoolObject
             collider.enabled = false;//콜라이더 x
             PositionStop();//이동 x
             animator.SetBool("Death", true);//죽는 애니메이션
+
+            if (drop == false)
+            {
+                drop = true;
+                for (int i = 0; i < 2; i++)
+                {
+                    Drop();
+                }
+            }
+
             Invoke("OnTargetReached", 0.4f);//0.7초뒤 회수
         }
         else
@@ -58,15 +68,6 @@ public class Chick2 : EnemyBase, IPoolObject
     //오브젝트 비활성화
     void OnTargetReached()
     {
-        if (drop == false)
-        {
-            drop = true;
-            for (int i = 0; i < 2; i++)
-            {
-                Drop();
-            }
-        }
-
         if (gameObject.activeSelf)
             GameManager.Instance.ReturnPool(this);
     }

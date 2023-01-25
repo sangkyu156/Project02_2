@@ -74,16 +74,12 @@ public class BlackHole_Skill : ProjectileSkill, IPoolObject
         EnemyBase enemy;
         enemy = collider_.GetComponent<EnemyBase>();
 
-        if (enemy.knockback == false)
-        {
-            if (collider_.transform.position.x < transform.position.x)
-                collider_.transform.position = new Vector3(collider_.transform.position.x - 0.5f, collider_.transform.position.y);
-            else if (collider_.transform.position.x > transform.position.x)
-                collider_.transform.position = new Vector3(collider_.transform.position.x + 0.5f, collider_.transform.position.y);
+        if (collider_.transform.position.x < transform.position.x)
+            collider_.transform.position = new Vector3(collider_.transform.position.x + 1f, collider_.transform.position.y);
+        else if (collider_.transform.position.x > transform.position.x)
+            collider_.transform.position = new Vector3(collider_.transform.position.x - 1f, collider_.transform.position.y);
 
-            enemy.TakeDamage(curPower);
-            enemy.knockback = true;
-        }
+        enemy.TakeDamage(curPower);
     }
 
     public override void RightShoot()
@@ -143,7 +139,7 @@ public class BlackHole_Skill : ProjectileSkill, IPoolObject
 
     public override void SetAbility()
     {
-        switch (Player.Instance.tornadoLevel)
+        switch (Player.Instance.blackholeLevel)
         {
             case 0:
                 curPower = 0;
@@ -151,39 +147,39 @@ public class BlackHole_Skill : ProjectileSkill, IPoolObject
                 nextCooldown = 0;
                 break;
             case 1:
-                curPower = 1;
-                nextPower = 2;
-                nextCooldown = 1.2f;
+                curPower = 0;
+                nextPower = 1;
+                nextCooldown = 2f;
                 break;
             case 2:
-                curPower = 2;
-                nextPower = 3;
-                nextCooldown = 1.2f;
+                curPower = 1;
+                nextPower = 2;
+                nextCooldown = 1.9f;
                 break;
             case 3:
-                curPower = 3;
-                nextPower = 4;
-                nextCooldown = 1.2f;
+                curPower = 2;
+                nextPower = 3;
+                nextCooldown = 1.9f;
                 break;
             case 4:
-                curPower = 4;
-                nextPower = 5;
-                nextCooldown = 1.2f;
+                curPower = 3;
+                nextPower = 4;
+                nextCooldown = 1.8f;
                 break;
             case 5:
-                curPower = 5;
-                nextPower = 6;
-                nextCooldown = 1.2f;
+                curPower = 4;
+                nextPower = 5;
+                nextCooldown = 1.7f;
                 break;
             case 6:
-                curPower = 6;
-                nextPower = 7;
-                nextCooldown = 1.2f;
+                curPower = 5;
+                nextPower = 6;
+                nextCooldown = 1.6f;
                 break;
             case 7:
-                curPower = 7;
-                nextPower = 8;
-                nextCooldown = 1.2f;
+                curPower = 6;
+                nextPower = 0;
+                nextCooldown = 0f;
                 break;
         }
     }

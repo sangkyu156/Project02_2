@@ -28,7 +28,7 @@ public class BlackHole_Store : BlackHole_Skill
     //설명 텍스트 출력
     void PrintExplanation()
     {
-        if (Player.Instance.tornadoLevel == 0)
+        if (Player.Instance.blackholeLevel == 0)
         {
             explanation.text = TextUtil.GetText("game:skill:explanation:blackhole");
         }
@@ -47,7 +47,7 @@ public class BlackHole_Store : BlackHole_Skill
         }
     }
 
-    public void TornadoBuy()
+    public void BlackHoleBuy()
     {
         if (Player.Instance.blackholeLevel >= 7)
             return;
@@ -66,17 +66,17 @@ public class BlackHole_Store : BlackHole_Skill
             case 1:
                 Player.Instance.blackholeCooldown = 2f; break;
             case 2:
-                Player.Instance.blackholeCooldown = 1.9f; break;
+                Player.Instance.blackholeCooldown = 2f; break;
             case 3:
-                Player.Instance.blackholeCooldown = 1.8f; break;
+                Player.Instance.blackholeCooldown = 1.9f; break;
             case 4:
-                Player.Instance.blackholeCooldown = 1.7f; break;
+                Player.Instance.blackholeCooldown = 1.9f; break;
             case 5:
-                Player.Instance.blackholeCooldown = 1.6f; break;
+                Player.Instance.blackholeCooldown = 1.8f; break;
             case 6:
-                Player.Instance.blackholeCooldown = 1.5f; break;
+                Player.Instance.blackholeCooldown = 1.7f; break;
             case 7:
-                Player.Instance.blackholeCooldown = 1.3f; break;
+                Player.Instance.blackholeCooldown = 1.6f; break;
 
         }
 

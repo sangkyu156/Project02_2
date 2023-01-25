@@ -106,8 +106,8 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
                 break;
             case 7:
                 curPower = 10;
-                nextPower = 10;
-                nextCooldown = 0.7f;
+                nextPower = 0;
+                nextCooldown = 0f;
                 break;
         }
     }
