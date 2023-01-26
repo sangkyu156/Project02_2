@@ -10,6 +10,8 @@ public class Player : Singleton<Player>
     public float tornadoCooldown = 0;
     public int blackholeLevel = 0;
     public float blackholeCooldown = 0;
+    public int sawBladeLevel = 0;
+    public GameObject[] sawBlade;
     #endregion
 
     public int maxHealth = 10;
@@ -49,7 +51,7 @@ public class Player : Singleton<Player>
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        money = 3999;
+        money = 39999;
         StoreManager.Instance.PrintPlayerMoney();
     }
 
@@ -170,6 +172,29 @@ public class Player : Singleton<Player>
     {
         CancelInvoke("Spawn3");
         InvokeRepeating("Spawn3", 0, blackholeCooldown);
+    }
+
+    //톱니 추가
+    public void SawBladeAdd()
+    {
+        switch (sawBladeLevel)
+        {
+            case 1:
+                sawBlade[0].SetActive(true); break;
+            case 2:
+                sawBlade[1].SetActive(true); break;
+            case 3:
+                sawBlade[2].SetActive(true); break;
+            case 4:
+                sawBlade[3].SetActive(true); break;
+            case 5:
+                sawBlade[4].SetActive(true); break;
+            case 6:
+                sawBlade[5].SetActive(true); break;
+            case 7:
+                sawBlade[6].SetActive(true);
+                sawBlade[7].SetActive(true); break;
+        }
     }
 
     //오브젝트풀링 생성
