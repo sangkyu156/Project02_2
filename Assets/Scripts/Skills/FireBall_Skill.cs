@@ -24,8 +24,8 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
 
     void Start()
     {
-        fireballSpeed = Player.Instance.moveSpeed + 2;
-        deadTiem = 5f;
+        fireballSpeed = 17;
+        deadTiem = 1.4f;
     }
 
     void Update()
@@ -59,7 +59,7 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
 
         if (deadTiem < 0)
         {
-            deadTiem = 5f;
+            deadTiem = 1.4f;
             OnTargetReached();
         }
     }
@@ -167,7 +167,7 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
         spriteRenderer.flipX = false;
         animator.SetBool("hit", false);
         skillCollider.enabled = true;
-        deadTiem = 5f;
+        deadTiem = 1.4f;
         SetAbility();
         if (rigidbody2D != null)
         {

@@ -52,6 +52,7 @@ public class Pig4 : EnemyBase, IPoolObject
             transform.position = new Vector3(transform.position.x, -7);
         }
 
+        //한번만 밀리기 위해서 사용
         if (knockback == true)
         {
             knockbackTime -= Time.deltaTime;

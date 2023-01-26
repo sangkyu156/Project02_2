@@ -22,6 +22,7 @@ public class Player : Singleton<Player>
     public Transform mainCamera;
     public Transform textPostion;
     public GameObject skillPos;//발사스킬 시작지점
+    public GameObject effect_Heal;
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
     PoolManager poolManager; //오브젝트 풀링 매니져
@@ -245,5 +246,29 @@ public class Player : Singleton<Player>
     void effect2()
     {
         spriteRenderer.color = new Color(1, 1, 1, 0.3f);
+    }
+
+    //포션 먹었을때
+    public void GetHP_Potion()
+    {
+        effect_Heal.SetActive(true);
+
+        currentHealth += 3;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
+        healthBar.SetHealth(currentHealth);
+
+        //힐 출력
+        GameObject healUI = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
+        healUI.GetComponentInChildren<HealText>().heal = "+3";
+        healUI.transform.SetParent(textPostion, false);
+
+        Invoke("HealOff", 0.7f);
+    }
+
+    void HealOff()
+    {
+        effect_Heal.SetActive(false);
     }
 }

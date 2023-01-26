@@ -51,6 +51,17 @@ public class Chick : EnemyBase, IPoolObject
         {
             transform.position = new Vector3(transform.position.x, -7);
         }
+
+        //한번만 밀리기 위해서 사용
+        if (knockback == true)
+        {
+            knockbackTime -= Time.deltaTime;
+            if (knockbackTime <= 0)
+            {
+                knockbackTime = 1;
+                knockback = false;
+            }
+        }
     }
 
     //능력 설정

@@ -35,7 +35,7 @@ public class GameManager : Singleton<GameManager>
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            TextUtil.languageNumber = 2; //미국어
+            TextUtil.languageNumber = 2; //영어
         }
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -49,7 +49,7 @@ public class GameManager : Singleton<GameManager>
             reSpawnTime = 2f;
             if (0 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 8)
             {
-                RepeatCreate_04();
+                RepeatCreate_01();
             }
             else if(8 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 15)
             {
@@ -241,5 +241,17 @@ public class GameManager : Singleton<GameManager>
         {
             fieldUI[i].SetActive(false);
         }
+    }
+
+    public void CreateBox()
+    {
+        GameObject portal = Instantiate(Resources.Load<GameObject>("Field/Box1"));
+        portal.transform.position = new Vector3(Player.Instance.transform.position.x + Random.Range(30f, 60f), Random.Range(-4, -8), 0);
+    }
+
+    public void CreateBox2()
+    {
+        GameObject portal = Instantiate(Resources.Load<GameObject>("Field/Box2"));
+        portal.transform.position = new Vector3(Player.Instance.transform.position.x + Random.Range(30f, 60f), Random.Range(-4, -8), 0);
     }
 }
