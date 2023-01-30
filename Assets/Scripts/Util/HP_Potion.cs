@@ -27,7 +27,7 @@ public class HP_Potion : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            Player.Instance.GetHP_Potion();
+            Player.Instance.GetHP_Potion(ItemManager.Potion.HP_Potion);
 
             Destroy(gameObject);
         }

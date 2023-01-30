@@ -13,7 +13,7 @@ public class HealText : MonoBehaviour
     void Start()
     {
         healText = GetComponent<TextMeshProUGUI>();
-        healText.text = "+3";
+        healText.text = heal;
     }
 
     void Update()

@@ -17,6 +17,7 @@ public class Pig : EnemyBase, IPoolObject
             collider.enabled = false;//콜라이더 x
             PositionStop();//이동 x
             animator.SetBool("Death", true);//죽는 애니메이션
+            deadPostion = transform.position;
 
             if (drop == false)
             {
@@ -24,6 +25,11 @@ public class Pig : EnemyBase, IPoolObject
                 for (int i = 0; i < 1; i++)
                 {
                     Drop();
+                }
+
+                if(Random.Range(0,20) == 7)
+                {
+                    PotionDrop();
                 }
             }
 
@@ -124,9 +130,15 @@ public class Pig : EnemyBase, IPoolObject
     //드랍
     void Drop()
     {
-        GameObject coin = Instantiate(Resources.Load<GameObject>("Field/Coin_1")) as GameObject;
+        GameManager.Instance.CoinSpawn();
+    }
+
+    //포션드랍
+    void PotionDrop()
+    {
+        GameObject potion = Instantiate(Resources.Load<GameObject>("Field/HP_Potion")) as GameObject;
         float posX = Random.Range(-0.5f, 0.3f);
         float posY = Random.Range(-0.5f, 0.3f);
-        coin.transform.position = new Vector2(transform.position.x + posX, transform.position.y + posY);
+        potion.transform.position = new Vector2(transform.position.x + posX, transform.position.y + posY);
     }
 }

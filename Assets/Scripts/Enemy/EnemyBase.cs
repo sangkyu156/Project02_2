@@ -12,6 +12,7 @@ public class EnemyBase : MonoBehaviour
 
     public HealthBar healthBar;
     public Transform textPostion;
+    static public Vector3 deadPostion;
 
     public CapsuleCollider2D collider;
     Transform target = null;

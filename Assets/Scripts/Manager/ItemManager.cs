@@ -9,9 +9,12 @@ public class ItemManager : Singleton<ItemManager>
     GameObject[] items;
     string[] skillNameArray; //스킬명 모와두는곳
     int[] skillWeightedArray; //스킬 가중치 모와두는곳
-    WRandom.WeightedRandomPicker<string> weightedRandom = new WRandom.WeightedRandomPicker<string>(); //'가중치랜덤' 변수 생성 & 초기화
+    public WRandom.WeightedRandomPicker<string> weightedRandom = new WRandom.WeightedRandomPicker<string>(); //'가중치랜덤' 변수 생성 & 초기화
 
-
+    public enum Potion
+    {
+        HP_Potion, HP_Potion2, HP_Potion3
+    }
 
     private void Awake()
     {
@@ -68,7 +71,7 @@ public class ItemManager : Singleton<ItemManager>
             skill.transform.SetAsFirstSibling();//생성된 오브젝트 맨위로
         }
 
-        overlap = skillList.GroupBy(x => x).All(g => g.Count() == 1);
+        overlap = skillList.GroupBy(x => x).All(g => g.Count() == 1);//뽑은 스킬리스트안에 모든 개별 요소의 개수가 1개씩인지 체크
         if(overlap == false)
         {
             OverlapRedraw();

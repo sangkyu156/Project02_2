@@ -29,6 +29,15 @@ public class GameManager : Singleton<GameManager>
         {
             fieldUI[i].SetActive(false);
         }
+
+        //Create_01();
+        //Create_02();
+        //Create_03();
+        //Create_04();
+        //RepeatCreate_01();
+        //RepeatCreate_02();
+        //RepeatCreate_03();
+        //RepeatCreate_04();
     }
 
     void Update()
@@ -49,7 +58,7 @@ public class GameManager : Singleton<GameManager>
             reSpawnTime = 2f;
             if (0 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 8)
             {
-                RepeatCreate_01();
+                //RepeatCreate_01();
             }
             else if(8 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 15)
             {
@@ -172,6 +181,10 @@ public class GameManager : Singleton<GameManager>
     {
         Pig4 pig4 = poolManager.GetFromPool<Pig4>();
     }
+    public void CoinSpawn()
+    {
+        Coin coin = poolManager.GetFromPool<Coin>();
+    }
     #endregion
 
     #region 오브젝트 회수
@@ -218,6 +231,10 @@ public class GameManager : Singleton<GameManager>
     public void ReturnPool(Pig4 clone)
     {
         poolManager.TakeToPool<Pig4>(clone.idName, clone);
+    }
+    public void ReturnPool(Coin clone)
+    {
+        poolManager.TakeToPool<Coin>(clone.idName, clone);
     }
     #endregion
 

@@ -29,12 +29,25 @@ public class SawBlade_Store : SawBlade_Skill
         {
             explanation.text = TextUtil.GetText("game:skill:explanation:sawblade");
         }
+        else if(Player.Instance.sawBladeLevel == 7)
+        {
+            if (TextUtil.languageNumber == 0 || TextUtil.languageNumber == 1) //и措
+            {
+                SetAbility();
+                explanation.text = $"<size=120%><#32FFC8>體陳</color></size>\n<size=70%>Level <#FF2D2D>MAX</color></size>\n\n奢問溘 <#FF2D2D>{sb_CurPower}</color>\n體陳 偃熱 <#FF2D2D>8</color>";
+            }
+            else if (TextUtil.languageNumber == 2) //嘐措
+            {
+                SetAbility();
+                explanation.text = $"<size=120%><#32FFC8>SawBlade</color></size>\n<size=70%>Level <#FF2D2D>MAX</color></size>\n\nPower <#FF2D2D>{sb_CurPower}</color>\nNnumber Of Saw Blades <#FF2D2D>8</color>";
+            }
+        }
         else
         {
             if (TextUtil.languageNumber == 0 || TextUtil.languageNumber == 1) //и措
             {
                 SetAbility();
-                explanation.text = $"<size=120%><#32FFC8>體陳</color></size>\n<size=70%>Level {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel + 1}</color></size>\n\n奢問溘 {sb_CurPower} -> <#3EFF3E>{sb_NextPower}</color>\n體陳 偃熱 {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel+1}</color>";
+                explanation.text = $"<size=120%><#32FFC8>體陳</color></size>\n<size=70%>Level {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel + 1}</color></size>\n\n奢問溘 {sb_CurPower} -> <#3EFF3E>{sb_NextPower}</color>\n體陳 偃熱 {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel + 2}</color>";
 
                 if(Player.Instance.sawBladeLevel == 6)
                     explanation.text = $"<size=120%><#32FFC8>體陳</color></size>\n<size=70%>Level {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel + 1}</color></size>\n\n奢問溘 {sb_CurPower} -> <#3EFF3E>{sb_NextPower}</color>\n體陳 偃熱 {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel + 2}</color>";
@@ -42,10 +55,10 @@ public class SawBlade_Store : SawBlade_Skill
             else if (TextUtil.languageNumber == 2) //嘐措
             {
                 SetAbility();
-                explanation.text = $"<size=120%><#E7E7E7>FireBall</color></size>\n<size=70%>Level {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel + 1}</color></size>\n\nPower {sb_CurPower} -> <#3EFF3E>{sb_NextPower}</color>\nNnumber Of Saw Blades {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel+1}</color>";
+                explanation.text = $"<size=120%><#32FFC8>SawBlade</color></size>\n<size=70%>Level {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel + 1}</color></size>\n\nPower {sb_CurPower} -> <#3EFF3E>{sb_NextPower}</color>\nNnumber Of Saw Blades {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel+1}</color>";
 
                 if (Player.Instance.sawBladeLevel == 6)
-                    explanation.text = $"<size=120%><#E7E7E7>FireBall</color></size>\n<size=70%>Level {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel + 1}</color></size>\n\nPower {sb_CurPower} -> <#3EFF3E>{sb_NextPower}</color>\nNnumber Of Saw Blades {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel + 2}</color>";
+                    explanation.text = $"<size=120%><#32FFC8>SawBlade</color></size>\n<size=70%>Level {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel + 1}</color></size>\n\nPower {sb_CurPower} -> <#3EFF3E>{sb_NextPower}</color>\nNnumber Of Saw Blades {Player.Instance.sawBladeLevel} -> <#3EFF3E>{Player.Instance.sawBladeLevel + 2}</color>";
             }
         }
     }
@@ -64,11 +77,16 @@ public class SawBlade_Store : SawBlade_Skill
         Player.Instance.money -= priceValue;
         Player.Instance.sawBladeLevel++;
 
+        //虜椰衛 蝶鑒 跡煙縑憮 餉薯
+        if(Player.Instance.sawBladeLevel == 7)
+            ItemManager.Instance.weightedRandom.Remove("SawBlade_Store");
+
         buyButton.interactable = false;
         PrintExplanation();
         StoreManager.Instance.PrintPlayerMoney();
         GameManager.Instance.PrintPlayerMoney();
 
         Player.Instance.SawBladeAdd();
+
     }
 }

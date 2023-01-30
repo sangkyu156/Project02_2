@@ -274,20 +274,45 @@ public class Player : Singleton<Player>
     }
 
     //Æ÷¼Ç ¸Ô¾úÀ»¶§
-    public void GetHP_Potion()
+    public void GetHP_Potion(ItemManager.Potion potion_)
     {
         effect_Heal.SetActive(true);
 
-        currentHealth += 3;
-        if (currentHealth > maxHealth)
-            currentHealth = maxHealth;
+        switch (potion_)
+        {
+            case ItemManager.Potion.HP_Potion:
+                currentHealth += 3;
+                if (currentHealth > maxHealth)
+                    currentHealth = maxHealth;
+
+                //Èú Ãâ·Â
+                GameObject healUI = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
+                healUI.GetComponentInChildren<HealText>().heal = "+3";
+                healUI.transform.SetParent(textPostion, false);
+                break;
+            case ItemManager.Potion.HP_Potion2:
+                currentHealth += 5;
+                if (currentHealth > maxHealth)
+                    currentHealth = maxHealth;
+
+                //Èú Ãâ·Â
+                GameObject healUI2 = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
+                healUI2.GetComponentInChildren<HealText>().heal = "+5";
+                healUI2.transform.SetParent(textPostion, false);
+                break;
+            case ItemManager.Potion.HP_Potion3:
+                currentHealth += 7;
+                if (currentHealth > maxHealth)
+                    currentHealth = maxHealth;
+
+                //Èú Ãâ·Â
+                GameObject healUI3 = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
+                healUI3.GetComponentInChildren<HealText>().heal = "+7";
+                healUI3.transform.SetParent(textPostion, false);
+                break;
+        }
 
         healthBar.SetHealth(currentHealth);
-
-        //Èú Ãâ·Â
-        GameObject healUI = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
-        healUI.GetComponentInChildren<HealText>().heal = "+3";
-        healUI.transform.SetParent(textPostion, false);
 
         Invoke("HealOff", 0.7f);
     }

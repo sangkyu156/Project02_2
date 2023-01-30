@@ -29,6 +29,19 @@ public class FireBall_Store : FireBall_Skill
         {
             explanation.text = TextUtil.GetText("game:skill:explanation:fireball");
         }
+        else if(Player.Instance.fireBallLevel == 7)
+        {
+            if (TextUtil.languageNumber == 0 || TextUtil.languageNumber == 1) //한국
+            {
+                SetAbility();
+                explanation.text = $"<size=120%><#E7E7E7>파이어볼</color></size>\n<size=70%>Level <#FF2D2D>MAX</color></size>\n\n공격력 <#FF2D2D>{curPower}</color>\n공격속도 <#FF2D2D>{Player.Instance.fireBallCooldown}</color>";
+            }
+            else if (TextUtil.languageNumber == 2) //미국
+            {
+                SetAbility();
+                explanation.text = $"<size=120%><#E7E7E7>FireBall</color></size>\n<size=70%>Level <#FF2D2D>MAX</color></size>\n\nPower <#FF2D2D>{curPower}</color>\nCooldown <#FF2D2D>{Player.Instance.fireBallCooldown}</color>";
+            }
+        }
         else
         {
             if (TextUtil.languageNumber == 0 || TextUtil.languageNumber == 1) //한국
@@ -58,6 +71,14 @@ public class FireBall_Store : FireBall_Skill
         Player.Instance.money -= priceValue;
         Player.Instance.fireBallLevel++;
 
+
+        buyButton.interactable = false;
+        PrintExplanation();
+        StoreManager.Instance.PrintPlayerMoney();
+        GameManager.Instance.PrintPlayerMoney();
+
+        Player.Instance.FireBallAction();
+
         switch (Player.Instance.fireBallLevel)
         {
             case 1:
@@ -70,15 +91,9 @@ public class FireBall_Store : FireBall_Skill
             case 6:
                 Player.Instance.fireBallCooldown = 0.8f; break;
             case 7:
-                Player.Instance.fireBallCooldown = 0.7f; break;
+                Player.Instance.fireBallCooldown = 0.7f;
+                ItemManager.Instance.weightedRandom.Remove("FireBall_Store"); break;//만랩시 스킬 목록에서 삭제
 
         }
-
-        buyButton.interactable = false;
-        PrintExplanation();
-        StoreManager.Instance.PrintPlayerMoney();
-        GameManager.Instance.PrintPlayerMoney();
-
-        Player.Instance.FireBallAction();
     }
 }

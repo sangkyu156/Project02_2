@@ -1,10 +1,13 @@
+using Redcode.Pools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
-public class Coin : MonoBehaviour
+public class Coin : MonoBehaviour, IPoolObject
 {
+    public string idName;
     int speed = 13;
 
     void Start()
@@ -30,7 +33,24 @@ public class Coin : MonoBehaviour
         {
             Player.Instance.money += Random.Range(5, 7);
             GameManager.Instance.PrintPlayerMoney();
-            Destroy(this.gameObject);
+            if (gameObject.activeSelf)
+                GameManager.Instance.ReturnPool(this);
         }
+    }
+
+    //처음생성됬을때 실행되는 메소드
+    public void OnCreatedInPool()
+    {
+        float posX = Random.Range(-0.5f, 0.3f);
+        float posY = Random.Range(-0.5f, 0.3f);
+        transform.position = EnemyBase.deadPostion + new Vector3(posX, posY, 0);
+    }
+
+    //재사용되서 다시한번 실행될때마다 실행되는 메소드
+    public void OnGettingFromPool()
+    {
+        float posX = Random.Range(-0.5f, 0.3f);
+        float posY = Random.Range(-0.5f, 0.3f);
+        transform.position = EnemyBase.deadPostion + new Vector3(posX, posY, 0);
     }
 }

@@ -17,6 +17,7 @@ public class Chicken2 : EnemyBase, IPoolObject
             collider.enabled = false;//콜라이더 x
             PositionStop();//이동 x
             animator.SetBool("Death", true);//죽는 애니메이션
+            deadPostion = transform.position;
 
             if (drop == false)
             {
@@ -124,9 +125,6 @@ public class Chicken2 : EnemyBase, IPoolObject
     //드랍
     void Drop()
     {
-        GameObject coin = Instantiate(Resources.Load<GameObject>("Field/Coin_1")) as GameObject;
-        float posX = Random.Range(-0.5f, 0.3f);
-        float posY = Random.Range(-0.5f, 0.3f);
-        coin.transform.position = new Vector2(transform.position.x + posX, transform.position.y + posY);
+        GameManager.Instance.CoinSpawn();
     }
 }
