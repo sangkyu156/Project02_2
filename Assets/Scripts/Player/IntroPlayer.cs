@@ -15,9 +15,9 @@ public class IntroPlayer : MonoBehaviour
     void Start()
     {
         Invoke("SowrdStart", 2f);
-        Invoke("Surprise", 6.5f);
-        Invoke("Surprise2", 6.6f);
-        Invoke("Off", 7.3f);
+        Invoke("Surprise", 6.7f);
+        Invoke("Surprise2", 6.5f);
+        Invoke("Off", 7.7f);
     }
 
     void SowrdStart()
@@ -49,6 +49,7 @@ public class IntroPlayer : MonoBehaviour
         exclamationMark.SetActive(false);
         exclamationMark2.SetActive(false);
         exclamationMark3.SetActive(false);
+
         leftWalk.SetActive(false);
         idle.SetActive(false);
         rightWalk.SetActive(true);

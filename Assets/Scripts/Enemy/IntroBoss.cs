@@ -50,6 +50,12 @@ public class IntroBoss : MonoBehaviour
         exclamationMark2.SetActive(true);
     }
 
+    void ExclamationOff()
+    {
+        exclamationMark.SetActive(false);
+        exclamationMark2.SetActive(false);
+    }
+
     void BossWalk()
     {
         animator.SetBool("Walk", true);
@@ -58,5 +64,6 @@ public class IntroBoss : MonoBehaviour
     void BossMove()
     {
         rigidbody.velocity = new Vector3(1, 0) * bossSpeed;
+        Invoke("ExclamationOff", 1f);
     }
 }

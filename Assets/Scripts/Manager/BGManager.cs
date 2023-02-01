@@ -6,6 +6,7 @@ public class BGManager : Singleton<BGManager>
 {
     public GameObject[] map;
     public GameObject player;
+    public GameObject information;
     float dist = 0f;
     public int countBG = 0;
 
@@ -55,6 +56,7 @@ public class BGManager : Singleton<BGManager>
                 else if(countBG == 2)
                 {
                     GameManager.Instance.Create_01();
+                    Destroy(information);
                 }
                 else if(countBG == 4)
                 {

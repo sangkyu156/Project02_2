@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEngine;
 
 public class FireBall_Store : FireBall_Skill
 {
@@ -16,6 +17,17 @@ public class FireBall_Store : FireBall_Skill
 
         price.text = UnityEngine.Random.Range(min, max).ToString();
         priceValue = Int32.Parse(price.text);
+
+        if (priceValue > Player.Instance.money)
+        {
+            price.color = Color.red;
+            buyButton.interactable = false;
+        }
+        else
+        {
+            price.color = Color.white;
+            buyButton.interactable = true;
+        }
 
         buyButton.transform.SetAsLastSibling();//버튼제일 아래로 위치
 
@@ -71,14 +83,6 @@ public class FireBall_Store : FireBall_Skill
         Player.Instance.money -= priceValue;
         Player.Instance.fireBallLevel++;
 
-
-        buyButton.interactable = false;
-        PrintExplanation();
-        StoreManager.Instance.PrintPlayerMoney();
-        GameManager.Instance.PrintPlayerMoney();
-
-        Player.Instance.FireBallAction();
-
         switch (Player.Instance.fireBallLevel)
         {
             case 1:
@@ -95,5 +99,13 @@ public class FireBall_Store : FireBall_Skill
                 ItemManager.Instance.weightedRandom.Remove("FireBall_Store"); break;//만랩시 스킬 목록에서 삭제
 
         }
+
+        buyButton.interactable = false;
+        PrintExplanation();
+        StoreManager.Instance.PrintPlayerMoney();
+        GameManager.Instance.PrintPlayerMoney();
+
+        Player.Instance.FireBallAction();
+
     }
 }

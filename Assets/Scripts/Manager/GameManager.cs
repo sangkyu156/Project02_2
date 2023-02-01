@@ -20,11 +20,10 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
-        Time.timeScale = 0;
         reSpawnTime = 2f;
 
         TextUtil.languageNumber = 2;//언어 설정
-        store.SetActive(true);
+        store.SetActive(false);
         for (int i = 0; i < fieldUI.Length; i++)
         {
             fieldUI[i].SetActive(false);
@@ -56,9 +55,9 @@ public class GameManager : Singleton<GameManager>
         if(reSpawnTime <= 0)
         {
             reSpawnTime = 2f;
-            if (0 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 8)
+            if (1 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 8)
             {
-                //RepeatCreate_01();
+                RepeatCreate_01();
             }
             else if(8 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 15)
             {
@@ -73,6 +72,11 @@ public class GameManager : Singleton<GameManager>
                 RepeatCreate_04();
             }
         }
+    }
+
+    void TimeStop()
+    {
+        Time.timeScale = 0;
     }
 
     public void ExitButton()

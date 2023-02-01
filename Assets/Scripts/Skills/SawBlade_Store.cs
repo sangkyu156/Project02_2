@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEngine;
 
 public class SawBlade_Store : SawBlade_Skill
 {
@@ -16,6 +17,17 @@ public class SawBlade_Store : SawBlade_Skill
 
         price.text = UnityEngine.Random.Range(min, max).ToString();
         priceValue = Int32.Parse(price.text);
+
+        if (priceValue > Player.Instance.money)
+        {
+            price.color = Color.red;
+            buyButton.interactable = false;
+        }
+        else
+        {
+            price.color = Color.white;
+            buyButton.interactable = true;
+        }
 
         buyButton.transform.SetAsLastSibling();//버튼제일 아래로 위치
 

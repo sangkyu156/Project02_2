@@ -32,6 +32,14 @@ public class ItemManager : Singleton<ItemManager>
         SetSkills();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            OverlapRedraw();
+        }
+    }
+
     //랜덤으로 뽑을 스킬 추가
     void AddSkills()
     {

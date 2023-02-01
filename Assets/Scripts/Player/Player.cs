@@ -51,8 +51,8 @@ public class Player : Singleton<Player>
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        money = 39999;
-        StoreManager.Instance.PrintPlayerMoney();
+        money = 120;
+        //StoreManager.Instance.PrintPlayerMoney();
     }
 
     void Update()
