@@ -10,6 +10,7 @@ public class StoreManager : Singleton<StoreManager>
     private void OnEnable()
     {
         PrintPlayerMoney();
+        GameManager.Instance.storCount++;
     }
 
     public void PrintPlayerMoney()

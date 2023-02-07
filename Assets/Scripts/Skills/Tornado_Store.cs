@@ -81,6 +81,7 @@ public class Tornado_Store : Tornado_Skill
         }
 
         Player.Instance.money -= priceValue;
+        GameManager.Instance.paymentGold += priceValue;
         Player.Instance.tornadoLevel++;
 
         switch (Player.Instance.tornadoLevel)

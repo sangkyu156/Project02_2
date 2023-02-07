@@ -87,6 +87,7 @@ public class SawBlade_Store : SawBlade_Skill
         }
 
         Player.Instance.money -= priceValue;
+        GameManager.Instance.paymentGold += priceValue;
         Player.Instance.sawBladeLevel++;
 
         //만랩시 스킬 목록에서 삭제

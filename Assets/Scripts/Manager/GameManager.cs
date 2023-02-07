@@ -8,10 +8,16 @@ using System.Diagnostics;
 public class GameManager : Singleton<GameManager>
 {
     public GameObject store;
+    public GameObject deadPopup;
     public GameObject[] fieldUI;
     public TextMeshProUGUI playerMoney;
+    public TextMeshProUGUI playerDiamond;
     PoolManager poolManager; //오브젝트 풀링 매니져
     float reSpawnTime = 2f;
+    public int mainDiamond;
+    public int stageDiamond;
+    public int paymentGold;
+    public int storCount;
 
     private void Awake()
     {
@@ -21,6 +27,10 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         reSpawnTime = 2f;
+        //아래변수 3개는 스테이지 시작시 초기화 하는것으로 바꿔야함.
+        paymentGold = 0;
+        storCount = 0;
+        stageDiamond = 0;
 
         TextUtil.languageNumber = 2;//언어 설정
         store.SetActive(false);
@@ -242,11 +252,14 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion
 
-
-
     public void PrintPlayerMoney()
     {
         playerMoney.text = $"{Player.Instance.money}";
+    }
+
+    public void PrintPlayerStageDiamond()
+    {
+        playerDiamond.text = $"{stageDiamond}";
     }
 
     public void CreatePortal()
@@ -274,5 +287,11 @@ public class GameManager : Singleton<GameManager>
     {
         GameObject portal = Instantiate(Resources.Load<GameObject>("Field/Box2"));
         portal.transform.position = new Vector3(Player.Instance.transform.position.x + Random.Range(30f, 60f), Random.Range(-4, -8), 0);
+    }
+
+    public void PlayerDeath()
+    {
+        deadPopup.SetActive(true);
+        Time.timeScale = 0;
     }
 }

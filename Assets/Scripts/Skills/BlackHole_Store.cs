@@ -84,6 +84,7 @@ public class BlackHole_Store : BlackHole_Skill
         }
 
         Player.Instance.money -= priceValue;
+        GameManager.Instance.paymentGold += priceValue;
         Player.Instance.blackholeLevel++;
 
         switch (Player.Instance.blackholeLevel)

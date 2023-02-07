@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 public class Boss : Singleton<Boss>
 {
@@ -33,7 +34,12 @@ public class Boss : Singleton<Boss>
     {
         attack = false;
         animator.SetBool("Attack", false);
-        //게임 오버 팝업
+        Invoke("PlayerKill", 0);
+    }
+
+    void PlayerKill()
+    {
+        GameManager.Instance.PlayerDeath();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

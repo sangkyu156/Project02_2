@@ -81,6 +81,7 @@ public class FireBall_Store : FireBall_Skill
         }
 
         Player.Instance.money -= priceValue;
+        GameManager.Instance.paymentGold += priceValue;
         Player.Instance.fireBallLevel++;
 
         switch (Player.Instance.fireBallLevel)

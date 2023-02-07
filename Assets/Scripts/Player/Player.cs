@@ -73,6 +73,9 @@ public class Player : Singleton<Player>
         {
             transform.position = new Vector3(transform.position.x, -7);
         }
+
+        if(currentHealth <= 0)
+            GameManager.Instance.PlayerDeath();
     }
 
     private void FixedUpdate()
