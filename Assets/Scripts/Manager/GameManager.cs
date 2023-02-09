@@ -19,6 +19,12 @@ public class GameManager : Singleton<GameManager>
     public int paymentGold;
     public int storCount;
 
+    public enum SceneState
+    {
+        Home,Stage,StartScene
+    }
+    public SceneState state = SceneState.Home;
+
     private void Awake()
     {
         poolManager = GetComponent<PoolManager>();
@@ -26,6 +32,10 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
+        //스테이지씬 아니면 아래 함수 사용x
+        if (GameManager.Instance.state != SceneState.Stage)
+            return;
+
         reSpawnTime = 2f;
         //아래변수 3개는 스테이지 시작시 초기화 하는것으로 바꿔야함.
         paymentGold = 0;

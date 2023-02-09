@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class BGManager : Singleton<BGManager>
 {
@@ -12,6 +13,10 @@ public class BGManager : Singleton<BGManager>
 
     void Start()
     {
+        //스테이지씬 아니면 아래 함수 사용x
+        if (GameManager.Instance.state != SceneState.Stage)
+            return;
+
         countBG = 0;
         dist = 0f;
 
@@ -23,6 +28,10 @@ public class BGManager : Singleton<BGManager>
 
     void Update()
     {
+        //스테이지씬 아니면 아래 함수 사용x
+        if (GameManager.Instance.state != SceneState.Stage)
+            return;
+
         for (int i = 0; i < map.Length; i++)
         {
             dist = player.transform.position.x - 60;
