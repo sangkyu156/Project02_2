@@ -81,7 +81,7 @@ public class Tornado_Skill : ProjectileSkill, IPoolObject
             else if(collider_.transform.position.x > transform.position.x)
                 collider_.transform.position = new Vector3(collider_.transform.position.x + 2f, collider_.transform.position.y);
 
-            enemy.TakeDamage(curPower);
+            enemy.TakeDamage(curPower + Player.Instance.playerPower);
             enemy.knockback = true;
         }
     }

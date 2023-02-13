@@ -79,7 +79,7 @@ public class BlackHole_Skill : ProjectileSkill, IPoolObject
         else if (collider_.transform.position.x > transform.position.x)
             collider_.transform.position = new Vector3(collider_.transform.position.x - 1f, collider_.transform.position.y);
 
-        enemy.TakeDamage(curPower);
+        enemy.TakeDamage(curPower + Player.Instance.playerPower);
     }
 
     public override void RightShoot()

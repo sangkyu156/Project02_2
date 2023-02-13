@@ -1,4 +1,8 @@
-﻿using UnityEngine;using UnityEngine.SceneManagement;using UnityEngine.UI;public class SimpleSceneFader : MonoBehaviour
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class SimpleSceneFader : MonoBehaviour
 {
 
     private Image img;
@@ -82,7 +86,10 @@
         alphaAdd = 0f;
         gameObject.GetComponent<Canvas>().sortingOrder = -1;
         PlayerPrefs.DeleteKey("SceneToLoad");
-    }    void ImgOff()
+    }
+
+    void ImgOff()
     {
         img.enabled = false;
-    }}
+    }
+}

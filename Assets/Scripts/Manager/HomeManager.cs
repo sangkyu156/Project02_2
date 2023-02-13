@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class HomeManager : MonoBehaviour
+public class HomeManager : Singleton<HomeManager>
 {
     public GameObject stagePopup;
+    public GameObject set_upPopup;
+    public GameObject storePopup;
     public GameObject[] stage;
-    public TextMeshProUGUI playerDiamond;
+    public TextMeshProUGUI playerMainDiamond;
 
     int curStage = 0;
 
     void Start()
     {
+        //임시 테스트
+        GameManager.Instance.mainDiamond = 200;
+
         PrintDiamond();
     }
 
@@ -51,6 +56,26 @@ public class HomeManager : MonoBehaviour
     public void StagePopupOff()
     {
         stagePopup.SetActive(false);
+    }
+
+    public void Set_upPopupOn()
+    {
+        set_upPopup.SetActive(true);
+    }
+
+    public void Set_upPopupOff()
+    {
+        set_upPopup.SetActive(false);
+    }
+
+    public void StorePopupOn()
+    {
+        storePopup.SetActive(true);
+    }
+
+    public void StorePopupOff()
+    {
+        storePopup.SetActive(false);
     }
 
     public void NextStage()
@@ -93,6 +118,16 @@ public class HomeManager : MonoBehaviour
 
     public void PrintDiamond()
     {
-        playerDiamond.text = $"{GameManager.Instance.mainDiamond}";
+        playerMainDiamond.text = $"{GameManager.Instance.mainDiamond}";
+    }
+
+    public void LanguageEnglishChoice()
+    {
+        TextUtil.languageNumber = 2;
+    }
+
+    public void LanguageKoreanChoice()
+    {
+        TextUtil.languageNumber = 1;
     }
 }

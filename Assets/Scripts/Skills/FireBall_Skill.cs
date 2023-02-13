@@ -201,7 +201,7 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
             if (targets[i].tag == "Enemy")
             {
                 enemy = targets[i].GetComponent<EnemyBase>();
-                enemy.TakeDamage(curPower);
+                enemy.TakeDamage(curPower + Player.Instance.playerPower);
             }
         }
     }

@@ -14,6 +14,7 @@ public class Player : Singleton<Player>
     public GameObject[] sawBlade;
     #endregion
 
+    public int playerPower = 0;
     public int maxHealth = 10;
     public int currentHealth;
     public float moveSpeed = 10;
@@ -49,10 +50,7 @@ public class Player : Singleton<Player>
 
     void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-        money = 120;
-        //StoreManager.Instance.PrintPlayerMoney();
+        PlayerStateSet();//임시 스테이지 클릭할때 호출하도록바꿔야함
     }
 
     void Update()
@@ -323,5 +321,16 @@ public class Player : Singleton<Player>
     void HealOff()
     {
         effect_Heal.SetActive(false);
+    }
+
+    //스테이지 들어가기전 최종적으로 플레이어 능력치 세팅
+    public void PlayerStateSet()
+    {
+        playerPower = StateManager.Instance.state_Power + 0;
+        maxHealth = StateManager.Instance.state_Health + 10;
+
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+        money = 120;
     }
 }

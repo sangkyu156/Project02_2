@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
         Vector3 dir = player.transform.position - this.transform.position;
         if(dir.x > 0)
         {
-            Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.deltaTime, 0, 0.0f);
+            Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.fixedDeltaTime, 0, 0.0f);
             this.transform.Translate(moveVector);
         }
 

@@ -32,6 +32,9 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
+        //임시 테스트
+        //mainDiamond = 10;
+
         //스테이지씬 아니면 아래 함수 사용x
         if (GameManager.Instance.state != SceneState.Stage)
             return;

@@ -25,7 +25,7 @@ public class SawBlade_Skill : MonoBehaviour
         EnemyBase enemy;
         enemy = collider_.GetComponent<EnemyBase>();
 
-        enemy.TakeDamage(sb_CurPower);
+        enemy.TakeDamage(sb_CurPower + Player.Instance.playerPower);
     }
     public void SetAbility()
     {

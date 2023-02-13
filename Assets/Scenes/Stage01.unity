@@ -1349,6 +1349,7 @@ MonoBehaviour:
   stageDiamond: 0
   paymentGold: 0
   storCount: 0
+  state: 0
 --- !u!114 &337985730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4539,6 +4540,7 @@ MonoBehaviour:
   - {fileID: 1619803438}
   - {fileID: 1493792451}
   - {fileID: 818036374}
+  playerPower: 0
   maxHealth: 10
   currentHealth: 0
   moveSpeed: 10
