@@ -22,11 +22,6 @@ public class State_Power : MonoBehaviour
         ListSet();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void OnDestroy()
     {
         StateManager.Instance.buyAction -= ButtenSet;

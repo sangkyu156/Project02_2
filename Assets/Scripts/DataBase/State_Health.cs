@@ -21,11 +21,6 @@ public class State_Health : MonoBehaviour
         ListSet();
     }
 
-    void Update()
-    {
-
-    }
-
     private void OnDestroy()
     {
         StateManager.Instance.buyAction -= ButtenSet;
@@ -63,8 +58,8 @@ public class State_Health : MonoBehaviour
             case 4:
                 stateLevel.text = "Lv.<#FF8787>5</color>";
                 stateValue.text = "35  ->  40";
-                diaValue.text = "800";
-                diaValue2.text = "800";
+                diaValue.text = "8";
+                diaValue2.text = "8";
                 break;
             case 5:
                 stateLevel.text = "Lv.<#FF6969>6</color>";

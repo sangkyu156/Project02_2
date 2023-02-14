@@ -282,33 +282,33 @@ public class Player : Singleton<Player>
         switch (potion_)
         {
             case ItemManager.Potion.HP_Potion:
-                currentHealth += 3;
+                currentHealth += (3+ StateManager.Instance.state_PotionRecover);
                 if (currentHealth > maxHealth)
                     currentHealth = maxHealth;
 
                 //Èú Ãâ·Â
                 GameObject healUI = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
-                healUI.GetComponentInChildren<HealText>().heal = "+3";
+                healUI.GetComponentInChildren<HealText>().heal = $"+{(3 + StateManager.Instance.state_PotionRecover)}";
                 healUI.transform.SetParent(textPostion, false);
                 break;
             case ItemManager.Potion.HP_Potion2:
-                currentHealth += 5;
+                currentHealth += (5 + StateManager.Instance.state_PotionRecover);
                 if (currentHealth > maxHealth)
                     currentHealth = maxHealth;
 
                 //Èú Ãâ·Â
                 GameObject healUI2 = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
-                healUI2.GetComponentInChildren<HealText>().heal = "+5";
+                healUI2.GetComponentInChildren<HealText>().heal = $"+{(5 + StateManager.Instance.state_PotionRecover)}";
                 healUI2.transform.SetParent(textPostion, false);
                 break;
             case ItemManager.Potion.HP_Potion3:
-                currentHealth += 7;
+                currentHealth += (7 + StateManager.Instance.state_PotionRecover);
                 if (currentHealth > maxHealth)
                     currentHealth = maxHealth;
 
                 //Èú Ãâ·Â
                 GameObject healUI3 = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
-                healUI3.GetComponentInChildren<HealText>().heal = "+7";
+                healUI3.GetComponentInChildren<HealText>().heal = $"+{(7 + StateManager.Instance.state_PotionRecover)}";
                 healUI3.transform.SetParent(textPostion, false);
                 break;
         }
@@ -328,9 +328,9 @@ public class Player : Singleton<Player>
     {
         playerPower = StateManager.Instance.state_Power + 0;
         maxHealth = StateManager.Instance.state_Health + 10;
+        money = StateManager.Instance.state_StartGold + 120;
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        money = 120;
     }
 }
