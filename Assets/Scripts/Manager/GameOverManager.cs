@@ -49,4 +49,11 @@ public class GameOverManager : MonoBehaviour
             smokeFX[i].SetActive(true);
         }
     }
+
+    public void ExitButton_Home()
+    {
+        GameManager.Instance.state = GameManager.SceneState.Home;
+        Time.timeScale = 1;
+        SimpleSceneFader.ChangeSceneWithFade("Main");
+    }
 }

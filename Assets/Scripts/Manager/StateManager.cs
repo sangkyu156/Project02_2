@@ -16,13 +16,4 @@ public class StateManager : Singleton<StateManager>
     public int state_PotionRecoverLevel = 0;
     public int state_PotionRecover = 0;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }

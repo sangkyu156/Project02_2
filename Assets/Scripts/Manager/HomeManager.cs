@@ -8,6 +8,8 @@ public class HomeManager : Singleton<HomeManager>
     public GameObject stagePopup;
     public GameObject set_upPopup;
     public GameObject storePopup;
+    public GameObject achievementPopup;
+    public GameObject creditPopup;
     public GameObject[] stage;
     public TextMeshProUGUI playerMainDiamond;
 
@@ -51,6 +53,12 @@ public class HomeManager : Singleton<HomeManager>
 
             stage[curStage].SetActive(true);
         }
+
+        //모든 스테이지가 꺼져있으면 01스테이지만 킨다
+        if(onCount <= 0)
+        {
+            stage[0].SetActive(true);
+        }
     }
 
     public void StagePopupOff()
@@ -76,6 +84,26 @@ public class HomeManager : Singleton<HomeManager>
     public void StorePopupOff()
     {
         storePopup.SetActive(false);
+    }
+
+    public void AchievementPopupOn()
+    {
+        achievementPopup.SetActive(true);
+    }
+
+    public void AchievementPopupOff()
+    {
+        achievementPopup.SetActive(false);
+    }
+
+    public void CreditPopupOn()
+    {
+        creditPopup.SetActive(true);
+    }
+
+    public void CreditPopupOff()
+    {
+        creditPopup.SetActive(false);
     }
 
     public void NextStage()
@@ -129,5 +157,11 @@ public class HomeManager : Singleton<HomeManager>
     public void LanguageKoreanChoice()
     {
         TextUtil.languageNumber = 1;
+    }
+
+    public void StageButton_Stage01()
+    {
+        Time.timeScale = 1;
+        SimpleSceneFader.ChangeSceneWithFade("Stage01");
     }
 }
