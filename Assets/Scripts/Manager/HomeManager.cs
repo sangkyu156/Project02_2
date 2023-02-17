@@ -161,7 +161,8 @@ public class HomeManager : Singleton<HomeManager>
 
     public void StageButton_Stage01()
     {
-        Time.timeScale = 1;
+        GameManager.Instance.state = GameManager.SceneState.Stage;
+
         SimpleSceneFader.ChangeSceneWithFade("Stage01");
     }
 }

@@ -73,7 +73,10 @@ public class Player : Singleton<Player>
         }
 
         if(currentHealth <= 0)
+        {
+            currentHealth = 1;
             GameManager.Instance.PlayerDeath();
+        }
     }
 
     private void FixedUpdate()

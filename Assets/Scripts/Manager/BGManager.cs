@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static GameManager;
 
 public class BGManager : Singleton<BGManager>
@@ -11,16 +12,18 @@ public class BGManager : Singleton<BGManager>
     float dist = 0f;
     public int countBG = 0;
 
+
+    private void OnEnable()
+    {
+        // 델리게이트 체인 추가
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     void Start()
     {
         //스테이지씬 아니면 아래 함수 사용x
         if (GameManager.Instance.state != SceneState.Stage)
             return;
-
-        countBG = 0;
-        dist = 0f;
-
-        TargetSpot.Instance.SetMaxProgress(30);
 
         //GameManager.Instance.Create_01();
         //GameManager.Instance.Create_02();
@@ -80,6 +83,24 @@ public class BGManager : Singleton<BGManager>
                     GameManager.Instance.Create_04();
                 }
             }
+        }
+    }
+
+    void OnDisable()
+    {
+        // 델리게이트 체인 제거
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(GameManager.Instance.state == SceneState.Stage)
+        {
+            Time.timeScale = 1;
+            countBG = 0;
+            dist = 0f;
+
+            TargetSpot.Instance.SetMaxProgress(30);
         }
     }
 }
