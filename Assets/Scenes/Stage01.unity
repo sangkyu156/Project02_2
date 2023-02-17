@@ -1207,7 +1207,7 @@ GameObject:
   - component: {fileID: 251711641}
   - component: {fileID: 251711640}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1288,8 +1288,8 @@ RectTransform:
   m_Children:
   - {fileID: 7914199658497150790}
   - {fileID: 1160926790}
-  - {fileID: 941522047}
   - {fileID: 1954778508}
+  - {fileID: 941522047}
   - {fileID: 1267043269}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1478,8 +1478,8 @@ MonoBehaviour:
   - {fileID: 1160926789}
   - {fileID: 1954778507}
   - {fileID: 941522046}
-  playerMoney: {fileID: 1870871974}
-  playerDiamond: {fileID: 0}
+  playerMoney: {fileID: 1870871972}
+  playerDiamond: {fileID: 248045491}
   mainDiamond: 0
   stageDiamond: 0
   paymentGold: 0
@@ -5155,7 +5155,7 @@ RectTransform:
   m_Children:
   - {fileID: 654973097}
   m_Father: {fileID: 251711643}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -10166,7 +10166,7 @@ RectTransform:
   - {fileID: 795519601}
   - {fileID: 733504170}
   m_Father: {fileID: 251711643}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -27579,21 +27579,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 337985729}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ExitButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 7914199656973211493}
         m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
-        m_MethodName: DestroyItem
+        m_MethodName: ExitButton_DestroyItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

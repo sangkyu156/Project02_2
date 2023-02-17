@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateManager : Singleton<StateManager>
+public class StateManager : MonoBehaviour
 {
     public Action buyAction;
 
@@ -15,5 +15,33 @@ public class StateManager : Singleton<StateManager>
     public int state_StartGold = 0;
     public int state_PotionRecoverLevel = 0;
     public int state_PotionRecover = 0;
+
+    private static StateManager instance = null;
+
+    void Awake()
+    {
+        if (null == instance)
+        {
+            instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public static StateManager Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
+    }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static GameManager;
 
-public class BGManager : Singleton<BGManager>
+public class BGManager : MonoBehaviour
 {
     public GameObject[] map;
     public GameObject player;
@@ -17,6 +17,34 @@ public class BGManager : Singleton<BGManager>
     {
         // 델리게이트 체인 추가
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private static BGManager instance = null;
+
+    void Awake()
+    {
+        if (null == instance)
+        {
+            instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public static BGManager Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
     }
 
     void Start()
@@ -96,6 +124,9 @@ public class BGManager : Singleton<BGManager>
     {
         if(GameManager.Instance.state == SceneState.Stage)
         {
+            player = GameObject.Find("Player");
+            information = GameObject.Find("Information");
+
             Time.timeScale = 1;
             countBG = 0;
             dist = 0f;

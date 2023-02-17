@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Diagnostics;
+using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour
 {
     public GameObject store;
     public GameObject deadPopup;
     public GameObject[] fieldUI;
-    public TextMeshProUGUI playerMoney;
-    public TextMeshProUGUI playerDiamond;
+    public GameObject playerMoney;
+    public GameObject playerDiamond;
     PoolManager poolManager; //오브젝트 풀링 매니져
     float reSpawnTime = 2f;
     public int mainDiamond;
@@ -25,9 +27,40 @@ public class GameManager : Singleton<GameManager>
     }
     public SceneState state = SceneState.Home;
 
-    private void Awake()
+    private static GameManager instance = null;
+
+    private void OnEnable()
     {
+        // 델리게이트 체인 추가
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void Awake()
+    {
+        if (null == instance)
+        {
+            instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
         poolManager = GetComponent<PoolManager>();
+    }
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
     }
 
     void Start()
@@ -74,6 +107,12 @@ public class GameManager : Singleton<GameManager>
             TextUtil.languageNumber = 1; //한국어
         }
 
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Time.timeScale = 1;
+            UnityEngine.Debug.Log($"현재 스텟 = {state}");
+        }
+
         reSpawnTime -= Time.deltaTime;
         if(reSpawnTime <= 0)
         {
@@ -100,19 +139,6 @@ public class GameManager : Singleton<GameManager>
     void TimeStop()
     {
         Time.timeScale = 0;
-    }
-
-    public void ExitButton()
-    {
-        Time.timeScale = 1;
-
-        store.SetActive(false);
-        for (int i = 0; i < fieldUI.Length; i++)
-        {
-            fieldUI[i].SetActive(true);
-        }
-
-        Player.Instance.OnDamage();
     }
 
     #region 생성이벤트
@@ -267,12 +293,12 @@ public class GameManager : Singleton<GameManager>
 
     public void PrintPlayerMoney()
     {
-        playerMoney.text = $"{Player.Instance.money}";
+        playerMoney.GetComponent<TextMeshProUGUI>().text = $"{Player.Instance.money}";
     }
 
     public void PrintPlayerStageDiamond()
     {
-        playerDiamond.text = $"{stageDiamond}";
+        playerDiamond.GetComponent<TextMeshProUGUI>().text = $"{stageDiamond}";
     }
 
     public void CreatePortal()
@@ -306,5 +332,26 @@ public class GameManager : Singleton<GameManager>
     {
         deadPopup.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    void OnDisable()
+    {
+        // 델리게이트 체인 제거
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (GameManager.Instance.state == SceneState.Stage)
+        {
+            store = GameObject.Find("Canvas2").transform.GetChild(0).gameObject;
+            deadPopup = GameObject.Find("Canvas2").transform.GetChild(4).gameObject;
+            fieldUI[0] = GameObject.Find("Canvas2").transform.GetChild(1).gameObject;
+            fieldUI[1] = GameObject.Find("Canvas2").transform.GetChild(2).gameObject;
+            fieldUI[2] = GameObject.Find("Canvas2").transform.GetChild(3).gameObject;
+
+            playerMoney = fieldUI[0].transform.GetChild(0).GetChild(0).gameObject;
+            playerDiamond = fieldUI[2].transform.GetChild(0).GetChild(0).gameObject;
+        }
     }
 }

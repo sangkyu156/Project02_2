@@ -16820,9 +16820,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 149437991}
+      - m_Target: {fileID: 4885441515858014269, guid: 8817878a1fd1bfa4997637f9445d302c, type: 3}
         m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: Set_upPopupOn
+        m_MethodName: StagePopupOn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20132,7 +20132,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 149437991}
         m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: AchievementPopupOn
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

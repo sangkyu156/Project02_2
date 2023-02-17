@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using System;
 
-public class ItemManager : Singleton<ItemManager>
+public class ItemManager : MonoBehaviour
 {
     GameObject[] items;
     string[] skillNameArray; //스킬명 모와두는곳
@@ -16,13 +16,38 @@ public class ItemManager : Singleton<ItemManager>
         HP_Potion, HP_Potion2, HP_Potion3
     }
 
-    private void Awake()
+    private static ItemManager instance = null;
+
+    void Awake()
     {
+        if (null == instance)
+        {
+            instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
         AddSkills();
         items = new GameObject[4];
         for (int i = 0; i < items.Length; i++)
         {
             items[i] = this.transform.GetChild(i).gameObject;
+        }
+    }
+
+    public static ItemManager Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
         }
     }
 
@@ -125,12 +150,22 @@ public class ItemManager : Singleton<ItemManager>
         SetSkills();
     }
 
-    public void DestroyItem()
+    public void ExitButton_DestroyItem()
     {
         for (int i = 0; i < items.Length; i++)
         {
             Destroy(items[i].transform.GetChild(0).gameObject);
         }
+
+        Time.timeScale = 1;
+
+        GameManager.Instance.store.SetActive(false);
+        for (int i = 0; i < GameManager.Instance.fieldUI.Length; i++)
+        {
+            GameManager.Instance.fieldUI[i].SetActive(true);
+        }
+
+        Player.Instance.OnDamage();
     }
 
 }

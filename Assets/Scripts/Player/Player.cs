@@ -1,7 +1,8 @@
 using Redcode.Pools;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Player : Singleton<Player>
+public class Player : MonoBehaviour
 {
     #region 스킬변수
     public int fireBallLevel = 0;
@@ -22,7 +23,7 @@ public class Player : Singleton<Player>
     float dist = 0f;
 
     public PlayerHealthBar healthBar;
-    public Transform mainCamera;
+    public GameObject mainCamera;
     public Transform textPostion;
     public GameObject skillPos;//발사스킬 시작지점
     public GameObject effect_Heal;
@@ -39,8 +40,28 @@ public class Player : Singleton<Player>
     }
     Eirection eirection = Eirection.Down;
 
-    private void Awake()
+
+    private static Player instance = null;
+
+    private void OnEnable()
     {
+        // 델리게이트 체인 추가
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void Awake()
+    {
+        if (null == instance)
+        {
+            instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -48,18 +69,33 @@ public class Player : Singleton<Player>
         collider = GetComponent<BoxCollider2D>();
     }
 
+    public static Player Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
+    }
+
     void Start()
     {
-        PlayerStateSet();//임시 스테이지 클릭할때 호출하도록바꿔야함
+
     }
 
     void Update()
     {
-        dist = Vector2.Distance(mainCamera.position, transform.position);
+        if (GameManager.Instance.state != GameManager.SceneState.Stage)
+            return;
+
+        dist = Vector2.Distance(mainCamera.transform.position, transform.position);
         if (dist > 19) //왼쪽으로 더이상 못가게 막음
         {
             float posY = transform.position.y;
-            transform.position = mainCamera.position + new Vector3(-16.2f, posY, +10);//GuideTextCanvas
+            transform.position = mainCamera.transform.position + new Vector3(-16.2f, posY, +10);//GuideTextCanvas
 
             //가이드Text 출력
             GameObject guideText = Instantiate(Resources.Load<GameObject>($"GuideTextCanvas")) as GameObject;
@@ -81,6 +117,9 @@ public class Player : Singleton<Player>
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.state != GameManager.SceneState.Stage)
+            return;
+
         //이동
         vector2.x = Input.GetAxisRaw("Horizontal");
         vector2.y = Input.GetAxisRaw("Vertical");
@@ -335,5 +374,25 @@ public class Player : Singleton<Player>
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+    }
+
+    //플레이어 세팅
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        mainCamera = GameObject.Find("Main Camera");
+        this.transform.position = new Vector3(-16, -7, 0);
+
+        playerPower = StateManager.Instance.state_Power + 0;
+        maxHealth = StateManager.Instance.state_Health + 10;
+        money = StateManager.Instance.state_StartGold + 120;
+
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
+
+    void OnDisable()
+    {
+        // 델리게이트 체인 제거
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
