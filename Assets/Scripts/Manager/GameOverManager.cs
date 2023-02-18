@@ -11,6 +11,7 @@ public class GameOverManager : MonoBehaviour
     public TextMeshProUGUI diamondAcquisitionValue;
     public TextMeshProUGUI storCountValue;
 
+    GameObject homeCanvas;
     public GameObject gameoverText;
     public GameObject[] smokeFX;
     bool first = false;
@@ -52,9 +53,10 @@ public class GameOverManager : MonoBehaviour
 
     public void ExitButton_Home()
     {
+        SimpleSceneFader.ChangeSceneWithFade("Main");
         GameManager.Instance.state = GameManager.SceneState.Home;
         BGManager.Instance.countBG = 0;
         Time.timeScale = 1;
-        SimpleSceneFader.ChangeSceneWithFade("Main");
     }
+
 }

@@ -10,9 +10,11 @@ public class HomeManager : MonoBehaviour
     public GameObject storePopup;
     public GameObject achievementPopup;
     public GameObject creditPopup;
-    public GameObject[] stage;
+    public GameObject stage;
     GameObject homeCanvas;
-    public TextMeshProUGUI playerMainDiamond;
+    GameObject popups;
+    GameObject cancelButton;
+    public GameObject playerMainDiamond;
 
     int curStage = 0;
 
@@ -52,10 +54,10 @@ public class HomeManager : MonoBehaviour
 
     void Start()
     {
-        //임시 테스트
-        GameManager.Instance.mainDiamond = 200;
+        if (GameManager.Instance.state != SceneState.Home)
+            return;
 
-        PrintDiamond();
+        Time.timeScale = 1.0f;
     }
 
     void Update()
@@ -65,123 +67,130 @@ public class HomeManager : MonoBehaviour
 
     public void StagePopupOn()
     {
-        int onCount = 0;
+        PopupParentsDesignate();
 
+        stagePopup = Instantiate(Resources.Load<GameObject>("Home/StagePopup"), popups.transform);
+        popups.transform.SetAsLastSibling();
         stagePopup.SetActive(true);
 
-        for (int i = 0; i < stage.Length; i++)
+        for (int i = 0; i < 5; i++)//스테이지 개수만큼 반복
         {
-            if (stage[i].activeSelf == true)
+            if (curStage == i)
             {
-                curStage = i;
-                onCount++;
+                stage = Instantiate(Resources.Load<GameObject>($"Home/Stage0{i + 1}"), stagePopup.transform);
+                stage.transform.SetAsLastSibling();
+                cancelButton = GameObject.Find("CancelButton");
+                cancelButton.transform.SetAsLastSibling();
             }
-        }
-
-        //여러 스테이지가 켜져있으면 다끄고 최고 스테이지만 킨다
-        if (onCount >= 2)
-        {
-            for (int i = 0; i < stage.Length; i++)
-            {
-                stage[i].SetActive(false);
-            }
-
-            stage[curStage].SetActive(true);
-        }
-
-        //모든 스테이지가 꺼져있으면 01스테이지만 킨다
-        if (onCount <= 0)
-        {
-            stage[0].SetActive(true);
         }
     }
 
     public void StagePopupOff()
     {
-        stagePopup.SetActive(false);
+        Destroy(stagePopup);
     }
 
     public void Set_upPopupOn()
     {
+        PopupParentsDesignate();
+
+        set_upPopup = Instantiate(Resources.Load<GameObject>("Home/Set-upPopup"), popups.transform);
+        popups.transform.SetAsLastSibling();
         set_upPopup.SetActive(true);
     }
 
     public void Set_upPopupOff()
     {
-        set_upPopup.SetActive(false);
+        Destroy(set_upPopup);
     }
 
     public void StorePopupOn()
     {
+        PopupParentsDesignate();
+
+        storePopup = Instantiate(Resources.Load<GameObject>("Home/DiaStorePopup"), popups.transform);
+        popups.transform.SetAsLastSibling();
         storePopup.SetActive(true);
     }
 
     public void StorePopupOff()
     {
-        storePopup.SetActive(false);
+        Destroy(storePopup);
     }
 
     public void AchievementPopupOn()
     {
+        PopupParentsDesignate();
+
+        achievementPopup = Instantiate(Resources.Load<GameObject>("Home/AchievementPopup"), popups.transform);
+        popups.transform.SetAsLastSibling();
         achievementPopup.SetActive(true);
     }
 
     public void AchievementPopupOff()
     {
-        achievementPopup.SetActive(false);
+        Destroy(achievementPopup);
     }
 
     public void CreditPopupOn()
     {
+        PopupParentsDesignate();
+
+        creditPopup = Instantiate(Resources.Load<GameObject>("Home/CreditPopup"), popups.transform);
+        popups.transform.SetAsLastSibling();
         creditPopup.SetActive(true);
     }
 
     public void CreditPopupOff()
     {
-        creditPopup.SetActive(false);
+        Destroy(creditPopup);
     }
 
     public void NextStage()
     {
-        for (int i = 0; i < stage.Length; i++)
-        {
-            if (stage[i].activeSelf == true)
-                curStage = i;
-        }
+        Time.timeScale = 1.0f;
+        Destroy(stage);
 
-        if (curStage < 4)
+        curStage++;
+        if (curStage == 5)
+            curStage--;
+
+        for (int i = 0; i < 5; i++)//스테이지 개수만큼 반복
         {
-            for (int i = 0; i < stage.Length; i++)
+            if (curStage == i)
             {
-                stage[i].SetActive(false);
+                stage = Instantiate(Resources.Load<GameObject>($"Home/Stage0{i + 1}"), stagePopup.transform);
+                stage.transform.SetAsLastSibling();
+                cancelButton = GameObject.Find("CancelButton");
+                cancelButton.transform.SetAsLastSibling();
             }
-
-            stage[curStage + 1].SetActive(true);
         }
     }
 
     public void PreviousStage()
     {
-        for (int i = 0; i < stage.Length; i++)
-        {
-            if (stage[i].activeSelf == true)
-                curStage = i;
-        }
+        Time.timeScale = 1.0f;
+        Destroy(stage);
 
-        if (curStage > 0)
+        curStage--;
+        if (curStage == -1)
+            curStage++;
+
+        for (int i = 0; i < 5; i++)//스테이지 개수만큼 반복
         {
-            for (int i = 0; i < stage.Length; i++)
+            if (curStage == i)
             {
-                stage[i].SetActive(false);
+                stage = Instantiate(Resources.Load<GameObject>($"Home/Stage0{i + 1}"), stagePopup.transform);
+                stage.transform.SetAsLastSibling();
+                cancelButton = GameObject.Find("CancelButton");
+                cancelButton.transform.SetAsLastSibling();
             }
-
-            stage[curStage - 1].SetActive(true);
         }
     }
 
     public void PrintDiamond()
     {
-        playerMainDiamond.text = $"{GameManager.Instance.mainDiamond}";
+        playerMainDiamond.GetComponent<TextMeshProUGUI>().text = (GameManager.Instance.mainDiamond).ToString();
     }
 
     public void LanguageEnglishChoice()
@@ -197,6 +206,7 @@ public class HomeManager : MonoBehaviour
     public void StageButton_Stage01()
     {
         GameManager.Instance.state = GameManager.SceneState.Stage;
+        Time.timeScale = 1.0f;
 
         SimpleSceneFader.ChangeSceneWithFade("Stage01");
     }
@@ -211,20 +221,47 @@ public class HomeManager : MonoBehaviour
     {
         if (GameManager.Instance.state == SceneState.Home)
         {
-            //homeCanvas = GameObject.Find("Canvas0").gameObject;
-            //GameObject menu = Instantiate(Resources.Load<GameObject>("Home/Menu"), homeCanvas.transform);
-            //GameObject playButton = Instantiate(Resources.Load<GameObject>("Home/PlayButton"), homeCanvas.transform);
-            //GameObject exitButton = Instantiate(Resources.Load<GameObject>("Home/ExitButton"), homeCanvas.transform);
+            HomeSceneSet();
 
-            stagePopup = GameObject.Find("Popups").transform.GetChild(0).gameObject;
-            set_upPopup = GameObject.Find("Popups").transform.GetChild(1).gameObject;
-            storePopup = GameObject.Find("Popups").transform.GetChild(2).gameObject;
-            achievementPopup = GameObject.Find("Popups").transform.GetChild(3).gameObject;
-            creditPopup = GameObject.Find("Popups").transform.GetChild(4).gameObject;
+            //임시 테스트
+            GameManager.Instance.mainDiamond = 200;
 
-            for (int i = 0; i < stage.Length; i++)
+            PrintDiamond();
+        }
+    }
+
+    public void HomeSet()
+    {
+        Invoke("HomeSceneSet", 2f);
+    }
+
+    //홈화면 구현
+    void HomeSceneSet()
+    {
+        homeCanvas = GameObject.Find("Canvas0").gameObject;
+        for (int i = 0; i < homeCanvas.transform.childCount; i++)
+        {
+            if (homeCanvas.transform.GetChild(i).gameObject.name == "Popups")
+                popups = homeCanvas.transform.GetChild(i).gameObject;
+        }
+
+        GameObject menu = Instantiate(Resources.Load<GameObject>("Home/Menu"), homeCanvas.transform);
+        GameObject playButton = Instantiate(Resources.Load<GameObject>("Home/PlayButton"), homeCanvas.transform);
+        GameObject exitButton = Instantiate(Resources.Load<GameObject>("Home/ExitButton"), homeCanvas.transform);
+        GameObject mainDiamond = Instantiate(Resources.Load<GameObject>("Home/MainDiamond"), homeCanvas.transform);
+        playerMainDiamond = mainDiamond.transform.GetChild(0).GetChild(0).gameObject;
+
+        PrintDiamond();
+    }
+
+    void PopupParentsDesignate()
+    {
+        homeCanvas = GameObject.Find("Canvas0").gameObject;
+        for (int i = 0; i < homeCanvas.transform.childCount; i++)
+        {
+            if (homeCanvas.transform.GetChild(i).name == "Popups")
             {
-                stage[i] = stagePopup.transform.GetChild(i).gameObject;
+                popups = homeCanvas.transform.GetChild(i).gameObject;
             }
         }
     }

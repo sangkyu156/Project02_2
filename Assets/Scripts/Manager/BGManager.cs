@@ -65,9 +65,17 @@ public class BGManager : MonoBehaviour
 
         for (int i = 0; i < map.Length; i++)
         {
-            dist = player.transform.position.x - 60;
+            try
+            {
+                dist = player.transform.position.x - 60;
+            }
+            catch (MissingReferenceException e)
+            {
+                player = GameObject.Find("Player");
+                Debug.Log($"{e}에러가 떴는데 플레이어 다시 찾아서 넣음");
+            }
 
-            if(dist > map[i].transform.position.x)
+            if (dist > map[i].transform.position.x)
             {
                 map[i].transform.position += new Vector3(150, 0, 0);
                 countBG++;
@@ -80,7 +88,7 @@ public class BGManager : MonoBehaviour
                     }
                 }
 
-                if(countBG % 5 == 0)
+                if (countBG % 5 == 0)
                 {
                     GameManager.Instance.CreateBox2();
                 }
@@ -93,12 +101,12 @@ public class BGManager : MonoBehaviour
                 {
                     GameManager.Instance.CreatePortal();
                 }
-                else if(countBG == 2)
+                else if (countBG == 2)
                 {
                     GameManager.Instance.Create_01();
                     Destroy(information);
                 }
-                else if(countBG == 4)
+                else if (countBG == 4)
                 {
                     GameManager.Instance.Create_02();
                 }
@@ -122,7 +130,7 @@ public class BGManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(GameManager.Instance.state == SceneState.Stage)
+        if (GameManager.Instance.state == SceneState.Stage)
         {
             player = GameObject.Find("Player");
             information = GameObject.Find("Information");
@@ -132,6 +140,10 @@ public class BGManager : MonoBehaviour
             dist = 0f;
 
             TargetSpot.Instance.SetMaxProgress(30);
+
+            map[0].transform.position = new Vector3(-50, 0, 0);
+            map[1].transform.position = new Vector3(0, 0, 0);
+            map[2].transform.position = new Vector3(50, 0, 0);
         }
     }
 }

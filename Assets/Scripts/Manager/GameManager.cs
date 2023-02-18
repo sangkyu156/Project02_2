@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         Home,Stage,StartScene
     }
-    public SceneState state = SceneState.Home;
+    public SceneState state = SceneState.StartScene;
 
     private static GameManager instance = null;
 
@@ -67,6 +67,9 @@ public class GameManager : MonoBehaviour
     {
         //임시 테스트
         //mainDiamond = 10;
+
+        state = SceneState.StartScene;
+
 
         //스테이지씬 아니면 아래 함수 사용x
         if (GameManager.Instance.state != SceneState.Stage)
@@ -113,25 +116,28 @@ public class GameManager : MonoBehaviour
             UnityEngine.Debug.Log($"현재 스텟 = {state}");
         }
 
-        reSpawnTime -= Time.deltaTime;
-        if(reSpawnTime <= 0)
+        if (GameManager.Instance.state == SceneState.Stage)
         {
-            reSpawnTime = 2f;
-            if (1 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 8)
+            reSpawnTime -= Time.deltaTime;
+            if (reSpawnTime <= 0)
             {
-                RepeatCreate_01();
-            }
-            else if(8 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 15)
-            {
-                RepeatCreate_02();
-            }
-            else if (15 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 23)
-            {
-                RepeatCreate_03();
-            }
-            else if (23 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 30)
-            {
-                RepeatCreate_04();
+                reSpawnTime = 2f;
+                if (1 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 8)
+                {
+                    RepeatCreate_01();
+                }
+                else if (8 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 15)
+                {
+                    RepeatCreate_02();
+                }
+                else if (15 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 23)
+                {
+                    RepeatCreate_03();
+                }
+                else if (23 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 30)
+                {
+                    RepeatCreate_04();
+                }
             }
         }
     }
@@ -330,8 +336,24 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDeath()
     {
-        deadPopup.SetActive(true);
-        Time.timeScale = 0;
+        try
+        {
+            if(deadPopup.activeSelf == false)
+            {
+                if (store.activeSelf == true)
+                    store.SetActive(false);
+
+                deadPopup.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
+        catch (MissingReferenceException e)
+        {
+            Time.timeScale = 0;
+            if (deadPopup != null && deadPopup.activeSelf == false)
+                deadPopup.SetActive(true);
+            UnityEngine.Debug.Log($"{e}에러 뜸");
+        }
     }
 
     void OnDisable()

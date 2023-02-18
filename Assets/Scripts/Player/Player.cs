@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, -7);
         }
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             currentHealth = 1;
             GameManager.Instance.PlayerDeath();
@@ -282,9 +282,9 @@ public class Player : MonoBehaviour
         gameObject.tag = "NoDamage";
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
         Invoke("effect1", 0.2f);
-        Invoke("effect2", 0.3f); 
+        Invoke("effect2", 0.3f);
         Invoke("effect1", 0.4f);
-        Invoke("effect2", 0.5f); 
+        Invoke("effect2", 0.5f);
         Invoke("effect1", 0.6f);
         Invoke("effect2", 0.7f);
         Invoke("effect1", 0.8f);
@@ -324,7 +324,7 @@ public class Player : MonoBehaviour
         switch (potion_)
         {
             case ItemManager.Potion.HP_Potion:
-                currentHealth += (3+ StateManager.Instance.state_PotionRecover);
+                currentHealth += (3 + StateManager.Instance.state_PotionRecover);
                 if (currentHealth > maxHealth)
                     currentHealth = maxHealth;
 
@@ -365,17 +365,6 @@ public class Player : MonoBehaviour
         effect_Heal.SetActive(false);
     }
 
-    //스테이지 들어가기전 최종적으로 플레이어 능력치 세팅
-    public void PlayerStateSet()
-    {
-        playerPower = StateManager.Instance.state_Power + 0;
-        maxHealth = StateManager.Instance.state_Health + 10;
-        money = StateManager.Instance.state_StartGold + 120;
-
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-    }
-
     //플레이어 세팅
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -384,10 +373,35 @@ public class Player : MonoBehaviour
 
         playerPower = StateManager.Instance.state_Power + 0;
         maxHealth = StateManager.Instance.state_Health + 10;
-        money = StateManager.Instance.state_StartGold + 120;
+        money = StateManager.Instance.state_StartGold + 1200;
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        OnDamage();
+
+        SkillReset();
+        PlayerStop();
+    }
+
+    void SkillReset()
+    {
+        CancelInvoke();
+        for (int i = 0; i < sawBlade.Length; i++)
+        {
+            sawBlade[i].SetActive(false);
+        }
+        fireBallLevel = 0;
+        tornadoLevel = 0;
+        blackholeLevel = 0;
+        sawBladeLevel = 0;
+    }
+
+    //홈화면으로 왔을때 플레이어 정지시키기
+    public void PlayerStop()
+    {
+        this.transform.position = new Vector3(-16, -7, 0);
+        rigidbody2D.velocity = new Vector2(0, 0);
+        this.rigidbody2D.AddForce(new Vector2(0, 0));
     }
 
     void OnDisable()

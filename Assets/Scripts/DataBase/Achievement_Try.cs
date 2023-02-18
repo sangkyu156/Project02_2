@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class Achievement_Try : MonoBehaviour
 {
-    //0 -> 완료하지 못함, 1 -> 완료 해서 보상을 받을 준비됨, 2 -> 이미 보상을 완료함
-    public GameObject button1;
-    public GameObject button2;
-    public GameObject button3;
+    public GameObject button1;//완료하지 못함
+    public GameObject button2;//완료 해서 보상을 받을 준비됨
+    public GameObject button3;//이미 보상을 완료함
     public Slider slider;
 
     void Start()

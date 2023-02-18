@@ -44,15 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8770cd54003d0bf4b84c05c587a01319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stagePopup: {fileID: 0}
-  set_upPopup: {fileID: 0}
-  storePopup: {fileID: 0}
-  achievementPopup: {fileID: 0}
-  creditPopup: {fileID: 0}
-  stage:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  playerMainDiamond: {fileID: 0}
+  stagePopup: {fileID: 3533254179279923739, guid: 210012233a9d6094bacb06843de60572, type: 3}
+  set_upPopup: {fileID: 2823723518089618096, guid: 1639a6be603e846469185accf5f87cf7, type: 3}
+  storePopup: {fileID: 3173373558973048643, guid: fa00fec684ce1774590159a0419ea85d, type: 3}
+  achievementPopup: {fileID: 8300612865146792062, guid: 2e01d556c4ea11946860c2b0eb7a9ca5, type: 3}
+  creditPopup: {fileID: 3315601783011693711, guid: 1637a10758a231a40a9710f8c12f1c69, type: 3}
+  stage: {fileID: 0}
+  playerMainDiamond: {fileID: 2423104642718033734, guid: 8a83b741afb38f64ea7a7e34a99ca628, type: 3}

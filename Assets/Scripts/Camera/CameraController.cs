@@ -28,12 +28,19 @@ public class CameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 dir = player.transform.position - this.transform.position;
-        if(dir.x > 0)
+        try
         {
-            Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.fixedDeltaTime, 0, 0.0f);
-            this.transform.Translate(moveVector);
+            Vector3 dir = player.transform.position - this.transform.position;
+            if (dir.x > 0)
+            {
+                Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.fixedDeltaTime, 0, 0.0f);
+                this.transform.Translate(moveVector);
+            }
         }
-
+        catch (MissingReferenceException e)
+        {
+            player = GameObject.Find("Player");
+            Debug.Log($"{e}에러가 떴는데 플레이어 다시 찾아서 넣음");
+        }
     }
 }

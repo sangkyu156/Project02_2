@@ -761,6 +761,137 @@ MonoBehaviour:
   exclamationMark: {fileID: 571216049}
   exclamationMark2: {fileID: 1961823950}
   exclamationMark3: {fileID: 617568387}
+--- !u!1 &298130235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 298130238}
+  - component: {fileID: 298130237}
+  - component: {fileID: 298130236}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &298130236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298130235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 733f4e1ff483611408f4a8d4fc9202ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pools:
+  - _name: Chicken
+    _component: {fileID: 864861464666912022, guid: 4f3631cfeb0ac8f49b807cb840092bbf, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Chick
+    _component: {fileID: -242364744286340688, guid: 87f9c00f6a439e543a12faafd4765b70, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Chicken2
+    _component: {fileID: 9170890829642257604, guid: f2b75c3aa15a2a748a79cc35ffb5c893, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Chick2
+    _component: {fileID: 3610959024528932181, guid: e486a793989935b4db785189668062cc, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Cow
+    _component: {fileID: 5015223950978257384, guid: 6f718b9d7ab8bf24eb7001ac15e477ec, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Cow2
+    _component: {fileID: 1569311980801223779, guid: 2e24461fabe1b704992d3542b8986187, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Cow3
+    _component: {fileID: 7614305007034852032, guid: def98a92facb0b84f87266234aae95c9, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Pig
+    _component: {fileID: 8293302369404339461, guid: 3b0a17e76613ee944a330d79d6f4af45, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Pig2
+    _component: {fileID: 7951609547956633062, guid: ab360c65cdc4a81458d2d11f3a57f8b5, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Pig3
+    _component: {fileID: 8610855765973460798, guid: 2f42ef34e2be3b74e9a474638fca4665, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Pig4
+    _component: {fileID: 5739276073712849829, guid: 53149990d21a1a24f97be42ce9037924, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Coin_1
+    _component: {fileID: 492409794094035148, guid: 9baa8872717e6894c972705fdbf8a12d, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+--- !u!114 &298130237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298130235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3138bc3671d68a48861a722f39f5ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  store: {fileID: 0}
+  deadPopup: {fileID: 0}
+  fieldUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerMoney: {fileID: 0}
+  playerDiamond: {fileID: 0}
+  mainDiamond: 0
+  stageDiamond: 0
+  paymentGold: 0
+  storCount: 0
+  state: 2
+--- !u!4 &298130238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298130235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &318564467
 GameObject:
   m_ObjectHideFlags: 0
