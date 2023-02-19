@@ -40,25 +40,23 @@ public class IntroSceneManager : MonoBehaviour
 
         Invoke("GoStage01", 1.8f);
 
-        GameObject portal = Instantiate(Resources.Load<GameObject>("Home/HomeManager"));
+        GameObject homeManager = Instantiate(Resources.Load<GameObject>("Home/HomeManager"));
     }
 
     private void Update()
     {
-        //if(stage == false)
-        //{
-        //    GameObject gameManager = GameObject.Find("GameManager");
-        //    if(gameManager != null)
-        //    {
-        //        stage = true;
-        //        GameManager.Instance.state = GameManager.SceneState.Stage;
-        //    }
-        //}
+
     }
 
     void GoStage01()
     {
         SimpleSceneFader.ChangeSceneWithFade("Stage01");
         GameManager.Instance.state = GameManager.SceneState.Stage;
+    }
+
+    void GoHome()
+    {
+        SimpleSceneFader.ChangeSceneWithFade("Main");
+        GameManager.Instance.state = GameManager.SceneState.Home;
     }
 }
