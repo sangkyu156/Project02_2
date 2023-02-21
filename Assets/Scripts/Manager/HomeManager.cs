@@ -101,6 +101,11 @@ public class HomeManager : MonoBehaviour
 
     public void Set_upPopupOff()
     {
+        //for (int i = 0; i < popups.transform.childCount; i++)
+        //{
+        //    if (popups.transform.GetChild(i).name == "Set-upPopup")
+        //        set_upPopup = popups.transform.GetChild(i).gameObject;
+        //}
         Destroy(set_upPopup);
     }
 

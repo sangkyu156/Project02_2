@@ -12,10 +12,13 @@ public class TitleManager : MonoBehaviour
     public GameObject[] bg_7;
     public GameObject[] bg_8;
     public float time_;
+    GameObject popups;
+    GameObject set_upPopup;
 
     float a_Time;//배경 변화는 속도
 
     Vector3 cameraPosition;
+
     void Start()
     {
         cameraPosition = titleCamera.transform.position;
@@ -225,5 +228,33 @@ public class TitleManager : MonoBehaviour
         titleCamera.transform.position = new Vector3(0, -0.02f, -10);
         cameraPosition = titleCamera.transform.position;
         time_ = 0;
+    }
+
+    public void GoIntro()
+    {
+        GameManager.Instance.state = GameManager.SceneState.StartScene;
+        Time.timeScale = 1.0f;
+
+        SimpleSceneFader.ChangeSceneWithFade("Intro");
+    }
+
+    public void Set_upPopupOn()
+    {
+        popups = GameObject.Find("Canvas").gameObject;
+
+        set_upPopup = Instantiate(Resources.Load<GameObject>("Home/Set-upPopup_Title"), popups.transform);
+        set_upPopup.transform.SetAsLastSibling();
+        set_upPopup.SetActive(true);
+    }
+
+    public void Set_upPopupOff()
+    {
+        popups = GameObject.Find("Canvas").gameObject;
+        for (int i = 0; i < popups.transform.childCount; i++)
+        {
+            if (popups.transform.GetChild(i).name == "Set-upPopup_Title(Clone)")
+                set_upPopup = popups.transform.GetChild(i).gameObject;
+        }
+        Destroy(set_upPopup);
     }
 }
