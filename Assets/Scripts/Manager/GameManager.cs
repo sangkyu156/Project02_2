@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 {
     public GameObject store;
     public GameObject deadPopup;
+    GameObject pausePopup;
+    GameObject pauseButton;
     public GameObject[] fieldUI;
     public GameObject playerMoney;
     public GameObject playerDiamond;
@@ -356,6 +358,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Retry01()
+    {
+        SimpleSceneFader.ChangeSceneWithFade("Main");
+        GameManager.Instance.state = GameManager.SceneState.Home;
+        BGManager.Instance.countBG = 0;
+        Time.timeScale = 1;
+
+        Invoke("GoStage01", 0.68f);
+    }
+
+    void GoStage01()
+    {
+        HomeManager.Instance.StageButton_Stage01();
+    }
+
     void OnDisable()
     {
         // 델리게이트 체인 제거
@@ -366,11 +383,11 @@ public class GameManager : MonoBehaviour
     {
         if (GameManager.Instance.state == SceneState.Stage)
         {
-            store = GameObject.Find("Canvas2").transform.GetChild(0).gameObject;
-            deadPopup = GameObject.Find("Canvas2").transform.GetChild(4).gameObject;
-            fieldUI[0] = GameObject.Find("Canvas2").transform.GetChild(1).gameObject;
-            fieldUI[1] = GameObject.Find("Canvas2").transform.GetChild(2).gameObject;
-            fieldUI[2] = GameObject.Find("Canvas2").transform.GetChild(3).gameObject;
+            store = GameObject.Find("Canvas2").transform.GetChild(1).gameObject;
+            deadPopup = GameObject.Find("Canvas2").transform.GetChild(5).gameObject;
+            fieldUI[0] = GameObject.Find("Canvas2").transform.GetChild(2).gameObject;
+            fieldUI[1] = GameObject.Find("Canvas2").transform.GetChild(3).gameObject;
+            fieldUI[2] = GameObject.Find("Canvas2").transform.GetChild(4).gameObject;
 
             playerMoney = fieldUI[0].transform.GetChild(0).GetChild(0).gameObject;
             playerDiamond = fieldUI[2].transform.GetChild(0).GetChild(0).gameObject;

@@ -58,5 +58,4 @@ public class GameOverManager : MonoBehaviour
         BGManager.Instance.countBG = 0;
         Time.timeScale = 1;
     }
-
 }
