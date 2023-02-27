@@ -9,6 +9,6 @@ public class RewardBox : MonoBehaviour
 
     private void Start()
     {
-        transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.7f).SetEase(ease).SetLoops(-1, LoopType.Yoyo).SetUpdate(true);        
+        transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.7f).SetEase(ease).SetLoops(-1, LoopType.Yoyo).SetUpdate(true);
     }
 }

@@ -81,6 +81,8 @@ public class HomeManager : MonoBehaviour
                 stage.transform.SetAsLastSibling();
                 cancelButton = GameObject.Find("CancelButton");
                 cancelButton.transform.SetAsLastSibling();
+
+                GameManager.Instance.curStage = i + 1;
             }
         }
     }
@@ -222,9 +224,6 @@ public class HomeManager : MonoBehaviour
         if (GameManager.Instance.state == SceneState.Home)
         {
             HomeSceneSet();
-
-            //임시 테스트
-            GameManager.Instance.mainDiamond = 200;
 
             PrintDiamond();
         }

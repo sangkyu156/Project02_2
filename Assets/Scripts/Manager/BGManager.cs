@@ -103,20 +103,58 @@ public class BGManager : MonoBehaviour
                 }
                 else if (countBG == 2)
                 {
-                    GameManager.Instance.Create_01();
-                    Destroy(information);
+                    //юс╫ц
+                    GameManager.Instance.PlayerClear();
+
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_01();
+                            Destroy(information);
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
                 }
                 else if (countBG == 4)
                 {
-                    GameManager.Instance.Create_02();
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_02();
+                            Destroy(information);
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
                 }
                 else if (countBG == 5)
                 {
-                    GameManager.Instance.Create_03();
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_03();
+                            Destroy(information);
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
                 }
                 else if (countBG == 6)
                 {
-                    GameManager.Instance.Create_04();
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_04();
+                            Destroy(information);
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
                 }
             }
         }

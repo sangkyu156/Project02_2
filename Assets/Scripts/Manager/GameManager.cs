@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject store;
     public GameObject deadPopup;
+    public GameObject clearPopup;
     GameObject pausePopup;
     GameObject pauseButton;
     public GameObject[] fieldUI;
@@ -20,8 +21,10 @@ public class GameManager : MonoBehaviour
     float reSpawnTime = 2f;
     public int mainDiamond;
     public int stageDiamond;
+    public int clearRewardDiamond;
     public int paymentGold;
     public int storCount;
+    public int curStage;
 
     public enum SceneState
     {
@@ -78,10 +81,6 @@ public class GameManager : MonoBehaviour
             return;
 
         reSpawnTime = 2f;
-        //아래변수 3개는 스테이지 시작시 초기화 하는것으로 바꿔야함.
-        paymentGold = 0;
-        storCount = 0;
-        stageDiamond = 0;
 
         TextUtil.languageNumber = 2;//언어 설정
         store.SetActive(false);
@@ -126,19 +125,51 @@ public class GameManager : MonoBehaviour
                 reSpawnTime = 2f;
                 if (1 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 8)
                 {
-                    RepeatCreate_01();
+                    switch (curStage)
+                    {
+                        case 1:
+                            RepeatCreate_01();
+                            break;
+                        case 2:
+                            RepeatCreate_10();
+                            break;
+                    }
                 }
                 else if (8 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 15)
                 {
-                    RepeatCreate_02();
+                    switch (curStage)
+                    {
+                        case 1:
+                            RepeatCreate_02();
+                            break;
+                        case 2:
+                            RepeatCreate_10();
+                            break;
+                    }
                 }
                 else if (15 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 23)
                 {
-                    RepeatCreate_03();
+                    switch (curStage)
+                    {
+                        case 1:
+                            RepeatCreate_03();
+                            break;
+                        case 2:
+                            RepeatCreate_10();
+                            break;
+                    }
                 }
                 else if (23 <= BGManager.Instance.countBG && BGManager.Instance.countBG < 30)
                 {
-                    RepeatCreate_04();
+                    switch (curStage)
+                    {
+                        case 1:
+                            RepeatCreate_04();
+                            break;
+                        case 2:
+                            RepeatCreate_10();
+                            break;
+                    }
                 }
             }
         }
@@ -175,6 +206,13 @@ public class GameManager : MonoBehaviour
             Spawn4();
         }
     }
+    public void Create_10()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            Spawn10();
+        }
+    }
     public void RepeatCreate_01()
     {
         for (int i = 0; i < 2; i++)
@@ -203,6 +241,13 @@ public class GameManager : MonoBehaviour
             RepeatSpawn4();
         }
     }
+    public void RepeatCreate_10()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            RepeatSpawn10();
+        }
+    }
     #endregion
 
     #region 오브잭트 생성
@@ -226,6 +271,10 @@ public class GameManager : MonoBehaviour
         Cow2 cow2 = poolManager.GetFromPool<Cow2>();
         Cow3 cow3 = poolManager.GetFromPool<Cow3>();
     }
+    void Spawn10()
+    {
+        Wasp cow2 = poolManager.GetFromPool<Wasp>();
+    }
     void RepeatSpawn()
     {
         Pig pig = poolManager.GetFromPool<Pig>();
@@ -241,6 +290,10 @@ public class GameManager : MonoBehaviour
     void RepeatSpawn4()
     {
         Pig4 pig4 = poolManager.GetFromPool<Pig4>();
+    }
+    void RepeatSpawn10()
+    {
+
     }
     public void CoinSpawn()
     {
@@ -292,6 +345,10 @@ public class GameManager : MonoBehaviour
     public void ReturnPool(Pig4 clone)
     {
         poolManager.TakeToPool<Pig4>(clone.idName, clone);
+    }
+    public void ReturnPool(Wasp clone)
+    {
+        poolManager.TakeToPool<Wasp>(clone.idName, clone);
     }
     public void ReturnPool(Coin clone)
     {
@@ -358,6 +415,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PlayerClear()
+    {
+        try
+        {
+            if (clearPopup.activeSelf == false)
+            {
+                if (store.activeSelf == true)
+                    store.SetActive(false);
+
+                clearPopup.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
+        catch (MissingReferenceException e)
+        {
+            Time.timeScale = 0;
+            if (clearPopup != null && clearPopup.activeSelf == false)
+                clearPopup.SetActive(true);
+            UnityEngine.Debug.Log($"{e}에러 뜸");
+        }
+    }
+
     public void Retry01()
     {
         SimpleSceneFader.ChangeSceneWithFade("Main");
@@ -385,12 +464,28 @@ public class GameManager : MonoBehaviour
         {
             store = GameObject.Find("Canvas2").transform.GetChild(1).gameObject;
             deadPopup = GameObject.Find("Canvas2").transform.GetChild(5).gameObject;
+            clearPopup = GameObject.Find("Canvas2").transform.GetChild(7).gameObject;
             fieldUI[0] = GameObject.Find("Canvas2").transform.GetChild(2).gameObject;
             fieldUI[1] = GameObject.Find("Canvas2").transform.GetChild(3).gameObject;
             fieldUI[2] = GameObject.Find("Canvas2").transform.GetChild(4).gameObject;
 
             playerMoney = fieldUI[0].transform.GetChild(0).GetChild(0).gameObject;
             playerDiamond = fieldUI[2].transform.GetChild(0).GetChild(0).gameObject;
+
+            paymentGold = 0;
+            storCount = 0;
+            stageDiamond = 0;
+            curStage = 1;
+
+            switch (curStage)
+            {
+                case 1:
+                    clearRewardDiamond = 5;
+                    break;
+                case 2:
+                    clearRewardDiamond = 10;
+                    break;
+            }
         }
     }
 }
