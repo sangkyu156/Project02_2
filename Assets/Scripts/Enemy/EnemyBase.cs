@@ -58,4 +58,14 @@ public class EnemyBase : MonoBehaviour
 
         healthBar.SetHealth(currentHealth);
     }
+
+    public void KnockbackSet()
+    {
+        Invoke("KnockbackReset", 0.5f);
+    }
+
+    void KnockbackReset()
+    {
+        knockback = false;
+    }
 }

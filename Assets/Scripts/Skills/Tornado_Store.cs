@@ -12,8 +12,8 @@ public class Tornado_Store : Tornado_Skill
 
     void Start()
     {
-        int min = (int)Math.Round((int)SkillData.SkillPrice.Two * 0.9f);
-        int max = (int)Math.Round((int)SkillData.SkillPrice.Two * 1.1f);
+        int min = (int)Math.Round((int)SkillData.SkillPrice.One * 0.9f);
+        int max = (int)Math.Round((int)SkillData.SkillPrice.One * 1.1f);
 
         price.text = UnityEngine.Random.Range(min, max).ToString();
         priceValue = Int32.Parse(price.text);

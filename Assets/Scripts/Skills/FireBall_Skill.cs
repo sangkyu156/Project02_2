@@ -75,37 +75,37 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
                 nextCooldown = 0;
                 break;
             case 1:
-                curPower = 3;
-                nextPower = 4;
+                curPower = 15;
+                nextPower = 19;
                 nextCooldown = 1;
                 break;
             case 2:
-                curPower = 4;
-                nextPower = 5;
+                curPower = 19;
+                nextPower = 23;
                 nextCooldown = 0.9f;
                 break;
             case 3:
-                curPower = 5;
-                nextPower = 6;
+                curPower = 23;
+                nextPower = 27;
                 nextCooldown = 0.9f;
                 break;
             case 4:
-                curPower = 6;
-                nextPower = 7;
+                curPower = 27;
+                nextPower = 31;
                 nextCooldown = 0.8f;
                 break;
             case 5:
-                curPower = 7;
-                nextPower = 8;
+                curPower = 31;
+                nextPower = 35;
                 nextCooldown = 0.8f;
                 break;
             case 6:
-                curPower = 8;
-                nextPower = 9;
+                curPower = 35;
+                nextPower = 40;
                 nextCooldown = 0.7f;
                 break;
             case 7:
-                curPower = 10;
+                curPower = 40;
                 nextPower = 0;
                 nextCooldown = 0f;
                 break;
@@ -187,13 +187,14 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
             animator.SetBool("hit", true);
             Attack();
 
-            Invoke("OnTargetReached", 0.43f);//이펙트 애니메이션 길이 만큼 기다렸다 회수
+            if (deadTiem > 0.43f)
+                Invoke("OnTargetReached", 0.43f);//이펙트 애니메이션 길이 만큼 기다렸다 회수
         }
     }
 
     void Attack()
     {
-        Collider2D[] targets = Physics2D.OverlapBoxAll(transform.position, new Vector2(5, 5), 0);
+        Collider2D[] targets = Physics2D.OverlapBoxAll(transform.position, new Vector2(7, 5), 0);
         skillCollider.enabled = false;
         EnemyBase enemy;
         for (int i = 0; i < targets.Length; i++)

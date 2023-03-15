@@ -88,6 +88,16 @@ public class BGManager : MonoBehaviour
                     }
                 }
 
+                //배경 3번 넘어갈때마다 60%확률로 상점 생성
+                if (countBG % 3 == 0)
+                {
+                    int r = Random.Range(0, 10);
+                    Debug.Log($"현제 countBG = {countBG}, R = {r}");
+
+                    if(r < 6)
+                        GameManager.Instance.CreatePortal();
+                }
+
                 if (countBG % 5 == 0)
                 {
                     GameManager.Instance.CreateBox2();
@@ -99,13 +109,10 @@ public class BGManager : MonoBehaviour
                 //이벤트
                 if (countBG == 1)
                 {
-                    GameManager.Instance.CreatePortal();
+                    
                 }
                 else if (countBG == 2)
                 {
-                    //임시
-                    GameManager.Instance.PlayerClear();
-
                     switch (GameManager.Instance.curStage)
                     {
                         case 1:
@@ -122,20 +129,7 @@ public class BGManager : MonoBehaviour
                     switch (GameManager.Instance.curStage)
                     {
                         case 1:
-                            GameManager.Instance.Create_02();
-                            Destroy(information);
-                            break;
-                        case 2:
-                            GameManager.Instance.Create_10();
-                            break;
-                    }
-                }
-                else if (countBG == 5)
-                {
-                    switch (GameManager.Instance.curStage)
-                    {
-                        case 1:
-                            GameManager.Instance.Create_03();
+                            GameManager.Instance.Create_01();
                             Destroy(information);
                             break;
                         case 2:
@@ -148,6 +142,97 @@ public class BGManager : MonoBehaviour
                     switch (GameManager.Instance.curStage)
                     {
                         case 1:
+                            GameManager.Instance.Create_01();
+                            Destroy(information);
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
+                }
+                else if (countBG == 8)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_02();
+                            Destroy(information);
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
+                }
+                else if (countBG == 10)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_02();
+                            Destroy(information);
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
+                }
+                else if (countBG == 12)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_02();
+                            Destroy(information);
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
+                }
+                else if (countBG == 14)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_03();
+                            Destroy(information);
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
+                }
+                else if (countBG == 16)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_03();
+                            Destroy(information);
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
+                }
+                else if (countBG == 18)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_03();
+                            Destroy(information);
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
+                }
+                else if (countBG == 20)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
                             GameManager.Instance.Create_04();
                             Destroy(information);
                             break;
@@ -155,6 +240,10 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_10();
                             break;
                     }
+                }
+                else if(countBG == 30)
+                {
+                    GameManager.Instance.PlayerClear();
                 }
             }
         }

@@ -93,10 +93,6 @@ public class GameManager : MonoBehaviour
         //Create_02();
         //Create_03();
         //Create_04();
-        //RepeatCreate_01();
-        //RepeatCreate_02();
-        //RepeatCreate_03();
-        //RepeatCreate_04();
     }
 
     void Update()
@@ -183,25 +179,28 @@ public class GameManager : MonoBehaviour
     #region 생성이벤트
     public void Create_01()
     {
-        for (int i = 0; i < 5; i++) 
+        for (int i = 0; i < 20; i++) 
         {
             Spawn();
         }
     }
     public void Create_02()
     {
-        Spawn2();
+        for (int i = 0; i < 20; i++)
+        {
+            Spawn2();
+        }
     }
     public void Create_03()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 20; i++)
         {
             Spawn3();
         }
     }
     public void Create_04()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 16; i++)
         {
             Spawn4();
         }
@@ -471,7 +470,7 @@ public class GameManager : MonoBehaviour
 
             playerMoney = fieldUI[0].transform.GetChild(0).GetChild(0).gameObject;
             playerDiamond = fieldUI[2].transform.GetChild(0).GetChild(0).gameObject;
-
+            
             paymentGold = 0;
             storCount = 0;
             stageDiamond = 0;

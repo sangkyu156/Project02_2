@@ -165,6 +165,7 @@ public class ItemManager : MonoBehaviour
             GameManager.Instance.fieldUI[i].SetActive(true);
         }
 
+        GameManager.Instance.PrintPlayerMoney();
         Player.Instance.OnDamage();
     }
 

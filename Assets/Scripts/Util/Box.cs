@@ -23,7 +23,7 @@ public class Box : MonoBehaviour
 
     void Update()
     {
-        if(hitCount == 3)
+        if(hitCount >= 3)
         {
             Open();
         }

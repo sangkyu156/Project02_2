@@ -31,7 +31,7 @@ public class Coin : MonoBehaviour, IPoolObject
     {
         if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "NoDamage")
         {
-            Player.Instance.money += Random.Range(5, 7);
+            Player.Instance.money += Random.Range(2, 3);
             GameManager.Instance.PrintPlayerMoney();
             if (gameObject.activeSelf)
                 GameManager.Instance.ReturnPool(this);

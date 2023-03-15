@@ -128,7 +128,7 @@ public class State_Gold : MonoBehaviour
         StateManager.Instance.buyAction();
     }
 
-    //실제 체력 적용
+    //실제 시작골드 적용
     void StartGoldSet()
     {
         switch (StateManager.Instance.state_StartGoldLevel)

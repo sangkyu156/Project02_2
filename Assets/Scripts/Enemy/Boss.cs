@@ -58,7 +58,7 @@ public class Boss : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        transform.position = new Vector3(-100f, -8.5f, 0);
+        transform.position = new Vector3(-250f, -8.5f, 0);
     }
 
     void Update()

@@ -36,31 +36,31 @@ public class SawBlade_Skill : MonoBehaviour
                 sb_NextPower = 0;
                 break;
             case 1:
-                sb_CurPower = 1;
-                sb_NextPower = 2;
-                break;
-            case 2:
-                sb_CurPower = 2;
-                sb_NextPower = 3;
-                break;
-            case 3:
-                sb_CurPower = 3;
-                sb_NextPower = 4;
-                break;
-            case 4:
-                sb_CurPower = 4;
-                sb_NextPower = 5;
-                break;
-            case 5:
                 sb_CurPower = 5;
                 sb_NextPower = 6;
-                break;  
-            case 6:
+                break;
+            case 2:
                 sb_CurPower = 6;
                 sb_NextPower = 7;
                 break;
-            case 7:
+            case 3:
                 sb_CurPower = 7;
+                sb_NextPower = 8;
+                break;
+            case 4:
+                sb_CurPower = 8;
+                sb_NextPower = 9;
+                break;
+            case 5:
+                sb_CurPower = 9;
+                sb_NextPower = 10;
+                break;  
+            case 6:
+                sb_CurPower = 11;
+                sb_NextPower = 13;
+                break;
+            case 7:
+                sb_CurPower = 13;
                 sb_NextPower = 0;
                 break;
         }

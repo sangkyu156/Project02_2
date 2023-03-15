@@ -1,6 +1,7 @@
 using Redcode.Pools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static GameManager;
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Player : MonoBehaviour
     public int blackholeLevel = 0;
     public float blackholeCooldown = 0;
     public int sawBladeLevel = 0;
+    public int sparkLevel = 0;
+    public float sparkCooldown = 0;
     public GameObject[] sawBlade;
     #endregion
 
@@ -90,8 +93,15 @@ public class Player : MonoBehaviour
     {
         if (GameManager.Instance.state != GameManager.SceneState.Stage)
             return;
+        try
+        {
+            dist = Vector2.Distance(mainCamera.transform.position, transform.position);
+        }
+        catch (System.Exception e)
+        {
+            mainCamera = GameObject.Find("Main Camera");
+        }
 
-        dist = Vector2.Distance(mainCamera.transform.position, transform.position);
         if (dist > 19) //왼쪽으로 더이상 못가게 막음
         {
             float posY = transform.position.y;
@@ -240,6 +250,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    //스파크 발사 시작
+    public void SparkAction()
+    {
+        CancelInvoke("Spawn4");
+        InvokeRepeating("Spawn4", 0, sparkCooldown);
+    }
+
     //오브젝트풀링 생성
     void Spawn()
     {
@@ -252,6 +269,10 @@ public class Player : MonoBehaviour
     void Spawn3()
     {
         BlackHole_Skill blackHole_Skill = poolManager.GetFromPool<BlackHole_Skill>();
+    }
+    void Spawn4()
+    {
+        Spark_Skill spark_Skill = poolManager.GetFromPool<Spark_Skill>();
     }
 
     //오브젝트 회수
@@ -266,6 +287,10 @@ public class Player : MonoBehaviour
     public void ReturnPool(BlackHole_Skill clone)
     {
         poolManager.TakeToPool<BlackHole_Skill>(clone.idName, clone);
+    }
+    public void ReturnPool(Spark_Skill clone)
+    {
+        poolManager.TakeToPool<Spark_Skill>(clone.idName, clone);
     }
 
     //데미지 받았을때
@@ -368,19 +393,25 @@ public class Player : MonoBehaviour
     //플레이어 세팅
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        mainCamera = GameObject.Find("Main Camera");
-        this.transform.position = new Vector3(-16, -7, 0);
+        if (GameManager.Instance.state == SceneState.Stage)
+        {
+            mainCamera = GameObject.Find("Main Camera");
+            this.transform.position = new Vector3(-16, -7, 0);
 
-        playerPower = StateManager.Instance.state_Power + 0;
-        maxHealth = StateManager.Instance.state_Health + 10;
-        money = StateManager.Instance.state_StartGold + 1200;
+            playerPower = StateManager.Instance.state_Power + 0;
+            maxHealth = StateManager.Instance.state_Health + 10;
+            //StateManager.Instance.state_StartGold = 400;
+            StateManager.Instance.state_StartGold = 40000;
+            money = StateManager.Instance.state_StartGold;
+            GameManager.Instance.PrintPlayerMoney();
 
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-        OnDamage();
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+            OnDamage();
 
-        SkillReset();
-        PlayerStop();
+            SkillReset();
+            PlayerStop();
+        }
     }
 
     void SkillReset()

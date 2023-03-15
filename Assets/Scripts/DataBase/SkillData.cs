@@ -4,7 +4,7 @@ public static class SkillData
     public enum Skills
     {
         /**********1000**********/
-        FireBall_Store = 1000, Tornado_Store, BlackHole_Store, SawBlade_Store, B, C, D,
+        FireBall_Store = 1000, Tornado_Store, BlackHole_Store, SawBlade_Store, Spark_Store,
         /**********900***********/
 
         /**********800***********/
@@ -32,7 +32,7 @@ public static class SkillData
         /**********60************/
 
         /**********50************/
-        E = 50,
+
         /**********40************/
 
         /**********30************/
@@ -46,6 +46,6 @@ public static class SkillData
     public enum SkillPrice
     {
         //등급 별로 가격나눔 임시로 원,투,쓰리
-        One = 100, Two = 200, Three = 300
+        One = 150, Two = 200, Three = 300
     }
 }
