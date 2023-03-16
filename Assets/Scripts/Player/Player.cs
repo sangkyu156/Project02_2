@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public int sawBladeLevel = 0;
     public int sparkLevel = 0;
     public float sparkCooldown = 0;
+    public int waveEnergyLevel = 0;
+    public float waveEnergyCooldown = 0;
     public GameObject[] sawBlade;
     #endregion
 
@@ -257,6 +259,13 @@ public class Player : MonoBehaviour
         InvokeRepeating("Spawn4", 0, sparkCooldown);
     }
 
+    //에너지볼 발사 시작
+    public void WaveEnergyAction()
+    {
+        CancelInvoke("Spawn5");
+        InvokeRepeating("Spawn5", 0, waveEnergyCooldown);
+    }
+
     //오브젝트풀링 생성
     void Spawn()
     {
@@ -273,6 +282,10 @@ public class Player : MonoBehaviour
     void Spawn4()
     {
         Spark_Skill spark_Skill = poolManager.GetFromPool<Spark_Skill>();
+    }
+    void Spawn5()
+    {
+        WaveEnergy_Skill waveEnergy_Skill = poolManager.GetFromPool<WaveEnergy_Skill>();
     }
 
     //오브젝트 회수
@@ -291,6 +304,10 @@ public class Player : MonoBehaviour
     public void ReturnPool(Spark_Skill clone)
     {
         poolManager.TakeToPool<Spark_Skill>(clone.idName, clone);
+    }
+    public void ReturnPool(WaveEnergy_Skill clone)
+    {
+        poolManager.TakeToPool<WaveEnergy_Skill>(clone.idName, clone);
     }
 
     //데미지 받았을때

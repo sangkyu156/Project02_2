@@ -950,7 +950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bf5d476c39e9147a531cc533d3b0c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBaseID: game:skill:name:fireball
+  textBaseID: game:skill:name:spark
 --- !u!1 &7305561091914001822
 GameObject:
   m_ObjectHideFlags: 0

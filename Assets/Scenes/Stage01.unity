@@ -6350,6 +6350,8 @@ MonoBehaviour:
   sawBladeLevel: 0
   sparkLevel: 0
   sparkCooldown: 0
+  waveEnergyLevel: 0
+  waveEnergyCooldown: 0
   sawBlade:
   - {fileID: 1334987009}
   - {fileID: 279218669}
@@ -6419,6 +6421,11 @@ MonoBehaviour:
     _nonLazy: 0
   - _name: Spark_Skill
     _component: {fileID: 3073955358257042976, guid: 473bfafcdd9b3d040a3cba3ba73e6f8e, type: 3}
+    _count: 0
+    _container: {fileID: 1533317759}
+    _nonLazy: 0
+  - _name: WaveEnergy_Skill
+    _component: {fileID: 3045454214433280556, guid: a210f07438e2d214982a853cee4e655e, type: 3}
     _count: 0
     _container: {fileID: 1533317759}
     _nonLazy: 0
