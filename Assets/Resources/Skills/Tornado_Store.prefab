@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6308560158b79044b62b13356af1e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idName: 
+  idName: Tornado_Store
   price: {fileID: 68983293252220449}
   explanation: {fileID: 4988105577894616126}
   buyButton: {fileID: 8684161311837970068}

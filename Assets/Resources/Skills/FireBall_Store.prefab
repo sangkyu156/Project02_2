@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3305ca3bbe8e1bb4180ea08ea0410515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idName: 
+  idName: FireBall_Store
   price: {fileID: 1217979831911787638}
   explanation: {fileID: 6137137855010473577}
   buyButton: {fileID: 7536324789351728323}

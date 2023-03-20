@@ -417,8 +417,8 @@ public class Player : MonoBehaviour
 
             playerPower = StateManager.Instance.state_Power + 0;
             maxHealth = StateManager.Instance.state_Health + 10;
-            //StateManager.Instance.state_StartGold = 400;
-            StateManager.Instance.state_StartGold = 40000;
+            StateManager.Instance.state_StartGold = 400;
+            //StateManager.Instance.state_StartGold = 40000;
             money = StateManager.Instance.state_StartGold;
             GameManager.Instance.PrintPlayerMoney();
 

@@ -53,6 +53,7 @@ public class GameOverManager : MonoBehaviour
 
     public void ExitButton_Home()
     {
+        GameManager.Instance.uiSet = false;
         SimpleSceneFader.ChangeSceneWithFade("Main");
         GameManager.Instance.state = GameManager.SceneState.Home;
         BGManager.Instance.countBG = 0;

@@ -12,13 +12,16 @@ public class GameManager : MonoBehaviour
     public GameObject store;
     public GameObject deadPopup;
     public GameObject clearPopup;
+    public GameObject bossDistance;
     GameObject pausePopup;
     GameObject pauseButton;
     public GameObject[] fieldUI;
     public GameObject playerMoney;
     public GameObject playerDiamond;
+    public GameObject distance;
     PoolManager poolManager; //오브젝트 풀링 매니져
     float reSpawnTime = 2f;
+    public bool uiSet = false;
     public int mainDiamond;
     public int stageDiamond;
     public int clearRewardDiamond;
@@ -107,14 +110,18 @@ public class GameManager : MonoBehaviour
             TextUtil.languageNumber = 1; //한국어
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Time.timeScale = 1;
-            UnityEngine.Debug.Log($"현재 스텟 = {state}");
-        }
-
         if (GameManager.Instance.state == SceneState.Stage)
         {
+            if (uiSet == true)
+            {
+                //보스거리 아이템 활성화중일때
+                if (bossDistance.activeSelf == true)
+                {
+                    float dis = Player.Instance.transform.position.x - Boss.Instance.transform.position.x;
+                    distance.GetComponent<TextMeshProUGUI>().text = $"{((int)dis) - 14}";
+                }
+            }
+
             reSpawnTime -= Time.deltaTime;
             if (reSpawnTime <= 0)
             {
@@ -438,6 +445,7 @@ public class GameManager : MonoBehaviour
 
     public void Retry01()
     {
+        uiSet = false;
         SimpleSceneFader.ChangeSceneWithFade("Main");
         GameManager.Instance.state = GameManager.SceneState.Home;
         BGManager.Instance.countBG = 0;
@@ -461,16 +469,21 @@ public class GameManager : MonoBehaviour
     {
         if (GameManager.Instance.state == SceneState.Stage)
         {
-            store = GameObject.Find("Canvas2").transform.GetChild(1).gameObject;
-            deadPopup = GameObject.Find("Canvas2").transform.GetChild(5).gameObject;
-            clearPopup = GameObject.Find("Canvas2").transform.GetChild(7).gameObject;
-            fieldUI[0] = GameObject.Find("Canvas2").transform.GetChild(2).gameObject;
-            fieldUI[1] = GameObject.Find("Canvas2").transform.GetChild(3).gameObject;
-            fieldUI[2] = GameObject.Find("Canvas2").transform.GetChild(4).gameObject;
+            bossDistance = GameObject.Find("Canvas2").transform.GetChild(1).gameObject;
+            store = GameObject.Find("Canvas2").transform.GetChild(2).gameObject;
+            fieldUI[0] = GameObject.Find("Canvas2").transform.GetChild(3).gameObject;
+            fieldUI[1] = GameObject.Find("Canvas2").transform.GetChild(4).gameObject;
+            fieldUI[2] = GameObject.Find("Canvas2").transform.GetChild(5).gameObject;
+            deadPopup = GameObject.Find("Canvas2").transform.GetChild(6).gameObject;
+            clearPopup = GameObject.Find("Canvas2").transform.GetChild(8).gameObject;
 
             playerMoney = fieldUI[0].transform.GetChild(0).GetChild(0).gameObject;
             playerDiamond = fieldUI[2].transform.GetChild(0).GetChild(0).gameObject;
-            
+            distance = bossDistance.transform.GetChild(0).gameObject;
+
+            uiSet = true;
+            bossDistance.SetActive(false);
+
             paymentGold = 0;
             storCount = 0;
             stageDiamond = 0;

@@ -6,6 +6,8 @@ using System;
 
 public class ItemManager : MonoBehaviour
 {
+    public Action buyCheckAction;
+
     GameObject[] items;
     string[] skillNameArray; //스킬명 모와두는곳
     int[] skillWeightedArray; //스킬 가중치 모와두는곳

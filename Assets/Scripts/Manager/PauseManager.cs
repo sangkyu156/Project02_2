@@ -25,6 +25,7 @@ public class PauseManager : MonoBehaviour
 
     public void GoMenu()
     {
+        GameManager.Instance.uiSet = false;
         SimpleSceneFader.ChangeSceneWithFade("Main");
         GameManager.Instance.state = GameManager.SceneState.Home;
         BGManager.Instance.countBG = 0;
