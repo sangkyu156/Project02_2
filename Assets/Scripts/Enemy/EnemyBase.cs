@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    protected int currentHealth;
+    public int currentHealth;
     protected float speed;
     protected int power;
     public float knockbackTime = 1;

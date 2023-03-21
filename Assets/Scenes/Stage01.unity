@@ -6442,6 +6442,11 @@ MonoBehaviour:
     _count: 0
     _container: {fileID: 1533317759}
     _nonLazy: 0
+  - _name: Trident_Skill
+    _component: {fileID: 6350083146413951218, guid: 6523f64f4f6e9c24d810de01e39bdf27, type: 3}
+    _count: 0
+    _container: {fileID: 1533317759}
+    _nonLazy: 0
 --- !u!1 &823763205
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,12 +7,9 @@ public class Volcano_Skill : ProjectileSkill, IPoolObject
 {
     public string idName;
 
-    SpriteRenderer playerFlip;
-
     private void Awake()
     {
         SetAbility();
-        playerFlip = Player.Instance.GetComponent<SpriteRenderer>();
     }
 
     void Start()

@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     public int volcanoLevel = 0;
     public float volcanoCooldown = 0;
     public bool volcano = false;
+    public int tridentLevel = 0;
+    public float tridentCooldown = 0;
+    public bool trident = false;
     public GameObject[] sawBlade;
     #endregion
 
@@ -34,6 +37,7 @@ public class Player : MonoBehaviour
     public GameObject mainCamera;
     public Transform textPostion;
     public Transform volcanoPos;
+    public Transform tridentPos;
     public GameObject skillPos;//발사스킬 시작지점
     public GameObject effect_Heal;
     Rigidbody2D rigidbody2D;
@@ -140,10 +144,13 @@ public class Player : MonoBehaviour
 
                 for (int i = 0; i < targets.Length; i++)
                 {
-                    if (targets[i].tag == "Enemy")
+                    if (targets[i].tag == "Enemy" && targets[i].GetComponent<EnemyBase>().currentHealth > 0)
                     {
-                        volcanoPos = targets[i].transform;
-                        Spawn6();
+                        if (Mathf.Abs(transform.position.x - targets[i].transform.position.x) < 13)
+                        {
+                            volcanoPos = targets[i].transform;
+                            Spawn6();
+                        }
 
                         switch (volcanoLevel)
                         {
@@ -161,6 +168,48 @@ public class Player : MonoBehaviour
                                 volcanoCooldown = 1.7f; break;
                             case 7:
                                 volcanoCooldown = 1.6f; break;
+                        }
+
+                        return;
+                    }
+                }
+            }
+        }
+
+        //삼지창 스킬 획득시
+        if(trident)
+        {
+            tridentCooldown -= Time.deltaTime;
+            if (tridentCooldown < 0)
+            {
+                Collider2D[] targets = Physics2D.OverlapBoxAll(transform.position, new Vector2(12, 5), 0);
+
+                for (int i = 0; i < targets.Length; i++)
+                {
+                    if (targets[i].tag == "Enemy" && targets[i].GetComponent<EnemyBase>().currentHealth > 0)
+                    {
+                        if (Mathf.Abs(transform.position.x - targets[i].transform.position.x) < 13)
+                        {
+                            tridentPos = targets[i].transform;
+                            Spawn7();
+                        }
+
+                        switch (tridentLevel)
+                        {
+                            case 1:
+                                tridentCooldown = 0.9f; break;
+                            case 2:
+                                tridentCooldown = 0.9f; break;
+                            case 3:
+                                tridentCooldown = 0.8f; break;
+                            case 4:
+                                tridentCooldown = 0.8f; break;
+                            case 5:
+                                tridentCooldown = 0.7f; break;
+                            case 6:
+                                tridentCooldown = 0.7f; break;
+                            case 7:
+                                tridentCooldown = 0.5f; break;
                         }
 
                         return;
@@ -278,6 +327,12 @@ public class Player : MonoBehaviour
         volcano = true;
     }
 
+    //삼지창 발사 시작
+    public void TridentAction()
+    {
+        trident = true;
+    }
+
     //톱니 추가
     public void SawBladeAdd()
     {
@@ -340,6 +395,10 @@ public class Player : MonoBehaviour
     {
         Volcano_Skill volcano_Skill = poolManager.GetFromPool<Volcano_Skill>();
     }
+    void Spawn7()
+    {
+        Trident_Skill volcano_Skill = poolManager.GetFromPool<Trident_Skill>();
+    }
 
     //오브젝트 회수
     public void ReturnPool(FireBall_Skill clone)
@@ -365,6 +424,10 @@ public class Player : MonoBehaviour
     public void ReturnPool(Volcano_Skill clone)
     {
         poolManager.TakeToPool<Volcano_Skill>(clone.idName, clone);
+    }
+    public void ReturnPool(Trident_Skill clone)
+    {
+        poolManager.TakeToPool<Trident_Skill>(clone.idName, clone);
     }
 
     //데미지 받았을때
@@ -499,6 +562,12 @@ public class Player : MonoBehaviour
         tornadoLevel = 0;
         blackholeLevel = 0;
         sawBladeLevel = 0;
+        sparkLevel = 0;
+        waveEnergyLevel = 0;
+        volcanoLevel = 0;
+        tridentLevel = 0;
+        volcano = false;
+        trident = false;
     }
 
     //홈화면으로 왔을때 플레이어 정지시키기

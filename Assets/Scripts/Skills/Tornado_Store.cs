@@ -98,7 +98,6 @@ public class Tornado_Store : Tornado_Skill
             case 7:
                 Player.Instance.tornadoCooldown = 1.3f;
                 ItemManager.Instance.weightedRandom.Remove("Tornado_Store"); break;//만랩시 스킬 목록에서 삭제
-
         }
 
         PrintExplanation();
