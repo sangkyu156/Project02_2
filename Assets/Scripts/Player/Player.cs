@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     public float sparkCooldown = 0;
     public int waveEnergyLevel = 0;
     public float waveEnergyCooldown = 0;
+    public int volcanoLevel = 0;
+    public float volcanoCooldown = 0;
+    public bool volcano = false;
     public GameObject[] sawBlade;
     #endregion
 
@@ -30,6 +33,7 @@ public class Player : MonoBehaviour
     public PlayerHealthBar healthBar;
     public GameObject mainCamera;
     public Transform textPostion;
+    public Transform volcanoPos;
     public GameObject skillPos;//발사스킬 시작지점
     public GameObject effect_Heal;
     Rigidbody2D rigidbody2D;
@@ -124,6 +128,45 @@ public class Player : MonoBehaviour
         {
             currentHealth = 1;
             GameManager.Instance.PlayerDeath();
+        }
+
+        //볼케이노 스킬 획득시
+        if(volcano)
+        {
+            volcanoCooldown -= Time.deltaTime;
+            if(volcanoCooldown < 0)
+            {
+                Collider2D[] targets = Physics2D.OverlapBoxAll(transform.position, new Vector2(10, 5), 0);
+
+                for (int i = 0; i < targets.Length; i++)
+                {
+                    if (targets[i].tag == "Enemy")
+                    {
+                        volcanoPos = targets[i].transform;
+                        Spawn6();
+
+                        switch (volcanoLevel)
+                        {
+                            case 1:
+                                volcanoCooldown = 2f; break;
+                            case 2:
+                                volcanoCooldown = 2f; break;
+                            case 3:
+                                volcanoCooldown = 1.9f; break;
+                            case 4:
+                                volcanoCooldown = 1.9f; break;
+                            case 5:
+                                volcanoCooldown = 1.8f; break;
+                            case 6:
+                                volcanoCooldown = 1.7f; break;
+                            case 7:
+                                volcanoCooldown = 1.6f; break;
+                        }
+
+                        return;
+                    }
+                }
+            }
         }
     }
 
@@ -229,6 +272,12 @@ public class Player : MonoBehaviour
         InvokeRepeating("Spawn3", 0, blackholeCooldown);
     }
 
+    //볼케이노 발사 시작
+    public void VolcanoAction()
+    {
+        volcano = true;
+    }
+
     //톱니 추가
     public void SawBladeAdd()
     {
@@ -287,6 +336,10 @@ public class Player : MonoBehaviour
     {
         WaveEnergy_Skill waveEnergy_Skill = poolManager.GetFromPool<WaveEnergy_Skill>();
     }
+    void Spawn6()
+    {
+        Volcano_Skill volcano_Skill = poolManager.GetFromPool<Volcano_Skill>();
+    }
 
     //오브젝트 회수
     public void ReturnPool(FireBall_Skill clone)
@@ -308,6 +361,10 @@ public class Player : MonoBehaviour
     public void ReturnPool(WaveEnergy_Skill clone)
     {
         poolManager.TakeToPool<WaveEnergy_Skill>(clone.idName, clone);
+    }
+    public void ReturnPool(Volcano_Skill clone)
+    {
+        poolManager.TakeToPool<Volcano_Skill>(clone.idName, clone);
     }
 
     //데미지 받았을때
@@ -417,8 +474,8 @@ public class Player : MonoBehaviour
 
             playerPower = StateManager.Instance.state_Power + 0;
             maxHealth = StateManager.Instance.state_Health + 10;
-            StateManager.Instance.state_StartGold = 400;
-            //StateManager.Instance.state_StartGold = 40000;
+            //StateManager.Instance.state_StartGold = 400;
+            StateManager.Instance.state_StartGold = 40000;
             money = StateManager.Instance.state_StartGold;
             GameManager.Instance.PrintPlayerMoney();
 

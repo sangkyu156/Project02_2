@@ -4829,16 +4829,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   store: {fileID: 0}
   deadPopup: {fileID: 0}
+  clearPopup: {fileID: 0}
+  bossDistance: {fileID: 0}
   fieldUI:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   playerMoney: {fileID: 0}
   playerDiamond: {fileID: 0}
+  distance: {fileID: 0}
+  uiSet: 0
   mainDiamond: 0
   stageDiamond: 0
+  clearRewardDiamond: 0
   paymentGold: 0
   storCount: 0
+  curStage: 0
   state: 0
 --- !u!4 &1807266652
 Transform:

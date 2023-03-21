@@ -2349,6 +2349,7 @@ MonoBehaviour:
   playerMoney: {fileID: 1870871972}
   playerDiamond: {fileID: 248045491}
   distance: {fileID: 1543442104}
+  uiSet: 0
   mainDiamond: 0
   stageDiamond: 0
   clearRewardDiamond: 0
@@ -6355,6 +6356,9 @@ MonoBehaviour:
   sparkCooldown: 0
   waveEnergyLevel: 0
   waveEnergyCooldown: 0
+  volcanoLevel: 0
+  volcanoCooldown: 0
+  volcano: 0
   sawBlade:
   - {fileID: 1334987009}
   - {fileID: 279218669}
@@ -6372,6 +6376,7 @@ MonoBehaviour:
   healthBar: {fileID: 1475541155}
   mainCamera: {fileID: 519420032}
   textPostion: {fileID: 1017112462}
+  volcanoPos: {fileID: 0}
   skillPos: {fileID: 1533317758}
   effect_Heal: {fileID: 2732640799298442608}
 --- !u!95 &818304872
@@ -6429,6 +6434,11 @@ MonoBehaviour:
     _nonLazy: 0
   - _name: WaveEnergy_Skill
     _component: {fileID: 3045454214433280556, guid: a210f07438e2d214982a853cee4e655e, type: 3}
+    _count: 0
+    _container: {fileID: 1533317759}
+    _nonLazy: 0
+  - _name: Volcano_Skill
+    _component: {fileID: 1992953718100644466, guid: aa7b3c06416a15b46a9dfa8a4ec48c8e, type: 3}
     _count: 0
     _container: {fileID: 1533317759}
     _nonLazy: 0
