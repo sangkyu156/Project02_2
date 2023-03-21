@@ -6293,7 +6293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818304866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16, y: -7, z: 0}
+  m_LocalPosition: {x: -7.7, y: -7, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6359,6 +6359,11 @@ MonoBehaviour:
   volcanoLevel: 0
   volcanoCooldown: 0
   volcano: 0
+  tridentLevel: 0
+  tridentCooldown: 0
+  trident: 0
+  quicknessLevel: 0
+  slowdownLevel: 0
   sawBlade:
   - {fileID: 1334987009}
   - {fileID: 279218669}
@@ -6377,6 +6382,7 @@ MonoBehaviour:
   mainCamera: {fileID: 519420032}
   textPostion: {fileID: 1017112462}
   volcanoPos: {fileID: 0}
+  tridentPos: {fileID: 0}
   skillPos: {fileID: 1533317758}
   effect_Heal: {fileID: 2732640799298442608}
 --- !u!95 &818304872
@@ -16715,7 +16721,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658626701624276370}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -250, y: -8.5, z: 0}
+  m_LocalPosition: {x: -350, y: -8.5, z: 0}
   m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17046,7 +17052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0733a749dd12749a8b9c1cff435611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossSpeed: 10
+  bossSpeed: 7
 --- !u!61 &1103485640665354835
 BoxCollider2D:
   m_ObjectHideFlags: 0

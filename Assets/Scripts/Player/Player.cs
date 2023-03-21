@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public float tridentCooldown = 0;
     public bool trident = false;
     public int quicknessLevel = 0;
+    public int slowdownLevel = 0;
     public GameObject[] sawBlade;
     #endregion
 
@@ -534,11 +535,12 @@ public class Player : MonoBehaviour
         if (GameManager.Instance.state == SceneState.Stage)
         {
             mainCamera = GameObject.Find("Main Camera");
-            this.transform.position = new Vector3(-16, -7, 0);
+            this.transform.position = new Vector3(-7.7f, -7, 0);
 
             playerPower = StateManager.Instance.state_Power + 0;
             maxHealth = StateManager.Instance.state_Health + 10;
             moveSpeed = 7;
+            Boss.Instance.bossSpeed = 7;
             //StateManager.Instance.state_StartGold = 400;
             StateManager.Instance.state_StartGold = 40000;
             money = StateManager.Instance.state_StartGold;
@@ -569,6 +571,7 @@ public class Player : MonoBehaviour
         volcanoLevel = 0;
         tridentLevel = 0;
         quicknessLevel = 0;
+        slowdownLevel = 0;
         volcano = false;
         trident = false;
     }
@@ -576,7 +579,7 @@ public class Player : MonoBehaviour
     //홈화면으로 왔을때 플레이어 정지시키기
     public void PlayerStop()
     {
-        this.transform.position = new Vector3(-16, -7, 0);
+        this.transform.position = new Vector3(-7.7f, -7, 0);
         rigidbody2D.velocity = new Vector2(0, 0);
         this.rigidbody2D.AddForce(new Vector2(0, 0));
     }

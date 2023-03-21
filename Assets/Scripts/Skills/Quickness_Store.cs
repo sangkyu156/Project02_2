@@ -138,12 +138,12 @@ public class Quickness_Store : MonoBehaviour
         if (priceValue > Player.Instance.money)
         {
             price.color = Color.red;
-            buyButton.interactable = false;
+            //buyButton.interactable = false;
         }
         else
         {
             price.color = Color.white;
-            buyButton.interactable = true;
+            //buyButton.interactable = true;
         }
     }
 }
