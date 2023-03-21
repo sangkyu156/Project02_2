@@ -45,7 +45,7 @@ public class Trident_Store : Trident_Skill
             if (TextUtil.languageNumber == 0 || TextUtil.languageNumber == 1) //한국
             {
                 SetAbility();
-                explanation.text = $"<size=120%><#32FFC8>삼지창</color></size>\n<size=70%>Leve <#FF2D2D>MAX</color></size>\n\n공격력 <#FF2D2D>{curPower}</color>\n공격속도 <#FF2D2D>{Player.Instance.tridentCooldown}</color>";
+                explanation.text = $"<size=120%><#32FFC8>삼지창</color></size>\n<size=70%>Level <#FF2D2D>MAX</color></size>\n\n공격력 <#FF2D2D>{curPower}</color>\n공격속도 <#FF2D2D>{Player.Instance.tridentCooldown}</color>";
             }
             else if (TextUtil.languageNumber == 2) //미국
             {
@@ -58,7 +58,7 @@ public class Trident_Store : Trident_Skill
             if (TextUtil.languageNumber == 0 || TextUtil.languageNumber == 1) //한국
             {
                 SetAbility();
-                explanation.text = $"<size=120%><#32FFC8>삼지창</color></size>\n<size=70%>Leve {Player.Instance.tridentLevel} -> <#3EFF3E>{Player.Instance.tridentLevel + 1}</color></size>\n\n공격력 {curPower} -> <#3EFF3E>{nextPower}</color>\n공격속도 {Player.Instance.tridentCooldown} -> <#3EFF3E>{nextCooldown}</color>";
+                explanation.text = $"<size=120%><#32FFC8>삼지창</color></size>\n<size=70%>Level {Player.Instance.tridentLevel} -> <#3EFF3E>{Player.Instance.tridentLevel + 1}</color></size>\n\n공격력 {curPower} -> <#3EFF3E>{nextPower}</color>\n공격속도 {Player.Instance.tridentCooldown} -> <#3EFF3E>{nextCooldown}</color>";
             }
             else if (TextUtil.languageNumber == 2) //미국
             {

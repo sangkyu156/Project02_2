@@ -43,7 +43,7 @@ public class Tornado_Store : Tornado_Skill
             if (TextUtil.languageNumber == 0 || TextUtil.languageNumber == 1) //한국
             {
                 SetAbility();
-                explanation.text = $"<size=120%><#32FFC8>토네이도</color></size>\n<size=70%>Leve <#FF2D2D>MAX</color></size>\n\n공격력 <#FF2D2D>{curPower}</color>\n공격속도 <#FF2D2D>{Player.Instance.tornadoCooldown}</color>";
+                explanation.text = $"<size=120%><#32FFC8>토네이도</color></size>\n<size=70%>Level <#FF2D2D>MAX</color></size>\n\n공격력 <#FF2D2D>{curPower}</color>\n공격속도 <#FF2D2D>{Player.Instance.tornadoCooldown}</color>";
             }
             else if (TextUtil.languageNumber == 2) //미국
             {
@@ -56,7 +56,7 @@ public class Tornado_Store : Tornado_Skill
             if (TextUtil.languageNumber == 0 || TextUtil.languageNumber == 1) //한국
             {
                 SetAbility();
-                explanation.text = $"<size=120%><#32FFC8>토네이도</color></size>\n<size=70%>Leve {Player.Instance.tornadoLevel} -> <#3EFF3E>{Player.Instance.tornadoLevel + 1}</color></size>\n\n공격력 {curPower} -> <#3EFF3E>{nextPower}</color>\n공격속도 {Player.Instance.tornadoCooldown} -> <#3EFF3E>{nextCooldown}</color>";
+                explanation.text = $"<size=120%><#32FFC8>토네이도</color></size>\n<size=70%>Level {Player.Instance.tornadoLevel} -> <#3EFF3E>{Player.Instance.tornadoLevel + 1}</color></size>\n\n공격력 {curPower} -> <#3EFF3E>{nextPower}</color>\n공격속도 {Player.Instance.tornadoCooldown} -> <#3EFF3E>{nextCooldown}</color>";
             }
             else if (TextUtil.languageNumber == 2) //미국
             {

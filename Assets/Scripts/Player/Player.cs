@@ -23,13 +23,14 @@ public class Player : MonoBehaviour
     public int tridentLevel = 0;
     public float tridentCooldown = 0;
     public bool trident = false;
+    public int quicknessLevel = 0;
     public GameObject[] sawBlade;
     #endregion
 
     public int playerPower = 0;
     public int maxHealth = 10;
     public int currentHealth;
-    public float moveSpeed = 10;
+    public float moveSpeed = 7;
     public int money = 0;
     float dist = 0f;
 
@@ -537,6 +538,7 @@ public class Player : MonoBehaviour
 
             playerPower = StateManager.Instance.state_Power + 0;
             maxHealth = StateManager.Instance.state_Health + 10;
+            moveSpeed = 7;
             //StateManager.Instance.state_StartGold = 400;
             StateManager.Instance.state_StartGold = 40000;
             money = StateManager.Instance.state_StartGold;
@@ -566,6 +568,7 @@ public class Player : MonoBehaviour
         waveEnergyLevel = 0;
         volcanoLevel = 0;
         tridentLevel = 0;
+        quicknessLevel = 0;
         volcano = false;
         trident = false;
     }
