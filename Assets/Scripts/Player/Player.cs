@@ -231,7 +231,7 @@ public class Player : MonoBehaviour
         rigidbody2D.velocity = vector2.normalized * moveSpeed;
 
         #region 방향전환
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             eirection = Eirection.Up;
             animator.SetBool("U_Walk", true);
@@ -239,7 +239,7 @@ public class Player : MonoBehaviour
             animator.SetBool("L_Walk", false);
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             eirection = Eirection.Down;
             animator.SetBool("U_Walk", false);
@@ -247,7 +247,7 @@ public class Player : MonoBehaviour
             animator.SetBool("L_Walk", false);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             eirection = Eirection.Right;
             spriteRenderer.flipX = true;
@@ -256,7 +256,7 @@ public class Player : MonoBehaviour
             animator.SetBool("L_Walk", true);
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             eirection = Eirection.Left;
             spriteRenderer.flipX = false;

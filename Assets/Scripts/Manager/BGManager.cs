@@ -104,7 +104,8 @@ public class BGManager : MonoBehaviour
                 }
 
                 //진행률 증가
-                TargetSpot.Instance.SetProgress(countBG);
+                if (GameManager.Instance.state == SceneState.Stage)
+                    TargetSpot.Instance.SetProgress(countBG);
 
                 //이벤트
                 if (countBG == 1)
