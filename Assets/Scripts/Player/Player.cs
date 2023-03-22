@@ -6,25 +6,28 @@ using static GameManager;
 public class Player : MonoBehaviour
 {
     #region 스킬변수
-    public int fireBallLevel = 0;
+    public int fireBallLevel = 0;           //파이어볼
     public float fireBallCooldown = 0;
-    public int tornadoLevel = 0;
+    public int tornadoLevel = 0;            //토네이도
     public float tornadoCooldown = 0;
-    public int blackholeLevel = 0;
+    public int blackholeLevel = 0;          //블랙홀
     public float blackholeCooldown = 0;
-    public int sawBladeLevel = 0;
-    public int sparkLevel = 0;
+    public int sawBladeLevel = 0;           //톱날
+    public int sparkLevel = 0;              //스파크(연사)
     public float sparkCooldown = 0;
-    public int waveEnergyLevel = 0;
+    public int waveEnergyLevel = 0;         //에너지볼(관통)
     public float waveEnergyCooldown = 0;
-    public int volcanoLevel = 0;
+    public int volcanoLevel = 0;            //볼케이노
     public float volcanoCooldown = 0;
     public bool volcano = false;
-    public int tridentLevel = 0;
+    public int tridentLevel = 0;            //삼지창
     public float tridentCooldown = 0;
     public bool trident = false;
-    public int quicknessLevel = 0;
-    public int slowdownLevel = 0;
+    public int quicknessLevel = 0;          //신속
+    public int slowdownLevel = 0;           //감속
+    public int regenerateLevel = 0;         //체력회복
+    public bool regenerate = false;
+    public float regenerateCooldown = 0;
     public GameObject[] sawBlade;
     #endregion
 
@@ -218,6 +221,14 @@ public class Player : MonoBehaviour
                     }
                 }
             }
+        }
+
+        //체력회복 스킬 획득시
+        if(regenerate)
+        {
+            regenerateCooldown -= Time.deltaTime;
+            if(regenerateCooldown < 0)
+                Heal();
         }
     }
 
@@ -524,6 +535,94 @@ public class Player : MonoBehaviour
         Invoke("HealOff", 0.7f);
     }
 
+    //체력회복 스킬
+    void Heal()
+    {
+        regenerateCooldown = 10;
+        effect_Heal.SetActive(true);
+
+        switch (Player.Instance.regenerateLevel)
+        {
+            case 0:
+                currentHealth += 0;
+                break;
+            case 1:
+                currentHealth += 1;
+                if (currentHealth > maxHealth)
+                    currentHealth = maxHealth;
+
+                //힐 출력
+                GameObject healUI = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
+                healUI.GetComponentInChildren<HealText>().heal = $"+1";
+                healUI.transform.SetParent(textPostion, false);
+                break;
+            case 2:
+                currentHealth += 3;
+                if (currentHealth > maxHealth)
+                    currentHealth = maxHealth;
+
+                //힐 출력
+                GameObject healUI2 = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
+                healUI2.GetComponentInChildren<HealText>().heal = $"+3";
+                healUI2.transform.SetParent(textPostion, false);
+                break;
+            case 3:
+                currentHealth += 5;
+                if (currentHealth > maxHealth)
+                    currentHealth = maxHealth;
+
+                //힐 출력
+                GameObject healUI3 = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
+                healUI3.GetComponentInChildren<HealText>().heal = $"+5";
+                healUI3.transform.SetParent(textPostion, false);
+                break;
+            case 4:
+                currentHealth += 7;
+                if (currentHealth > maxHealth)
+                    currentHealth = maxHealth;
+
+                //힐 출력
+                GameObject healUI4 = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
+                healUI4.GetComponentInChildren<HealText>().heal = $"+7";
+                healUI4.transform.SetParent(textPostion, false);
+                break;
+            case 5:
+                currentHealth += 9;
+                if (currentHealth > maxHealth)
+                    currentHealth = maxHealth;
+
+                //힐 출력
+                GameObject healUI5 = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
+                healUI5.GetComponentInChildren<HealText>().heal = $"+9";
+                healUI5.transform.SetParent(textPostion, false);
+                break;
+            case 6:
+                currentHealth += 11;
+                if (currentHealth > maxHealth)
+                    currentHealth = maxHealth;
+
+                //힐 출력
+                GameObject healUI6 = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
+                healUI6.GetComponentInChildren<HealText>().heal = $"+11";
+                healUI6.transform.SetParent(textPostion, false);
+                break;
+            case 7:
+                currentHealth += 15;
+                if (currentHealth > maxHealth)
+                    currentHealth = maxHealth;
+
+                //힐 출력
+                GameObject healUI7 = Instantiate(Resources.Load<GameObject>($"HealTextCanvas")) as GameObject;
+                healUI7.GetComponentInChildren<HealText>().heal = $"+15";
+                healUI7.transform.SetParent(textPostion, false);
+                break;
+        }
+
+        healthBar.SetHealth(currentHealth);
+
+        Invoke("HealOff", 0.7f);
+    }
+
     void HealOff()
     {
         effect_Heal.SetActive(false);
@@ -572,8 +671,10 @@ public class Player : MonoBehaviour
         tridentLevel = 0;
         quicknessLevel = 0;
         slowdownLevel = 0;
+        regenerateLevel = 0;
         volcano = false;
         trident = false;
+        regenerate = false;
     }
 
     //홈화면으로 왔을때 플레이어 정지시키기
