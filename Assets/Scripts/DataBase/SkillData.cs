@@ -4,11 +4,11 @@ public static class SkillData
     public enum Skills
     {
         /**********1000**********/
-        FireBall_Store = 1000, Tornado_Store, BlackHole_Store, SawBlade_Store, Spark_Store, WaveEnergy_Store, Clairvoyant_Store, Volcano_Store, Trident_Store, Quickness_Store, Slowdown_Store,
+        FireBall_Store = 1000,  SawBlade_Store, WaveEnergy_Store,   Quickness_Store, Redraw_Store,
         /**********900***********/
 
         /**********800***********/
-
+        Tornado_Store = 800,    Spark_Store,    Clairvoyant_Store,  Trident_Store, Redraw2_Store, Redraw3_Store,
         /**********700***********/
 
         /**********600***********/
@@ -32,7 +32,7 @@ public static class SkillData
         /**********60************/
 
         /**********50************/
-
+        BlackHole_Store = 50, Volcano_Store, Slowdown_Store,
         /**********40************/
 
         /**********30************/

@@ -143,7 +143,7 @@ public class ItemManager : MonoBehaviour
     }
 
     //생성할때 스킬이 중복으로 걸렸을때 다시뽑기
-    void OverlapRedraw()
+    public void OverlapRedraw()
     {
         for (int i = 0; i < items.Length; i++)
         {
