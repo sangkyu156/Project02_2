@@ -28,6 +28,10 @@ public class Player : MonoBehaviour
     public int regenerateLevel = 0;         //체력회복
     public bool regenerate = false;
     public float regenerateCooldown = 0;
+    public GameObject rageExplosionSkill;   //분노폭발
+    public int rageExplosionLevel = 0;
+    public float rageExplosionTime = 0;
+    public bool rageExplosion = false;
     public GameObject[] sawBlade;
     #endregion
 
@@ -230,6 +234,18 @@ public class Player : MonoBehaviour
             if(regenerateCooldown < 0)
                 Heal();
         }
+
+        //분노폭발 스킬 획득시
+        if(rageExplosion)
+        {
+            rageExplosionTime -= Time.deltaTime;
+            if(rageExplosionTime < 0)
+            {
+                rageExplosionSkill.SetActive(true);
+                Invoke("RageExplosionOff", 0.7f);
+                rageExplosionTime = rageExplosionSkill.GetComponent<RageExplosion_Skill>().rageExplosionCooldown;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -381,6 +397,12 @@ public class Player : MonoBehaviour
     {
         CancelInvoke("Spawn5");
         InvokeRepeating("Spawn5", 0, waveEnergyCooldown);
+    }
+
+    //분노 폭발 시작
+    public void RageExplosionAction()
+    {
+        rageExplosion = true;
     }
 
     //오브젝트풀링 생성
@@ -623,6 +645,22 @@ public class Player : MonoBehaviour
         Invoke("HealOff", 0.7f);
     }
 
+    //분노폭발 리셋
+    void RageExplosionReset()
+    {
+        rageExplosionLevel = 0;
+        rageExplosionTime = 1.3f;
+        rageExplosionSkill.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
+        rageExplosionSkill.transform.localScale = new Vector3(1, 1, 1);
+        rageExplosionSkill.SetActive(false);
+        rageExplosion = false;
+    }
+
+    void RageExplosionOff()
+    {
+        rageExplosionSkill.SetActive(false);
+    }
+
     void HealOff()
     {
         effect_Heal.SetActive(false);
@@ -672,6 +710,7 @@ public class Player : MonoBehaviour
         quicknessLevel = 0;
         slowdownLevel = 0;
         regenerateLevel = 0;
+        RageExplosionReset();
         volcano = false;
         trident = false;
         regenerate = false;

@@ -27,6 +27,7 @@ public class SawBlade_Skill : MonoBehaviour
 
         enemy.TakeDamage(sb_CurPower + Player.Instance.playerPower);
     }
+
     public void SetAbility()
     {
         switch (Player.Instance.sawBladeLevel)
