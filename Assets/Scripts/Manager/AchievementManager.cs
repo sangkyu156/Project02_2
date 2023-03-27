@@ -37,6 +37,19 @@ public class AchievementManager : MonoBehaviour
     public int achievement07 = 0;
     public bool reward07 = false;
 
+    //'레전드'등급 스킬 10번 구매
+    public int achievement08 = 0;
+    public int legendSkillCount = 0;
+    public bool reward08 = false;
+
+    //'레전드'등급 스킬 50번 구매
+    public int achievement09 = 0;
+    public bool reward09 = false;
+
+    //'레전드'등급 스킬 100번 구매
+    public int achievement10 = 0;
+    public bool reward10 = false;
+
     private static AchievementManager instance = null;
 
     void Awake()
