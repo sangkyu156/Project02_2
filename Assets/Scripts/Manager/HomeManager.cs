@@ -211,6 +211,7 @@ public class HomeManager : MonoBehaviour
         Time.timeScale = 1.0f;
 
         SimpleSceneFader.ChangeSceneWithFade("Stage01");
+        AchievementManager.Instance.tryCount++;
     }
 
     void OnDisable()

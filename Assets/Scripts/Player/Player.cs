@@ -711,6 +711,7 @@ public class Player : MonoBehaviour
         slowdownLevel = 0;
         regenerateLevel = 0;
         RageExplosionReset();
+        GameManager.Instance.bossDistance.SetActive(false);
         volcano = false;
         trident = false;
         regenerate = false;

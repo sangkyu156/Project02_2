@@ -56,6 +56,7 @@ public class GameOverManager : MonoBehaviour
         GameManager.Instance.uiSet = false;
         SimpleSceneFader.ChangeSceneWithFade("Main");
         GameManager.Instance.state = GameManager.SceneState.Home;
+        AchievementManager.Instance.AchievementCheck();
         BGManager.Instance.countBG = 0;
         Time.timeScale = 1;
     }

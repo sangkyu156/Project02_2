@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8770cd54003d0bf4b84c05c587a01319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stagePopup: {fileID: 3533254179279923739, guid: 210012233a9d6094bacb06843de60572, type: 3}
+  stagePopup: {fileID: 0}
   set_upPopup: {fileID: 2823723518089618096, guid: 1639a6be603e846469185accf5f87cf7, type: 3}
   storePopup: {fileID: 3173373558973048643, guid: fa00fec684ce1774590159a0419ea85d, type: 3}
   achievementPopup: {fileID: 8300612865146792062, guid: 2e01d556c4ea11946860c2b0eb7a9ca5, type: 3}

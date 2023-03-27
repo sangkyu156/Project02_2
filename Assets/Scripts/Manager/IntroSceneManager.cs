@@ -59,5 +59,6 @@ public class IntroSceneManager : MonoBehaviour
         GameManager.Instance.uiSet = false;
         SimpleSceneFader.ChangeSceneWithFade("Main");
         GameManager.Instance.state = GameManager.SceneState.Home;
+        AchievementManager.Instance.AchievementCheck();
     }
 }

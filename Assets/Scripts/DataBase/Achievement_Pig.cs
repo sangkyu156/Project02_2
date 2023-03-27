@@ -8,6 +8,11 @@ public class Achievement_Pig : MonoBehaviour
     public GameObject button3;//이미 보상을 완료함
     public Slider slider;
 
+    private void OnEnable()
+    {
+        SliderSet();
+    }
+
     void Start()
     {
         slider.maxValue = 1000;
@@ -52,8 +57,7 @@ public class Achievement_Pig : MonoBehaviour
         AchievementManager.Instance.reward01 = true;
     }
 
-    //임시 테스트 함수
-    public void asdqwe()
+    public void SliderSet()
     {
         slider.value = AchievementManager.Instance.pigCount;
 

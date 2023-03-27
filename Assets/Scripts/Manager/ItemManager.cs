@@ -132,6 +132,7 @@ public class ItemManager : MonoBehaviour
         }
 
         Player.Instance.money -= 200; //µ·Â÷°¨
+        AchievementManager.Instance.redrawCount++;
 
         for (int i = 0; i < items.Length; i++)
         {
