@@ -39,8 +39,6 @@ public class Redraw2_Store : MonoBehaviour
     //±¸¸Å
     public void Redraw2Buy()
     {
-        GameManager.Instance.bossDistance.SetActive(true);
-
         StoreManager.Instance.PrintPlayerMoney();
         GameManager.Instance.PrintPlayerMoney();
         ItemManager.Instance.buyCheckAction();

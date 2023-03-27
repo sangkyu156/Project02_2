@@ -122,8 +122,6 @@ public class Quickness_Store : MonoBehaviour
         GameManager.Instance.paymentGold += priceValue;
         Player.Instance.quicknessLevel++;
 
-        GameManager.Instance.bossDistance.SetActive(true);
-
         StoreManager.Instance.PrintPlayerMoney();
         GameManager.Instance.PrintPlayerMoney();
         ItemManager.Instance.buyCheckAction();

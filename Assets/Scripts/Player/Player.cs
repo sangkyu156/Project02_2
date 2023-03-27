@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     public int rageExplosionLevel = 0;
     public float rageExplosionTime = 0;
     public bool rageExplosion = false;
+    public int bulkingUpLevel = 0;          //¹úÅ©¾÷
     public GameObject[] sawBlade;
     #endregion
 
@@ -710,6 +711,7 @@ public class Player : MonoBehaviour
         quicknessLevel = 0;
         slowdownLevel = 0;
         regenerateLevel = 0;
+        bulkingUpLevel = 0;
         RageExplosionReset();
         GameManager.Instance.bossDistance.SetActive(false);
         volcano = false;

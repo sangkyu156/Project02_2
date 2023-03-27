@@ -116,8 +116,6 @@ public class Regenerate_Store : MonoBehaviour
         Player.Instance.regenerateCooldown = 10;
         Player.Instance.regenerate = true;
 
-        GameManager.Instance.bossDistance.SetActive(true);
-
         StoreManager.Instance.PrintPlayerMoney();
         GameManager.Instance.PrintPlayerMoney();
         ItemManager.Instance.buyCheckAction();

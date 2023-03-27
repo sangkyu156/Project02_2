@@ -4,7 +4,7 @@ public static class SkillData
     public enum Skills
     {
         /**********1000**********/
-        FireBall_Store = 1000,      SawBlade_Store,     WaveEnergy_Store,       Quickness_Store, 
+        FireBall_Store = 1000,      SawBlade_Store,     WaveEnergy_Store,       Quickness_Store,        BulkingUp_Store,
         /**********900***********/
 
         /**********800***********/

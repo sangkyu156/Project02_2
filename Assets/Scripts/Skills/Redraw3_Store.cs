@@ -41,8 +41,6 @@ public class Redraw3_Store : MonoBehaviour
     {
         Player.Instance.money += priceValue;
 
-        GameManager.Instance.bossDistance.SetActive(true);
-
         StoreManager.Instance.PrintPlayerMoney();
         GameManager.Instance.PrintPlayerMoney();
         ItemManager.Instance.buyCheckAction();
