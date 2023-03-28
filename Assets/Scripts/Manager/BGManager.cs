@@ -11,6 +11,7 @@ public class BGManager : MonoBehaviour
     public GameObject information;
     float dist = 0f;
     public int countBG = 0;
+    public int goldChestCount = 0;
 
 
     private void OnEnable()
@@ -79,28 +80,24 @@ public class BGManager : MonoBehaviour
             {
                 map[i].transform.position += new Vector3(150, 0, 0);
                 countBG++;
-                //박스 생성
-                for (int q = 0; q < 2; q++)
+
+                //금화상자 생성
+                for (int q = 0; q < goldChestCount; q++)
                 {
-                    if (Random.Range(0, 3) == 2)
+                    if (Random.Range(0, 5) == 2) //20% 확률
                     {
                         GameManager.Instance.CreateBox();
                     }
                 }
-
-                //배경 3번 넘어갈때마다 60%확률로 상점 생성
-                if (countBG % 3 == 0)
-                {
-                    int r = Random.Range(0, 10);
-                    Debug.Log($"현제 countBG = {countBG}, R = {r}");
-
-                    if(r < 6)
-                        GameManager.Instance.CreatePortal();
-                }
-
-                if (countBG % 5 == 0)
-                {
+                //포션상자 생성
+                if(Random.Range(0,13) <= Player.Instance.potionChestLevel)
                     GameManager.Instance.CreateBox2();
+
+                //배경 2번 넘어갈때마다 50%확률로 상점 생성
+                if (countBG % 2 == 0)
+                {
+                    if (Random.Range(0, 21) <= 10 + Player.Instance.regularLevel)
+                        GameManager.Instance.CreatePortal();
                 }
 
                 //진행률 증가
@@ -266,6 +263,7 @@ public class BGManager : MonoBehaviour
             Time.timeScale = 1;
             countBG = 0;
             dist = 0f;
+            goldChestCount = 2;
 
             TargetSpot.Instance.SetMaxProgress(30);
 

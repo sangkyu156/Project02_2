@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     public float rageExplosionTime = 0;
     public bool rageExplosion = false;
     public int bulkingUpLevel = 0;          //벌크업
+    public int goldChestLevel = 0;          //금화상자
+    public int potionChestLevel = 0;        //포션상자
+    public int regularLevel = 0;       //단골
     public GameObject[] sawBlade;
     #endregion
 
@@ -712,6 +715,9 @@ public class Player : MonoBehaviour
         slowdownLevel = 0;
         regenerateLevel = 0;
         bulkingUpLevel = 0;
+        goldChestLevel = 0;
+        potionChestLevel = 0;
+        regularLevel = 0;
         RageExplosionReset();
         GameManager.Instance.bossDistance.SetActive(false);
         volcano = false;

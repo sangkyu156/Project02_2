@@ -21,7 +21,7 @@ public class Box2 : MonoBehaviour
 
     void Update()
     {
-        if (hitCount == 5)
+        if (hitCount >= 3)
         {
             Open();
         }
