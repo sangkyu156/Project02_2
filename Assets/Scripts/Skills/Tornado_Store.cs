@@ -18,8 +18,11 @@ public class Tornado_Store : Tornado_Skill
         price.text = UnityEngine.Random.Range(min, max).ToString();
         priceValue = Int32.Parse(price.text);
 
-        ItemManager.Instance.buyCheckAction += BuyCheck;
-        ItemManager.Instance.buyCheckAction();
+        if (GameManager.Instance.storCount > 1)
+        {
+            ItemManager.Instance.buyCheckAction += BuyCheck;
+            ItemManager.Instance.buyCheckAction();
+        }
 
         buyButton.transform.SetAsLastSibling();//버튼제일 아래로 위치
 
@@ -28,7 +31,8 @@ public class Tornado_Store : Tornado_Skill
 
     private void OnDestroy()
     {
-        ItemManager.Instance.buyCheckAction -= BuyCheck;
+        if (GameManager.Instance.storCount > 1)
+            ItemManager.Instance.buyCheckAction -= BuyCheck;
     }
 
     //설명 텍스트 출력
@@ -103,7 +107,8 @@ public class Tornado_Store : Tornado_Skill
         PrintExplanation();
         StoreManager.Instance.PrintPlayerMoney();
         GameManager.Instance.PrintPlayerMoney();
-        ItemManager.Instance.buyCheckAction();
+        if (GameManager.Instance.storCount > 1)
+            ItemManager.Instance.buyCheckAction();
         buyButton.interactable = false;
 
         Player.Instance.TornadoAction();

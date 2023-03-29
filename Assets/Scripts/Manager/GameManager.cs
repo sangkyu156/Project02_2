@@ -10,6 +10,7 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 public class GameManager : MonoBehaviour
 {
     public GameObject store;
+    public GameObject firstStore;
     public GameObject deadPopup;
     public GameObject clearPopup;
     public GameObject bossDistance;
@@ -394,6 +395,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void CreateFirstStore()
+    {
+        firstStore.SetActive(true);
+        for (int i = 0; i < fieldUI.Length; i++)
+        {
+            fieldUI[i].SetActive(false);
+        }
+    }
+
     public void PlayerClear()
     {
         try
@@ -479,11 +489,12 @@ public class GameManager : MonoBehaviour
         {
             bossDistance = GameObject.Find("Canvas2").transform.GetChild(1).gameObject;
             store = GameObject.Find("Canvas2").transform.GetChild(2).gameObject;
-            fieldUI[0] = GameObject.Find("Canvas2").transform.GetChild(3).gameObject;
-            fieldUI[1] = GameObject.Find("Canvas2").transform.GetChild(4).gameObject;
-            fieldUI[2] = GameObject.Find("Canvas2").transform.GetChild(5).gameObject;
-            deadPopup = GameObject.Find("Canvas2").transform.GetChild(6).gameObject;
-            clearPopup = GameObject.Find("Canvas2").transform.GetChild(8).gameObject;
+            firstStore = GameObject.Find("Canvas2").transform.GetChild(3).gameObject;
+            fieldUI[0] = GameObject.Find("Canvas2").transform.GetChild(4).gameObject;
+            fieldUI[1] = GameObject.Find("Canvas2").transform.GetChild(5).gameObject;
+            fieldUI[2] = GameObject.Find("Canvas2").transform.GetChild(6).gameObject;
+            deadPopup = GameObject.Find("Canvas2").transform.GetChild(7).gameObject;
+            clearPopup = GameObject.Find("Canvas2").transform.GetChild(9).gameObject;
 
             playerMoney = fieldUI[0].transform.GetChild(0).GetChild(0).gameObject;
             playerDiamond = fieldUI[2].transform.GetChild(0).GetChild(0).gameObject;

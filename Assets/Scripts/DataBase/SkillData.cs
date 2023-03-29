@@ -33,11 +33,11 @@ public static class SkillData
         /**********60************/
 
         /**********50************/
-        BlackHole_Store = 50,       Volcano_Store,      Slowdown_Store,         Redraw3_Store
+
         /**********40************/
 
         /**********30************/
-
+        BlackHole_Store = 30,       Volcano_Store,      Slowdown_Store,         Redraw3_Store
         /**********20************/
 
         /**********10************/

@@ -107,7 +107,7 @@ public class BGManager : MonoBehaviour
                 //¿Ã∫•∆Æ
                 if (countBG == 1)
                 {
-                    GameManager.Instance.CreateClearPortal();
+
                 }
                 else if (countBG == 2)
                 {

@@ -202,7 +202,7 @@
 오늘의 목표(2023-03-29)
 1.진행률 , 잡은 몬스터 100마리당 다이아1 얻도록 만들기
 2.클리어 포탈 추가
-
+3.첫상점 공격스킬만 나오게 변경
 
 몬스터 레이어는 5부터 시작하면됨 (20이하)
 
@@ -219,6 +219,18 @@
 1.노말 E7E7E7
 2.레어 32FFC8
 3.전설 FFFF32
+
+공격스킬
+FireBall_Store
+SawBlade_Store
+WaveEnergy_Store
+
+Tornado_Store
+Spark_Store
+Trident_Store
+RageExplosion_Store
+
+Volcano_Store
 
 오른쪽으로 멀리가는게 목표인 횡스크롤 게임 (스테이지 형식)
 오른쪽과 왼쪽에서 나오는 몬스터와 방해물들을 뚫고 오른쪽으로 전진해야하는 게임
