@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public int paymentGold;
     public int storCount;
     public int curStage;
+    public int killCount;
 
     public enum SceneState
     {
@@ -489,6 +490,7 @@ public class GameManager : MonoBehaviour
             storCount = 0;
             stageDiamond = 0;
             curStage = 1;
+            killCount = 0;
 
             switch (curStage)
             {

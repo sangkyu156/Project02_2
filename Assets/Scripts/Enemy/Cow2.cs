@@ -22,6 +22,7 @@ public class Cow2 : EnemyBase, IPoolObject
             if (drop == false)
             {
                 drop = true;
+                GameManager.Instance.killCount++;
                 for (int i = 0; i < 3; i++)
                 {
                     Drop();

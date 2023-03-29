@@ -21,8 +21,9 @@ public class Pig2 : EnemyBase, IPoolObject
 
             if (drop == false)
             {
-                AchievementManager.Instance.pigCount++;
                 drop = true;
+                AchievementManager.Instance.pigCount++;
+                GameManager.Instance.killCount++;
                 for (int i = 0; i < 2; i++)
                 {
                     Drop();

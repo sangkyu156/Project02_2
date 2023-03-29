@@ -24,6 +24,7 @@ public class Wasp : EnemyBase, IPoolObject
             if (drop == false)
             {
                 drop = true;
+                GameManager.Instance.killCount++;
                 for (int i = 0; i < 1; i++)
                 {
                     Drop();
