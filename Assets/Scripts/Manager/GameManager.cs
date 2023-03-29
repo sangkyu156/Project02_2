@@ -379,12 +379,40 @@ public class GameManager : MonoBehaviour
         portal.transform.position = new Vector3(Player.Instance.transform.position.x + 50, -3.5f, 0);
     }
 
+    public void CreateClearPortal()
+    {
+        GameObject portal = Instantiate(Resources.Load<GameObject>("Field/ClearPotal"));
+        portal.transform.position = new Vector3(Player.Instance.transform.position.x + 20, -6.75f, 0);
+    }
+
     public void CreateStore()
     {
         store.SetActive(true);
         for (int i = 0; i < fieldUI.Length; i++)
         {
             fieldUI[i].SetActive(false);
+        }
+    }
+
+    public void PlayerClear()
+    {
+        try
+        {
+            if (clearPopup.activeSelf == false)
+            {
+                if (store.activeSelf == true)
+                    store.SetActive(false);
+
+                clearPopup.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
+        catch (MissingReferenceException e)
+        {
+            Time.timeScale = 0;
+            if (clearPopup != null && clearPopup.activeSelf == false)
+                clearPopup.SetActive(true);
+            UnityEngine.Debug.Log($"{e}¿¡·¯ ¶ä");
         }
     }
 
@@ -418,28 +446,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             if (deadPopup != null && deadPopup.activeSelf == false)
                 deadPopup.SetActive(true);
-            UnityEngine.Debug.Log($"{e}¿¡·¯ ¶ä");
-        }
-    }
-
-    public void PlayerClear()
-    {
-        try
-        {
-            if (clearPopup.activeSelf == false)
-            {
-                if (store.activeSelf == true)
-                    store.SetActive(false);
-
-                clearPopup.SetActive(true);
-                Time.timeScale = 0;
-            }
-        }
-        catch (MissingReferenceException e)
-        {
-            Time.timeScale = 0;
-            if (clearPopup != null && clearPopup.activeSelf == false)
-                clearPopup.SetActive(true);
             UnityEngine.Debug.Log($"{e}¿¡·¯ ¶ä");
         }
     }

@@ -10,20 +10,12 @@ public class ClearManager : MonoBehaviour
     public TextMeshProUGUI clearRewarText;
     public TextMeshProUGUI totalText;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void RewardPopupOn()
     {
         rewardPopup.SetActive(true);
         rewardBox.SetActive(false);
+        GameManager.Instance.stageDiamond = (int)(GameManager.Instance.killCount * 0.01) + 8;//8은 진행률 100% 보상
 
         clearRewarText.text = $"-    {GameManager.Instance.clearRewardDiamond}";
         totalText.text = $"-    {GameManager.Instance.stageDiamond + GameManager.Instance.clearRewardDiamond}";
