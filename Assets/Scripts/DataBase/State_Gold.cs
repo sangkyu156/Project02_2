@@ -14,11 +14,10 @@ public class State_Gold : MonoBehaviour
 
     void Start()
     {
+        ListSet();
         StateManager.Instance.buyAction += ButtenSet;
 
         StateManager.Instance.buyAction();
-
-        ListSet();
     }
 
     private void OnDestroy()

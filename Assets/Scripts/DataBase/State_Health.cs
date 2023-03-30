@@ -14,11 +14,10 @@ public class State_Health : MonoBehaviour
 
     void Start()
     {
+        ListSet();
         StateManager.Instance.buyAction += ButtenSet;
 
         StateManager.Instance.buyAction();
-
-        ListSet();
     }
 
     private void OnDestroy()

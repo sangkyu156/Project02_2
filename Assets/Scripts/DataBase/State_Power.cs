@@ -15,11 +15,10 @@ public class State_Power : MonoBehaviour
 
     void Start()
     {
+        ListSet();
         StateManager.Instance.buyAction += ButtenSet;
 
         StateManager.Instance.buyAction();
-
-        ListSet();
     }
 
     private void OnDestroy()
@@ -104,7 +103,7 @@ public class State_Power : MonoBehaviour
     //구매할때마다 모든 버튼이 이 함수를 호출해야함 (Action 으로)
     public void ButtenSet()
     {
-        if(GameManager.Instance.mainDiamond < int.Parse(diaValue.text) || StateManager.Instance.state_PowerLevel == 10)
+        if (GameManager.Instance.mainDiamond < int.Parse(diaValue.text) || StateManager.Instance.state_PowerLevel == 10)
         {
             butten01.SetActive(true);
             butten02.SetActive(false);
