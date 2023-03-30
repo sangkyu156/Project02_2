@@ -98,19 +98,19 @@ public class Tornado_Store : Tornado_Skill
         switch (Player.Instance.tornadoLevel)
         {
             case 1:
-                Player.Instance.tornadoCooldown = 2f; break;
+                Player.Instance.tornadoCooldown = 2.5f; break;
             case 2:
-                Player.Instance.tornadoCooldown = 1.9f; break;
+                Player.Instance.tornadoCooldown = 2.4f; break;
             case 3:
-                Player.Instance.tornadoCooldown = 1.8f; break;
+                Player.Instance.tornadoCooldown = 2.3f; break;
             case 4:
-                Player.Instance.tornadoCooldown = 1.7f; break;
+                Player.Instance.tornadoCooldown = 2.2f; break;
             case 5:
-                Player.Instance.tornadoCooldown = 1.6f; break;
+                Player.Instance.tornadoCooldown = 2.0f; break;
             case 6:
-                Player.Instance.tornadoCooldown = 1.5f; break;
+                Player.Instance.tornadoCooldown = 1.9f; break;
             case 7:
-                Player.Instance.tornadoCooldown = 1.3f;
+                Player.Instance.tornadoCooldown = 1.6f;
                 ItemManager.Instance.weightedRandom.Remove("Tornado_Store"); break;//만랩시 스킬 목록에서 삭제
         }
 

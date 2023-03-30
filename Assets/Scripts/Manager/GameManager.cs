@@ -6,6 +6,7 @@ using TMPro;
 using System.Diagnostics;
 using UnityEngine.SceneManagement;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -467,6 +468,7 @@ public class GameManager : MonoBehaviour
         uiSet = false;
         SimpleSceneFader.ChangeSceneWithFade("Main");
         GameManager.Instance.state = GameManager.SceneState.Home;
+        GameManager.Instance.TimeScaleSet();
         AchievementManager.Instance.AchievementCheck();
         BGManager.Instance.countBG = 0;
         Time.timeScale = 1;
@@ -477,6 +479,22 @@ public class GameManager : MonoBehaviour
     void GoStage01()
     {
         HomeManager.Instance.StageButton_Stage01();
+    }
+
+    public void TimeScaleSet()
+    {
+        Invoke("TimeScaleSet_1", 0.2f);
+    }
+    
+    void TimeScaleSet_1()
+    {
+        if (GameManager.Instance.state == GameManager.SceneState.Home)
+        {
+            Time.timeScale = 1;
+            GameObject fader = GameObject.Find("Scene Fader Canvas(Clone)");
+            fader.GetComponentInChildren<Image>().color = Color.white;
+            UnityEngine.Debug.Log("페이드 이미지 버그 수정 완료");
+        }
     }
 
     void OnDisable()

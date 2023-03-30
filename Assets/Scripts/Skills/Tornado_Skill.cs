@@ -154,32 +154,32 @@ public class Tornado_Skill : ProjectileSkill, IPoolObject
             case 1:
                 curPower = 9;
                 nextPower = 10;
-                nextCooldown = 1.9f;
+                nextCooldown = 2.5f;
                 break;
             case 2:
                 curPower = 10;
                 nextPower = 11;
-                nextCooldown = 1.8f;
+                nextCooldown = 2.3f;
                 break;
             case 3:
                 curPower = 11;
                 nextPower = 12;
-                nextCooldown = 1.7f;
+                nextCooldown = 2.2f;
                 break;
             case 4:
                 curPower = 12;
                 nextPower = 13;
-                nextCooldown = 1.6f;
+                nextCooldown = 2.0f;
                 break;
             case 5:
                 curPower = 13;
                 nextPower = 14;
-                nextCooldown = 1.5f;
+                nextCooldown = 1.9f;
                 break;
             case 6:
                 curPower = 14;
                 nextPower = 15;
-                nextCooldown = 1.3f;
+                nextCooldown = 1.6f;
                 break;
             case 7:
                 curPower = 15;

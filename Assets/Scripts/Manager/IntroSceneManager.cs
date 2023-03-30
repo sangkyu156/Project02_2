@@ -38,7 +38,7 @@ public class IntroSceneManager : MonoBehaviour
     {
         //Invoke("GoStage01", 9.8f);
 
-        Invoke("GoStage01", 1.8f);
+        Invoke("GoStage01", 0.3f);
 
         GameObject homeManager = Instantiate(Resources.Load<GameObject>("Home/HomeManager"));
     }
@@ -59,6 +59,7 @@ public class IntroSceneManager : MonoBehaviour
         GameManager.Instance.uiSet = false;
         SimpleSceneFader.ChangeSceneWithFade("Main");
         GameManager.Instance.state = GameManager.SceneState.Home;
+        GameManager.Instance.TimeScaleSet();
         AchievementManager.Instance.AchievementCheck();
     }
 }

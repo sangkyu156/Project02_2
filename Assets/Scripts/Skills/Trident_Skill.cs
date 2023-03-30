@@ -77,37 +77,37 @@ public class Trident_Skill : ProjectileSkill, IPoolObject
                 nextCooldown = 0;
                 break;
             case 1:
-                curPower = 9;
-                nextPower = 11;
+                curPower = 11;
+                nextPower = 13;
                 nextCooldown = 0.9f;
                 break;
             case 2:
-                curPower = 11;
-                nextPower = 13;
-                nextCooldown = 0.8f;
-                break;
-            case 3:
                 curPower = 13;
                 nextPower = 15;
                 nextCooldown = 0.8f;
                 break;
-            case 4:
+            case 3:
                 curPower = 15;
                 nextPower = 17;
-                nextCooldown = 0.7f;
+                nextCooldown = 0.8f;
                 break;
-            case 5:
+            case 4:
                 curPower = 17;
                 nextPower = 19;
                 nextCooldown = 0.7f;
                 break;
-            case 6:
+            case 5:
                 curPower = 19;
                 nextPower = 22;
+                nextCooldown = 0.7f;
+                break;
+            case 6:
+                curPower = 22;
+                nextPower = 25;
                 nextCooldown = 0.5f;
                 break;
             case 7:
-                curPower = 22;
+                curPower = 25;
                 nextPower = 0;
                 nextCooldown = 0f;
                 break;

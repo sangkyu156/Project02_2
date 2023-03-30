@@ -78,37 +78,37 @@ public class Spark_Skill : ProjectileSkill, IPoolObject
                 nextCooldown = 0;
                 break;
             case 1:
-                curPower = 5;
-                nextPower = 7;
+                curPower = 10;
+                nextPower = 12;
                 nextCooldown = 0.3f;
                 break;
             case 2:
-                curPower = 19;
-                nextPower = 23;
+                curPower = 12;
+                nextPower = 14;
                 nextCooldown = 0.3f;
                 break;
             case 3:
-                curPower = 23;
-                nextPower = 27;
+                curPower = 14;
+                nextPower = 16;
                 nextCooldown = 0.2f;
                 break;
             case 4:
-                curPower = 27;
-                nextPower = 31;
+                curPower = 16;
+                nextPower = 18;
                 nextCooldown = 0.2f;
                 break;
             case 5:
-                curPower = 31;
-                nextPower = 35;
+                curPower = 20;
+                nextPower = 22;
                 nextCooldown = 0.2f;
                 break;
             case 6:
-                curPower = 35;
-                nextPower = 40;
+                curPower = 22;
+                nextPower = 25;
                 nextCooldown = 0.1f;
                 break;
             case 7:
-                curPower = 40;
+                curPower = 25;
                 nextPower = 0;
                 nextCooldown = 0f;
                 break;

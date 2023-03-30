@@ -706,9 +706,7 @@ public class Player : MonoBehaviour
             maxHealth = StateManager.Instance.state_Health + 10;
             moveSpeed = 7;
             Boss.Instance.bossSpeed = 7;
-            //StateManager.Instance.state_StartGold = 400;
-            StateManager.Instance.state_StartGold = 40000;
-            money = StateManager.Instance.state_StartGold;
+            money = 400 + StateManager.Instance.state_StartGold;
             GameManager.Instance.PrintPlayerMoney();
 
             currentHealth = maxHealth;

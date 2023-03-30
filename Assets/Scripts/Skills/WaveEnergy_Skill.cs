@@ -142,32 +142,32 @@ public class WaveEnergy_Skill : ProjectileSkill, IPoolObject
                 nextCooldown = 0;
                 break;
             case 1:
-                curPower = 9;
-                nextPower = 10;
+                curPower = 7;
+                nextPower = 8;
                 nextCooldown = 1.6f;
                 break;
             case 2:
-                curPower = 10;
-                nextPower = 11;
+                curPower = 8;
+                nextPower = 9;
                 nextCooldown = 1.5f;
                 break;
             case 3:
-                curPower = 11;
-                nextPower = 12;
+                curPower = 9;
+                nextPower = 10;
                 nextCooldown = 1.4f;
                 break;
             case 4:
-                curPower = 12;
-                nextPower = 13;
+                curPower = 10;
+                nextPower = 11;
                 nextCooldown = 1.3f;
                 break;
             case 5:
-                curPower = 13;
-                nextPower = 14;
+                curPower = 11;
+                nextPower = 12;
                 nextCooldown = 1.2f;
                 break;
             case 6:
-                curPower = 14;
+                curPower = 12;
                 nextPower = 15;
                 nextCooldown = 1.0f;
                 break;
