@@ -81,6 +81,9 @@ public class BGManager : MonoBehaviour
                 map[i].transform.position += new Vector3(150, 0, 0);
                 countBG++;
 
+                //웅덩이 생성
+                GameManager.Instance.CreatePuddle();
+
                 //금화상자 생성
                 for (int q = 0; q < goldChestCount; q++)
                 {

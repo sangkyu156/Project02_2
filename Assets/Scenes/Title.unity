@@ -4060,6 +4060,20 @@ MonoBehaviour:
   reward03: 0
   achievement04: 0
   reward04: 0
+  achievement05: 0
+  redrawCount: 0
+  reward05: 0
+  achievement06: 0
+  reward06: 0
+  achievement07: 0
+  reward07: 0
+  achievement08: 0
+  legendSkillCount: 0
+  reward08: 0
+  achievement09: 0
+  reward09: 0
+  achievement10: 0
+  reward10: 0
 --- !u!4 &1560478967
 Transform:
   m_ObjectHideFlags: 0
@@ -4882,6 +4896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   store: {fileID: 0}
+  firstStore: {fileID: 0}
   deadPopup: {fileID: 0}
   clearPopup: {fileID: 0}
   bossDistance: {fileID: 0}
@@ -4899,6 +4914,7 @@ MonoBehaviour:
   paymentGold: 0
   storCount: 0
   curStage: 0
+  killCount: 0
   state: 0
 --- !u!4 &1807266652
 Transform:

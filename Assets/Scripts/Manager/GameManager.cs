@@ -441,6 +441,13 @@ public class GameManager : MonoBehaviour
         portal.transform.position = new Vector3(Player.Instance.transform.position.x + Random.Range(30f, 60f), Random.Range(-4, -8), 0);
     }
 
+    public void CreatePuddle()
+    {
+        int range = Random.Range(-5, -9);
+        GameObject portal = Instantiate(Resources.Load<GameObject>("Field/Puddle"));
+        portal.transform.position = new Vector3(Player.Instance.transform.position.x + Random.Range(30f, 60f), range, 0);
+    }
+
     public void PlayerDeath()
     {
         try
