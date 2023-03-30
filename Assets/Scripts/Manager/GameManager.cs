@@ -445,7 +445,19 @@ public class GameManager : MonoBehaviour
     {
         int range = Random.Range(-5, -9);
         GameObject portal = Instantiate(Resources.Load<GameObject>("Field/Puddle"));
-        portal.transform.position = new Vector3(Player.Instance.transform.position.x + Random.Range(30f, 60f), range, 0);
+        portal.transform.position = new Vector3(Player.Instance.transform.position.x + Random.Range(30f, 40f), range, 0);
+    }
+
+    public void CreateUpRock()
+    {
+        GameObject portal = Instantiate(Resources.Load<GameObject>("Field/UpRock"));
+        portal.transform.position = new Vector3(Player.Instance.transform.position.x + Random.Range(30f, 47f), -5, 0);
+    }
+
+    public void CreateDownRock()
+    {
+        GameObject portal = Instantiate(Resources.Load<GameObject>("Field/DownRock"));
+        portal.transform.position = new Vector3(Player.Instance.transform.position.x + Random.Range(30f, 50f), -9, 0);
     }
 
     public void PlayerDeath()

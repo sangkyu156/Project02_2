@@ -5,6 +5,7 @@ using UnityEngine;
 public class Puddle : MonoBehaviour
 {
     float playerSpeed = 0;
+    float deadLine = 30f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player" || collision.tag == "NoDamage")
@@ -21,9 +22,15 @@ public class Puddle : MonoBehaviour
             collision.gameObject.GetComponent<Player>().moveSpeed = playerSpeed;
         }
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
+    private void Awake()
     {
+        deadLine = 30f;
+    }
 
+    private void Update()
+    {
+        deadLine -= Time.deltaTime;
+        if(deadLine < 0)
+            Destroy(gameObject);
     }
 }

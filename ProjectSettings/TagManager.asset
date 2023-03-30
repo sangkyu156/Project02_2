@@ -8,6 +8,8 @@ TagManager:
   - NoDamage
   - Skill
   - Boss
+  - SceneFader
+  - Portal
   layers:
   - Default
   - TransparentFX

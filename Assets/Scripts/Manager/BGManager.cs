@@ -96,11 +96,29 @@ public class BGManager : MonoBehaviour
                 if(Random.Range(0,13) <= Player.Instance.potionChestLevel)
                     GameManager.Instance.CreateBox2();
 
-                //배경 2번 넘어갈때마다 50%확률로 상점 생성
+                //배경 2번 넘어갈때마다 50%확률로 상점,바위 생성
                 if (countBG % 2 == 0)
                 {
                     if (Random.Range(0, 21) <= 10 + Player.Instance.regularLevel)
                         GameManager.Instance.CreatePortal();
+
+                    switch (Random.Range(0, 5))
+                    {
+                        case 0:
+                        case 1:
+                            break;
+                        case 2:
+                            GameManager.Instance.CreateUpRock();
+                            break;
+                        case 3:
+                            GameManager.Instance.CreateDownRock();
+                            break;
+                        case 4:
+                            GameManager.Instance.CreateUpRock();
+                            GameManager.Instance.CreateDownRock();
+                            break;
+                        default: break;
+                    }
                 }
 
                 //진행률 증가
