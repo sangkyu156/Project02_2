@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class ItemManager : MonoBehaviour
 {
-    public Action buyCheckAction;
+    //public Action buyCheckAction;//스킬 구매시 남은돈으로 다른스킬 구매 가능한지 색구분하도록
 
     GameObject[] items;
     string[] skillNameArray; //스킬명 모와두는곳
@@ -56,6 +57,8 @@ public class ItemManager : MonoBehaviour
     private void OnEnable()
     {
         Time.timeScale = 0;
+        GameManager.Instance.storCount++;
+
         SetSkills();
     }
 
@@ -140,7 +143,7 @@ public class ItemManager : MonoBehaviour
         }
         SetSkills();
 
-        StoreManager.Instance.PrintPlayerMoney(); //돈 다시 출력
+        GameManager.Instance.PrintPlayerMoney(); //돈 다시 출력
     }
 
     //생성할때 스킬이 중복으로 걸렸을때 다시뽑기
@@ -171,5 +174,4 @@ public class ItemManager : MonoBehaviour
         GameManager.Instance.PrintPlayerMoney();
         Player.Instance.OnDamage();
     }
-
 }

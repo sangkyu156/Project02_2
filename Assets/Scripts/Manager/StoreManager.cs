@@ -34,15 +34,4 @@ public class StoreManager : MonoBehaviour
             return instance;
         }
     }
-
-    private void OnEnable()
-    {
-        PrintPlayerMoney();
-        GameManager.Instance.storCount++;
-    }
-
-    public void PrintPlayerMoney()
-    {
-        playerMoney.text = $"{Player.Instance.money}";
-    }
 }

@@ -18,11 +18,10 @@ public class Tornado_Store : Tornado_Skill
         price.text = UnityEngine.Random.Range(min, max).ToString();
         priceValue = Int32.Parse(price.text);
 
-        if (GameManager.Instance.storCount > 1)
-        {
-            ItemManager.Instance.buyCheckAction += BuyCheck;
-            ItemManager.Instance.buyCheckAction();
-        }
+        GameManager.Instance.buyCheckAction += BuyCheck;
+        GameManager.Instance.buyCheckAction();
+
+        GameManager.Instance.skillLockAction += SkillLock;
 
         buyButton.transform.SetAsLastSibling();//버튼제일 아래로 위치
 
@@ -31,8 +30,8 @@ public class Tornado_Store : Tornado_Skill
 
     private void OnDestroy()
     {
-        if (GameManager.Instance.storCount > 1)
-            ItemManager.Instance.buyCheckAction -= BuyCheck;
+        GameManager.Instance.buyCheckAction -= BuyCheck;
+        GameManager.Instance.skillLockAction -= SkillLock;
     }
 
     //설명 텍스트 출력
@@ -83,6 +82,17 @@ public class Tornado_Store : Tornado_Skill
 
         Player.Instance.money -= priceValue;
         GameManager.Instance.paymentGold += priceValue;
+        if (Player.Instance.tornadoLevel == 0)
+        {
+            Player.Instance.tornadoLevel++;
+            Player.Instance.attackSkillCount++;
+            if (Player.Instance.attackSkillCount >= 4)
+            {
+                GameManager.Instance.skillLockAction();
+                Player.Instance.AttackSkillCheck();
+            }
+            Player.Instance.tornadoLevel--;
+        }
         Player.Instance.tornadoLevel++;
 
         switch (Player.Instance.tornadoLevel)
@@ -105,10 +115,8 @@ public class Tornado_Store : Tornado_Skill
         }
 
         PrintExplanation();
-        StoreManager.Instance.PrintPlayerMoney();
         GameManager.Instance.PrintPlayerMoney();
-        if (GameManager.Instance.storCount > 1)
-            ItemManager.Instance.buyCheckAction();
+        GameManager.Instance.buyCheckAction();
         buyButton.interactable = false;
 
         Player.Instance.TornadoAction();
@@ -127,5 +135,12 @@ public class Tornado_Store : Tornado_Skill
             price.color = Color.white;
             //buyButton.interactable = true;
         }
+    }
+
+    //공격스킬 잠그기(공격스킬 4개 모두 정해졌을때)
+    void SkillLock()
+    {
+        if (Player.Instance.tornadoLevel == 0)
+            buyButton.interactable = false;
     }
 }

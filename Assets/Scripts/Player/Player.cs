@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     public int currentHealth;
     public float moveSpeed = 7;
     public int money = 0;
+    public int attackSkillCount = 0;
     float dist = 0f;
 
     public PlayerHealthBar healthBar;
@@ -670,6 +671,29 @@ public class Player : MonoBehaviour
         effect_Heal.SetActive(false);
     }
 
+    //공격스킬 4개 정해졌을때 나머지 공격스킬 랜덤목록에서 제외
+    public void AttackSkillCheck()
+    {
+        if (fireBallLevel == 0)
+            ItemManager.Instance.weightedRandom.Remove("FireBall_Store");
+        if (sawBladeLevel == 0)
+            ItemManager.Instance.weightedRandom.Remove("SawBlade_Store");
+        if (waveEnergyLevel == 0)
+            ItemManager.Instance.weightedRandom.Remove("WaveEnergy_Store");
+        if (tornadoLevel == 0)
+            ItemManager.Instance.weightedRandom.Remove("Tornado_Store");
+        if (sparkLevel == 0)
+            ItemManager.Instance.weightedRandom.Remove("Spark_Store");
+        if (tridentLevel == 0)
+            ItemManager.Instance.weightedRandom.Remove("Trident_Store");
+        if (regenerateLevel == 0)
+            ItemManager.Instance.weightedRandom.Remove("RageExplosion_Store");
+        if (volcanoLevel == 0)
+            ItemManager.Instance.weightedRandom.Remove("Volcano_Store");
+        if (blackholeLevel == 0)
+            ItemManager.Instance.weightedRandom.Remove("BlackHole_Store");
+    }
+
     //플레이어 세팅
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -718,6 +742,7 @@ public class Player : MonoBehaviour
         goldChestLevel = 0;
         potionChestLevel = 0;
         regularLevel = 0;
+        attackSkillCount = 0;
         RageExplosionReset();
         GameManager.Instance.bossDistance.SetActive(false);
         volcano = false;

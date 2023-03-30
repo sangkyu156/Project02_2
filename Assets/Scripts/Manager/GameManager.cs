@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public int storCount;
     public int curStage;
     public int killCount;
+    public System.Action buyCheckAction;//스킬 구매시 남은돈으로 다른스킬 구매 가능한지 색구분하도록
+    public System.Action skillLockAction;//공격스킬 4개 모두 정해졌을때 다른 공격스킬 구매못하도록
 
     public enum SceneState
     {
@@ -389,7 +391,7 @@ public class GameManager : MonoBehaviour
     public void CreateStore()
     {
         store.SetActive(true);
-        for (int i = 0; i < fieldUI.Length; i++)
+        for (int i = 1; i < fieldUI.Length; i++)
         {
             fieldUI[i].SetActive(false);
         }
@@ -398,7 +400,7 @@ public class GameManager : MonoBehaviour
     public void CreateFirstStore()
     {
         firstStore.SetActive(true);
-        for (int i = 0; i < fieldUI.Length; i++)
+        for (int i = 1; i < fieldUI.Length; i++)
         {
             fieldUI[i].SetActive(false);
         }
