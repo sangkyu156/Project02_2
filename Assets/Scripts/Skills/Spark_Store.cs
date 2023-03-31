@@ -102,13 +102,13 @@ public class Spark_Store : Spark_Skill
             case 1:
             case 2:
             case 3:
-                Player.Instance.sparkCooldown = 0.3f; break;
+                Player.Instance.sparkCooldown = 0.4f; break;
             case 4:
             case 5:
             case 6:
-                Player.Instance.sparkCooldown = 0.2f; break;
+                Player.Instance.sparkCooldown = 0.3f; break;
             case 7:
-                Player.Instance.sparkCooldown = 0.1f;
+                Player.Instance.sparkCooldown = 0.2f;
                 ItemManager.Instance.weightedRandom.Remove("Spark_Store"); break;//만랩시 스킬 목록에서 삭제
         }
 

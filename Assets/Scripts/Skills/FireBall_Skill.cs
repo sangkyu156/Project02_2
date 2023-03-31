@@ -76,36 +76,36 @@ public class FireBall_Skill : ProjectileSkill, IPoolObject
                 break;
             case 1:
                 curPower = 15;
-                nextPower = 19;
+                nextPower = 18;
                 nextCooldown = 1;
                 break;
             case 2:
-                curPower = 19;
-                nextPower = 23;
+                curPower = 18;
+                nextPower = 21;
                 nextCooldown = 0.9f;
                 break;
             case 3:
-                curPower = 23;
-                nextPower = 27;
+                curPower = 21;
+                nextPower = 24;
                 nextCooldown = 0.9f;
                 break;
             case 4:
-                curPower = 27;
-                nextPower = 31;
+                curPower = 24;
+                nextPower = 27;
                 nextCooldown = 0.8f;
                 break;
             case 5:
-                curPower = 31;
-                nextPower = 35;
+                curPower = 27;
+                nextPower = 30;
                 nextCooldown = 0.8f;
                 break;
             case 6:
-                curPower = 35;
-                nextPower = 40;
+                curPower = 30;
+                nextPower = 35;
                 nextCooldown = 0.7f;
                 break;
             case 7:
-                curPower = 40;
+                curPower = 35;
                 nextPower = 0;
                 nextCooldown = 0f;
                 break;

@@ -148,7 +148,7 @@ public class BGManager : MonoBehaviour
                     switch (GameManager.Instance.curStage)
                     {
                         case 1:
-                            GameManager.Instance.Create_01();
+                            GameManager.Instance.Create_01_1();
                             Destroy(information);
                             break;
                         case 2:
@@ -161,7 +161,7 @@ public class BGManager : MonoBehaviour
                     switch (GameManager.Instance.curStage)
                     {
                         case 1:
-                            GameManager.Instance.Create_01();
+                            GameManager.Instance.Create_01_2();
                             Destroy(information);
                             break;
                         case 2:
@@ -187,7 +187,7 @@ public class BGManager : MonoBehaviour
                     switch (GameManager.Instance.curStage)
                     {
                         case 1:
-                            GameManager.Instance.Create_02();
+                            GameManager.Instance.Create_02_1();
                             Destroy(information);
                             break;
                         case 2:
@@ -200,7 +200,7 @@ public class BGManager : MonoBehaviour
                     switch (GameManager.Instance.curStage)
                     {
                         case 1:
-                            GameManager.Instance.Create_02();
+                            GameManager.Instance.Create_02_2();
                             Destroy(information);
                             break;
                         case 2:
@@ -226,7 +226,7 @@ public class BGManager : MonoBehaviour
                     switch (GameManager.Instance.curStage)
                     {
                         case 1:
-                            GameManager.Instance.Create_03();
+                            GameManager.Instance.Create_03_1();
                             Destroy(information);
                             break;
                         case 2:
@@ -239,7 +239,7 @@ public class BGManager : MonoBehaviour
                     switch (GameManager.Instance.curStage)
                     {
                         case 1:
-                            GameManager.Instance.Create_03();
+                            GameManager.Instance.Create_03_2();
                             Destroy(information);
                             break;
                         case 2:

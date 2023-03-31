@@ -191,21 +191,63 @@ public class GameManager : MonoBehaviour
     #region 생성이벤트
     public void Create_01()
     {
-        for (int i = 0; i < 20; i++) 
+        for (int i = 0; i < 15; i++) 
+        {
+            Spawn();
+        }
+    }
+    public void Create_01_1()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            Spawn();
+        }
+    }
+    public void Create_01_2()
+    {
+        for (int i = 0; i < 25; i++)
         {
             Spawn();
         }
     }
     public void Create_02()
     {
+        for (int i = 0; i < 15; i++)
+        {
+            Spawn2();
+        }
+    }
+    public void Create_02_1()
+    {
         for (int i = 0; i < 20; i++)
+        {
+            Spawn2();
+        }
+    }
+    public void Create_02_2()
+    {
+        for (int i = 0; i < 25; i++)
         {
             Spawn2();
         }
     }
     public void Create_03()
     {
+        for (int i = 0; i < 15; i++)
+        {
+            Spawn3();
+        }
+    }
+    public void Create_03_1()
+    {
         for (int i = 0; i < 20; i++)
+        {
+            Spawn3();
+        }
+    }
+    public void Create_03_2()
+    {
+        for (int i = 0; i < 25; i++)
         {
             Spawn3();
         }
@@ -502,7 +544,7 @@ public class GameManager : MonoBehaviour
 
     public void TimeScaleSet()
     {
-        Invoke("TimeScaleSet_1", 0.2f);
+        Invoke("TimeScaleSet_1", 1.5f);
     }
     
     void TimeScaleSet_1()
@@ -511,7 +553,9 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
             GameObject fader = GameObject.Find("Scene Fader Canvas(Clone)");
-            fader.GetComponentInChildren<Image>().color = Color.white;
+            Color color_ = fader.GetComponentInChildren<Image>().color;
+            color_.a = 0;
+            fader.GetComponentInChildren<Image>().color = color_;
             UnityEngine.Debug.Log("페이드 이미지 버그 수정 완료");
         }
     }

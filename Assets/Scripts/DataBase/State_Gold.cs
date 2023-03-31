@@ -33,62 +33,62 @@ public class State_Gold : MonoBehaviour
             case 0:
                 stateLevel.text = "Lv.<#FFFFFF>1</color>";
                 stateValue.text = "+20";
-                diaValue.text = "3";
-                diaValue2.text = "3";
+                diaValue.text = "10";
+                diaValue2.text = "10";
                 break;
             case 1:
                 stateLevel.text = "Lv.<#FFE1E1>2</color>";
                 stateValue.text = "+40";
-                diaValue.text = "4";
-                diaValue2.text = "4";
+                diaValue.text = "20";
+                diaValue2.text = "20";
                 break;
             case 2:
                 stateLevel.text = "Lv.<#FFC3C3>3</color>";
                 stateValue.text = "+60";
-                diaValue.text = "5";
-                diaValue2.text = "5";
+                diaValue.text = "30";
+                diaValue2.text = "30";
                 break;
             case 3:
                 stateLevel.text = "Lv.<#FFA5A5>4</color>";
                 stateValue.text = "+80";
-                diaValue.text = "6";
-                diaValue2.text = "6";
+                diaValue.text = "40";
+                diaValue2.text = "40";
                 break;
             case 4:
                 stateLevel.text = "Lv.<#FF8787>5</color>";
                 stateValue.text = "+100";
-                diaValue.text = "8";
-                diaValue2.text = "8";
+                diaValue.text = "50";
+                diaValue2.text = "50";
                 break;
             case 5:
                 stateLevel.text = "Lv.<#FF6969>6</color>";
                 stateValue.text = "+120";
-                diaValue.text = "10";
-                diaValue2.text = "10";
+                diaValue.text = "60";
+                diaValue2.text = "60";
                 break;
             case 6:
                 stateLevel.text = "Lv.<#FF4B4B>7</color>";
                 stateValue.text = "+140";
-                diaValue.text = "12";
-                diaValue2.text = "12";
+                diaValue.text = "70";
+                diaValue2.text = "70";
                 break;
             case 7:
                 stateLevel.text = "Lv.<#FF2D2D>8</color>";
                 stateValue.text = "+160";
-                diaValue.text = "14";
-                diaValue2.text = "14";
+                diaValue.text = "80";
+                diaValue2.text = "80";
                 break;
             case 8:
                 stateLevel.text = "Lv.<#FF0F0F>9</color>";
                 stateValue.text = "+180";
-                diaValue.text = "16";
-                diaValue2.text = "16";
+                diaValue.text = "90";
+                diaValue2.text = "90";
                 break;
             case 9:
                 stateLevel.text = "Lv.<#FF0F5F>10</color>";
                 stateValue.text = "+200";
-                diaValue.text = "20";
-                diaValue2.text = "20";
+                diaValue.text = "100";
+                diaValue2.text = "100";
                 break;
             case 10:
                 stateLevel.text = "Lv.<#FF00FA>MAX</color>";
