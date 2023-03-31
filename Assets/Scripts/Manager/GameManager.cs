@@ -254,7 +254,21 @@ public class GameManager : MonoBehaviour
     }
     public void Create_04()
     {
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < 13; i++)
+        {
+            Spawn4();
+        }
+    }
+    public void Create_04_1()
+    {
+        for (int i = 0; i < 18; i++)
+        {
+            Spawn4();
+        }
+    }
+    public void Create_04_2()
+    {
+        for (int i = 0; i < 25; i++)
         {
             Spawn4();
         }
@@ -321,8 +335,8 @@ public class GameManager : MonoBehaviour
     }
     void Spawn4()
     {
-        Cow2 cow2 = poolManager.GetFromPool<Cow2>();
         Cow3 cow3 = poolManager.GetFromPool<Cow3>();
+        Wolf wolf = poolManager.GetFromPool<Wolf>();
     }
     void Spawn10()
     {
@@ -382,6 +396,10 @@ public class GameManager : MonoBehaviour
     public void ReturnPool(Cow3 clone)
     {
         poolManager.TakeToPool<Cow3>(clone.idName, clone);
+    }
+    public void ReturnPool(Wolf clone)
+    {
+        poolManager.TakeToPool<Wolf>(clone.idName, clone);
     }
     public void ReturnPool(Pig clone)
     {
@@ -527,12 +545,13 @@ public class GameManager : MonoBehaviour
     public void Retry01()
     {
         uiSet = false;
-        SimpleSceneFader.ChangeSceneWithFade("Main");
         GameManager.Instance.state = GameManager.SceneState.Home;
+        Player.Instance.PlayerStop_1();
         GameManager.Instance.TimeScaleSet();
         AchievementManager.Instance.AchievementCheck();
         BGManager.Instance.countBG = 0;
         Time.timeScale = 1;
+        SimpleSceneFader.ChangeSceneWithFade("Main");
 
         Invoke("GoStage01", 0.68f);
     }

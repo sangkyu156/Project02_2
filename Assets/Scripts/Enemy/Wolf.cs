@@ -1,10 +1,12 @@
 using Redcode.Pools;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Chick : EnemyBase, IPoolObject
+public class Wolf : EnemyBase, IPoolObject
 {
     public string idName;
-    public int maxHealth = 9;
+    public int maxHealth = 40;
     bool drop = false;
 
     public GameObject Shadow;
@@ -23,7 +25,7 @@ public class Chick : EnemyBase, IPoolObject
             {
                 drop = true;
                 GameManager.Instance.killCount++;
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     Drop();
                 }
@@ -69,9 +71,9 @@ public class Chick : EnemyBase, IPoolObject
     //능력 설정
     void SetAbility()
     {
-        maxHealth = 9;
-        speed = 3;
-        power = 1;
+        maxHealth = 40;
+        speed = 3.5f;
+        power = 8;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         drop = false;
@@ -90,7 +92,7 @@ public class Chick : EnemyBase, IPoolObject
     {
         SetAbility();
 
-        float ranPosX = Random.Range(30f, 50f);
+        float ranPosX = Random.Range(30f, 60f);
         float ranPosY = Random.Range(0f, -4f);
         transform.position = Player.Instance.skillPos.transform.position + new Vector3(ranPosX, ranPosY, 0);
     }
@@ -103,7 +105,7 @@ public class Chick : EnemyBase, IPoolObject
         Shadow.SetActive(true);
         knockback = false;
 
-        float ranPosX = Random.Range(30f, 50f);
+        float ranPosX = Random.Range(30f, 60f);
         float ranPosY = Random.Range(0f, -4f);
         transform.position = Player.Instance.skillPos.transform.position + new Vector3(ranPosX, ranPosY, 0);
     }

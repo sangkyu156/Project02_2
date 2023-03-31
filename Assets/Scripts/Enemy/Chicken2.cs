@@ -90,7 +90,7 @@ public class Chicken2 : EnemyBase, IPoolObject
     {
         SetAbility();
 
-        float ranPosX = Random.Range(30f, 60f);
+        float ranPosX = Random.Range(30f, 55f);
         float ranPosY = Random.Range(0f, -4f);
         transform.position = Player.Instance.skillPos.transform.position + new Vector3(ranPosX, ranPosY, 0);
     }
@@ -103,7 +103,7 @@ public class Chicken2 : EnemyBase, IPoolObject
         Shadow.SetActive(true);
         knockback = false;
 
-        float ranPosX = Random.Range(30f, 60f);
+        float ranPosX = Random.Range(30f, 55f);
         float ranPosY = Random.Range(0f, -4f);
         transform.position = Player.Instance.skillPos.transform.position + new Vector3(ranPosX, ranPosY, 0);
     }

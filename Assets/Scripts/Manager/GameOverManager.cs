@@ -62,12 +62,13 @@ public class GameOverManager : MonoBehaviour
     public void ExitButton_Home()
     {
         GameManager.Instance.uiSet = false;
-        SimpleSceneFader.ChangeSceneWithFade("Main");
         GameManager.Instance.state = GameManager.SceneState.Home;
+        Player.Instance.PlayerStop_1();
         GameManager.Instance.TimeScaleSet();
         AchievementManager.Instance.AchievementCheck();
         BGManager.Instance.countBG = 0;
         Time.timeScale = 1;
+        SimpleSceneFader.ChangeSceneWithFade("Main");
     }
 
     public void Calculate()

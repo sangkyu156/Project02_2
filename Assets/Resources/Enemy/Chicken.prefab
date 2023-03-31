@@ -261,7 +261,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.1206849, y: 1.0728943}
-  m_Size: {x: 1.9086301, y: 2.4457886}
+  m_Size: {x: 1.5, y: 2}
   m_Direction: 0
 --- !u!114 &864861464666912022
 MonoBehaviour:
@@ -275,6 +275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c0590a26bebad4aa2b9aa15bd76081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
+  knockbackTime: 1
+  knockback: 0
   healthBar: {fileID: 3087450112317107116}
   textPostion: {fileID: 5006195165357339412}
   collider: {fileID: 0}

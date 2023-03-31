@@ -2811,6 +2811,11 @@ MonoBehaviour:
     _count: 0
     _container: {fileID: 1364030275}
     _nonLazy: 0
+  - _name: Wolf
+    _component: {fileID: 7050184711133350254, guid: cf00846fb63247740809ffac4f937707, type: 3}
+    _count: 0
+    _container: {fileID: 1364030275}
+    _nonLazy: 0
 --- !u!1 &370020045
 GameObject:
   m_ObjectHideFlags: 0

@@ -706,7 +706,8 @@ public class Player : MonoBehaviour
             maxHealth = StateManager.Instance.state_Health + 10;
             moveSpeed = 7;
             Boss.Instance.bossSpeed = 7;
-            money = 400 + StateManager.Instance.state_StartGold;
+            //money = 400 + StateManager.Instance.state_StartGold;
+            money = 600 + StateManager.Instance.state_StartGold;
             GameManager.Instance.PrintPlayerMoney();
 
             currentHealth = maxHealth;
@@ -746,14 +747,23 @@ public class Player : MonoBehaviour
         volcano = false;
         trident = false;
         regenerate = false;
+        collider.enabled = true;
     }
 
     //홈화면으로 왔을때 플레이어 정지시키기
     public void PlayerStop()
     {
+
         this.transform.position = new Vector3(-7.7f, -7, 0);
         rigidbody2D.velocity = new Vector2(0, 0);
         this.rigidbody2D.AddForce(new Vector2(0, 0));
+    }
+
+    public void PlayerStop_1()
+    {
+        collider.enabled = false;
+        Invoke("PlayerStop", 0.2f);
+        Debug.Log("실행됨");
     }
 
     void OnDisable()

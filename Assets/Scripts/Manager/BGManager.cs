@@ -81,6 +81,7 @@ public class BGManager : MonoBehaviour
                 map[i].transform.position += new Vector3(150, 0, 0);
                 countBG++;
 
+                GameManager.Instance.Create_04();
                 //¿õµ¢ÀÌ »ý¼º
                 GameManager.Instance.CreatePuddle();
 
@@ -149,7 +150,6 @@ public class BGManager : MonoBehaviour
                     {
                         case 1:
                             GameManager.Instance.Create_01_1();
-                            Destroy(information);
                             break;
                         case 2:
                             GameManager.Instance.Create_10();
@@ -162,7 +162,6 @@ public class BGManager : MonoBehaviour
                     {
                         case 1:
                             GameManager.Instance.Create_01_2();
-                            Destroy(information);
                             break;
                         case 2:
                             GameManager.Instance.Create_10();
@@ -175,7 +174,6 @@ public class BGManager : MonoBehaviour
                     {
                         case 1:
                             GameManager.Instance.Create_02();
-                            Destroy(information);
                             break;
                         case 2:
                             GameManager.Instance.Create_10();
@@ -188,7 +186,6 @@ public class BGManager : MonoBehaviour
                     {
                         case 1:
                             GameManager.Instance.Create_02_1();
-                            Destroy(information);
                             break;
                         case 2:
                             GameManager.Instance.Create_10();
@@ -201,7 +198,6 @@ public class BGManager : MonoBehaviour
                     {
                         case 1:
                             GameManager.Instance.Create_02_2();
-                            Destroy(information);
                             break;
                         case 2:
                             GameManager.Instance.Create_10();
@@ -214,7 +210,6 @@ public class BGManager : MonoBehaviour
                     {
                         case 1:
                             GameManager.Instance.Create_03();
-                            Destroy(information);
                             break;
                         case 2:
                             GameManager.Instance.Create_10();
@@ -227,7 +222,6 @@ public class BGManager : MonoBehaviour
                     {
                         case 1:
                             GameManager.Instance.Create_03_1();
-                            Destroy(information);
                             break;
                         case 2:
                             GameManager.Instance.Create_10();
@@ -240,7 +234,6 @@ public class BGManager : MonoBehaviour
                     {
                         case 1:
                             GameManager.Instance.Create_03_2();
-                            Destroy(information);
                             break;
                         case 2:
                             GameManager.Instance.Create_10();
@@ -253,7 +246,44 @@ public class BGManager : MonoBehaviour
                     {
                         case 1:
                             GameManager.Instance.Create_04();
-                            Destroy(information);
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
+                }
+                else if (countBG == 22)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_04_1();
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
+                }
+                else if (countBG == 24)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_04_2();
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
+                }
+                else if (countBG == 26)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_01_2();
+                            GameManager.Instance.Create_02_2();
+                            GameManager.Instance.Create_03_2();
                             break;
                         case 2:
                             GameManager.Instance.Create_10();
