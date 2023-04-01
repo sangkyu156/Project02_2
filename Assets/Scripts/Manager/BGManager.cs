@@ -81,7 +81,6 @@ public class BGManager : MonoBehaviour
                 map[i].transform.position += new Vector3(150, 0, 0);
                 countBG++;
 
-                GameManager.Instance.Create_04();
                 //¿õµ¢ÀÌ »ý¼º
                 GameManager.Instance.CreatePuddle();
 
@@ -127,9 +126,9 @@ public class BGManager : MonoBehaviour
                     TargetSpot.Instance.SetProgress(countBG);
 
                 //ÀÌº¥Æ®
-                if (countBG == 1)
+                if (countBG == 3)
                 {
-
+                    GameManager.Instance.Create_Orc();
                 }
                 else if (countBG == 2)
                 {
@@ -264,7 +263,19 @@ public class BGManager : MonoBehaviour
                             break;
                     }
                 }
-                else if (countBG == 24)
+                else if (countBG == 23)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_Orc();
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_Orc();
+                            break;
+                    }
+                }
+                else if (countBG == 25)
                 {
                     switch (GameManager.Instance.curStage)
                     {
@@ -276,7 +287,7 @@ public class BGManager : MonoBehaviour
                             break;
                     }
                 }
-                else if (countBG == 26)
+                else if (countBG == 27)
                 {
                     switch (GameManager.Instance.curStage)
                     {
@@ -284,6 +295,34 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_01_2();
                             GameManager.Instance.Create_02_2();
                             GameManager.Instance.Create_03_2();
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
+                }
+                else if (countBG == 28)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_01_2();
+                            GameManager.Instance.Create_02_2();
+                            GameManager.Instance.Create_03_2();
+                            break;
+                        case 2:
+                            GameManager.Instance.Create_10();
+                            break;
+                    }
+                }
+                else if (countBG == 29)
+                {
+                    switch (GameManager.Instance.curStage)
+                    {
+                        case 1:
+                            GameManager.Instance.Create_02_2();
+                            GameManager.Instance.Create_03_2();
+                            GameManager.Instance.Create_04_2();
                             break;
                         case 2:
                             GameManager.Instance.Create_10();

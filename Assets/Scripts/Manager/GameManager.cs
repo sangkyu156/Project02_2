@@ -273,6 +273,13 @@ public class GameManager : MonoBehaviour
             Spawn4();
         }
     }
+    public void Create_Orc()
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            SpawnOrc();
+        }
+    }
     public void Create_10()
     {
         for (int i = 0; i < 3; i++)
@@ -337,6 +344,10 @@ public class GameManager : MonoBehaviour
     {
         Cow3 cow3 = poolManager.GetFromPool<Cow3>();
         Wolf wolf = poolManager.GetFromPool<Wolf>();
+    }
+    void SpawnOrc()
+    {
+        Orc orc = poolManager.GetFromPool<Orc>();
     }
     void Spawn10()
     {
@@ -424,6 +435,10 @@ public class GameManager : MonoBehaviour
     public void ReturnPool(Coin clone)
     {
         poolManager.TakeToPool<Coin>(clone.idName, clone);
+    }
+    public void ReturnPool(Orc clone)
+    {
+        poolManager.TakeToPool<Orc>(clone.idName, clone);
     }
     #endregion
 

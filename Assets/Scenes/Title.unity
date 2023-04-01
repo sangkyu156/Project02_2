@@ -4888,6 +4888,11 @@ MonoBehaviour:
     _count: 0
     _container: {fileID: 0}
     _nonLazy: 0
+  - _name: Orc
+    _component: {fileID: 5544331693308607720, guid: cff1de54e398d2445adb241a8cdec59e, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
 --- !u!114 &1807266651
 MonoBehaviour:
   m_ObjectHideFlags: 0
