@@ -17,7 +17,7 @@ public class Coin : MonoBehaviour, IPoolObject
 
     void Update()
     {
-        Collider2D[] targets = Physics2D.OverlapBoxAll(transform.position, new Vector2(10, 10), 0);
+        Collider2D[] targets = Physics2D.OverlapBoxAll(transform.position, new Vector2(5, 10), 0);
         for (int i = 0; i < targets.Length; i++)
         {
             if (targets[i].tag == "Player" || targets[i].tag == "NoDamage")

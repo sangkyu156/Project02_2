@@ -107,6 +107,7 @@ public class Slowdown_Store : MonoBehaviour
 
         Player.Instance.money -= priceValue;
         GameManager.Instance.paymentGold += priceValue;
+        AchievementManager.Instance.legendSkillCount++;
         Player.Instance.slowdownLevel++;
         GameManager.Instance.PrintPlayerMoney();
         GameManager.Instance.buyCheckAction();

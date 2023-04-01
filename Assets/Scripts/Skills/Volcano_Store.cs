@@ -84,6 +84,7 @@ public class Volcano_Store : Volcano_Skill
 
         Player.Instance.money -= priceValue;
         GameManager.Instance.paymentGold += priceValue;
+        AchievementManager.Instance.legendSkillCount++;
         if (Player.Instance.volcanoLevel == 0)
         {
             Player.Instance.volcanoLevel++;

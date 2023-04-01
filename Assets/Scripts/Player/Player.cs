@@ -707,7 +707,7 @@ public class Player : MonoBehaviour
             moveSpeed = 7;
             Boss.Instance.bossSpeed = 7;
             //money = 400 + StateManager.Instance.state_StartGold;
-            money = 2000 + StateManager.Instance.state_StartGold;
+            money = 500 + StateManager.Instance.state_StartGold;
             GameManager.Instance.PrintPlayerMoney();
 
             currentHealth = maxHealth;
@@ -719,7 +719,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void SkillReset()
+    public void SkillReset()
     {
         CancelInvoke();
         for (int i = 0; i < sawBlade.Length; i++)

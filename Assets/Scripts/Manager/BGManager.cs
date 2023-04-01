@@ -128,7 +128,7 @@ public class BGManager : MonoBehaviour
                 //¿Ã∫•∆Æ
                 if (countBG == 3)
                 {
-                    GameManager.Instance.Create_Orc();
+
                 }
                 else if (countBG == 2)
                 {

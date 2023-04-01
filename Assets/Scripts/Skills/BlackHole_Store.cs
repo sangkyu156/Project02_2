@@ -85,6 +85,7 @@ public class BlackHole_Store : BlackHole_Skill
 
         Player.Instance.money -= priceValue;
         GameManager.Instance.paymentGold += priceValue;
+        AchievementManager.Instance.legendSkillCount++;
         if (Player.Instance.blackholeLevel == 0)
         {
             Player.Instance.blackholeLevel++;

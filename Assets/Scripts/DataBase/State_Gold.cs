@@ -32,67 +32,67 @@ public class State_Gold : MonoBehaviour
         {
             case 0:
                 stateLevel.text = "Lv.<#FFFFFF>1</color>";
-                stateValue.text = "+20";
+                stateValue.text = "+0";
                 diaValue.text = "10";
                 diaValue2.text = "10";
                 break;
             case 1:
                 stateLevel.text = "Lv.<#FFE1E1>2</color>";
-                stateValue.text = "+40";
-                diaValue.text = "20";
+                stateValue.text = "+50";
+                diaValue.text = "15";
                 diaValue2.text = "20";
                 break;
             case 2:
                 stateLevel.text = "Lv.<#FFC3C3>3</color>";
-                stateValue.text = "+60";
-                diaValue.text = "30";
+                stateValue.text = "+100";
+                diaValue.text = "27";
                 diaValue2.text = "30";
                 break;
             case 3:
                 stateLevel.text = "Lv.<#FFA5A5>4</color>";
-                stateValue.text = "+80";
-                diaValue.text = "40";
+                stateValue.text = "+150";
+                diaValue.text = "38";
                 diaValue2.text = "40";
                 break;
             case 4:
                 stateLevel.text = "Lv.<#FF8787>5</color>";
-                stateValue.text = "+100";
+                stateValue.text = "+200";
                 diaValue.text = "50";
                 diaValue2.text = "50";
                 break;
             case 5:
                 stateLevel.text = "Lv.<#FF6969>6</color>";
-                stateValue.text = "+120";
+                stateValue.text = "+250";
                 diaValue.text = "60";
                 diaValue2.text = "60";
                 break;
             case 6:
                 stateLevel.text = "Lv.<#FF4B4B>7</color>";
-                stateValue.text = "+140";
+                stateValue.text = "+300";
                 diaValue.text = "70";
                 diaValue2.text = "70";
                 break;
             case 7:
                 stateLevel.text = "Lv.<#FF2D2D>8</color>";
-                stateValue.text = "+160";
+                stateValue.text = "+350";
                 diaValue.text = "80";
                 diaValue2.text = "80";
                 break;
             case 8:
                 stateLevel.text = "Lv.<#FF0F0F>9</color>";
-                stateValue.text = "+180";
+                stateValue.text = "+400";
                 diaValue.text = "90";
                 diaValue2.text = "90";
                 break;
             case 9:
                 stateLevel.text = "Lv.<#FF0F5F>10</color>";
-                stateValue.text = "+200";
+                stateValue.text = "+450";
                 diaValue.text = "100";
                 diaValue2.text = "100";
                 break;
             case 10:
                 stateLevel.text = "Lv.<#FF00FA>MAX</color>";
-                stateValue.text = "+250";
+                stateValue.text = "+500";
                 diaValue.text = "0";
                 diaValue2.text = "0";
                 break;
@@ -133,34 +133,34 @@ public class State_Gold : MonoBehaviour
         switch (StateManager.Instance.state_StartGoldLevel)
         {
             case 1:
-                StateManager.Instance.state_StartGold = 20;
+                StateManager.Instance.state_StartGold = 50;
                 break;
             case 2:
-                StateManager.Instance.state_StartGold = 40;
-                break;
-            case 3:
-                StateManager.Instance.state_StartGold = 80;
-                break;
-            case 4:
                 StateManager.Instance.state_StartGold = 100;
                 break;
-            case 5:
-                StateManager.Instance.state_StartGold = 120;
+            case 3:
+                StateManager.Instance.state_StartGold = 150;
                 break;
-            case 6:
-                StateManager.Instance.state_StartGold = 140;
-                break;
-            case 7:
-                StateManager.Instance.state_StartGold = 160;
-                break;
-            case 8:
-                StateManager.Instance.state_StartGold = 180;
-                break;
-            case 9:
+            case 4:
                 StateManager.Instance.state_StartGold = 200;
                 break;
-            case 10:
+            case 5:
                 StateManager.Instance.state_StartGold = 250;
+                break;
+            case 6:
+                StateManager.Instance.state_StartGold = 300;
+                break;
+            case 7:
+                StateManager.Instance.state_StartGold = 350;
+                break;
+            case 8:
+                StateManager.Instance.state_StartGold = 400;
+                break;
+            case 9:
+                StateManager.Instance.state_StartGold = 450;
+                break;
+            case 10:
+                StateManager.Instance.state_StartGold = 500;
                 break;
         }
     }

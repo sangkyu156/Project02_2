@@ -40,19 +40,19 @@ public class State_Power : MonoBehaviour
             case 1:
                 stateLevel.text = "Lv.<#FFE1E1>2</color>";
                 stateValue.text = "1  ->  2";
-                diaValue.text = "20";
+                diaValue.text = "15";
                 diaValue2.text = "20";
                 break;
             case 2:
                 stateLevel.text = "Lv.<#FFC3C3>3</color>";
                 stateValue.text = "2  ->  3";
-                diaValue.text = "30";
+                diaValue.text = "27";
                 diaValue2.text = "30";
                 break;
             case 3:
                 stateLevel.text = "Lv.<#FFA5A5>4</color>";
                 stateValue.text = "3  ->  4";
-                diaValue.text = "40";
+                diaValue.text = "38";
                 diaValue2.text = "40";
                 break;
             case 4:

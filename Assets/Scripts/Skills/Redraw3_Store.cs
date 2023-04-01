@@ -40,6 +40,7 @@ public class Redraw3_Store : MonoBehaviour
     public void Redraw3Buy()
     {
         Player.Instance.money += priceValue;
+        AchievementManager.Instance.legendSkillCount++;
 
         GameManager.Instance.PrintPlayerMoney();
         GameManager.Instance.buyCheckAction();

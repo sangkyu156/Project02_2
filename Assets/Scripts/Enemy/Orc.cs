@@ -77,7 +77,7 @@ public class Orc : EnemyBase, IPoolObject
     {
         maxHealth = 700;
         speed = 2.3f;
-        power = 15;
+        power = 10;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         drop = false;

@@ -59,6 +59,7 @@ public class IntroSceneManager : MonoBehaviour
         GameManager.Instance.uiSet = false;
         GameManager.Instance.state = GameManager.SceneState.Home;
         Player.Instance.PlayerStop_1();
+        Player.Instance.SkillReset();
         GameManager.Instance.TimeScaleSet();
         AchievementManager.Instance.AchievementCheck();
         SimpleSceneFader.ChangeSceneWithFade("Main");
