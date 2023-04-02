@@ -7,7 +7,6 @@ using static UnityEditor.Progress;
 
 public class FirstItemManager : MonoBehaviour
 {
-    public TextMeshProUGUI playerMoney;
     GameObject[] items;
 
     string[] firstSkillArray; //첫 상점에서 나와야 하는 스킬 모와두는곳
@@ -26,6 +25,9 @@ public class FirstItemManager : MonoBehaviour
 
     private void OnEnable()
     {
+        GameManager.Instance.CreateStore();
+        ItemManager.Instance.ExitButton_DestroyItem();
+
         Time.timeScale = 0;
         GameManager.Instance.PrintPlayerMoney();
         GameManager.Instance.storCount++;

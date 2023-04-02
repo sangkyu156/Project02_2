@@ -7,9 +7,8 @@ using TMPro;
 
 public class ItemManager : MonoBehaviour
 {
-    //public Action buyCheckAction;//스킬 구매시 남은돈으로 다른스킬 구매 가능한지 색구분하도록
-
     GameObject[] items;
+
     string[] skillNameArray; //스킬명 모와두는곳
     int[] skillWeightedArray; //스킬 가중치 모와두는곳
     public WRandom.WeightedRandomPicker<string> weightedRandom = new WRandom.WeightedRandomPicker<string>(); //'가중치랜덤' 변수 생성 & 초기화

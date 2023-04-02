@@ -24414,7 +24414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d07b41bd9ec4d4a906dd12229e811d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoney: {fileID: 0}
 --- !u!224 &1474258964
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26563,6 +26562,7 @@ MonoBehaviour:
   playerDiamond: {fileID: 505646116}
   distance: {fileID: 1165601516}
   uiSet: 0
+  stageCheck: 0000
   mainDiamond: 0
   stageDiamond: 0
   clearRewardDiamond: 0
@@ -42528,7 +42528,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 14125436}
         m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
-        m_MethodName: RetryStage01
+        m_MethodName: RetryStage02
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

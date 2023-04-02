@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     PoolManager poolManager; //오브젝트 풀링 매니져
     float reSpawnTime = 2f;
     public bool uiSet = false;
+    public bool[] stageCheck = new bool[2];
     public int mainDiamond;
     public int stageDiamond;
     public int clearRewardDiamond;

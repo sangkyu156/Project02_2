@@ -217,6 +217,9 @@ public class HomeManager : MonoBehaviour
 
     public void StageButton_Stage02()
     {
+        if (GameManager.Instance.stageCheck[0] == false)
+            return;
+
         GameManager.Instance.state = GameManager.SceneState.Stage;
         Time.timeScale = 1.0f;
 
