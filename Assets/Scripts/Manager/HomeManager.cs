@@ -210,8 +210,19 @@ public class HomeManager : MonoBehaviour
         GameManager.Instance.state = GameManager.SceneState.Stage;
         Time.timeScale = 1.0f;
 
-        SimpleSceneFader.ChangeSceneWithFade("Stage01");
         AchievementManager.Instance.tryCount++;
+        GameManager.Instance.curStage = 1;
+        SimpleSceneFader.ChangeSceneWithFade("Stage01");
+    }
+
+    public void StageButton_Stage02()
+    {
+        GameManager.Instance.state = GameManager.SceneState.Stage;
+        Time.timeScale = 1.0f;
+
+        AchievementManager.Instance.tryCount++;
+        GameManager.Instance.curStage = 2;
+        SimpleSceneFader.ChangeSceneWithFade("Stage02");
     }
 
     void OnDisable()

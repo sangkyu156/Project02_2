@@ -20,7 +20,14 @@ public class PauseManager : MonoBehaviour
 
     public void RetryStage01()
     {
+        GameManager.Instance.curStage = 1;
         GameManager.Instance.Retry01();
+    }
+
+    public void RetryStage02()
+    {
+        GameManager.Instance.curStage = 2;
+        GameManager.Instance.Retry02();
     }
 
     public void GoMenu()

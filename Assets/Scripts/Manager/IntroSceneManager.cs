@@ -50,8 +50,11 @@ public class IntroSceneManager : MonoBehaviour
 
     void GoStage01()
     {
-        SimpleSceneFader.ChangeSceneWithFade("Stage01");
         GameManager.Instance.state = GameManager.SceneState.Stage;
+        Time.timeScale = 1.0f;
+
+        GameManager.Instance.curStage = 1;
+        SimpleSceneFader.ChangeSceneWithFade("Stage01");
     }
 
     void GoHome()

@@ -4893,6 +4893,51 @@ MonoBehaviour:
     _count: 0
     _container: {fileID: 0}
     _nonLazy: 0
+  - _name: Larva
+    _component: {fileID: 8941931935611323331, guid: ff04ac1e0b02ab24f96c8f7a985595e9, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Larva2
+    _component: {fileID: 3019241540000348741, guid: 6e9ed2dcdfa763044ab7c03b21212398, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Larva3
+    _component: {fileID: 6964878950818758116, guid: ca3e2d7f83f99b348abef79454ab1620, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Larva4
+    _component: {fileID: 7741713369697160248, guid: 026bd14bd45913749b55754d0dd03761, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Rat
+    _component: {fileID: 240914136839889115, guid: cc1af32574d36ff4488a570a084bb804, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Rat2
+    _component: {fileID: 441077547860771459, guid: 727c3b20158ba394bacbe6ed3c83d164, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Rat3
+    _component: {fileID: 1891424057218369137, guid: 4cdbc43e06815bc4692cc34c58eaa76e, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Lizard
+    _component: {fileID: 4590663984763330477, guid: 4d0d85744b2b8c841ab1889dc075725c, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: Orc2
+    _component: {fileID: 2418948370845699531, guid: 1c70e15b48d3bd447969014580891905, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
 --- !u!114 &1807266651
 MonoBehaviour:
   m_ObjectHideFlags: 0

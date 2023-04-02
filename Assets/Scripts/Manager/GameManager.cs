@@ -282,9 +282,114 @@ public class GameManager : MonoBehaviour
     }
     public void Create_10()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 15; i++)
         {
             Spawn10();
+        }
+    }
+    public void Create_10_1()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            Spawn10();
+        }
+    }
+    public void Create_10_2()
+    {
+        for (int i = 0; i < 25; i++)
+        {
+            Spawn10();
+        }
+    }
+    public void Create_11()
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            Spawn11();
+        }
+    }
+    public void Create_11_1()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            Spawn11();
+        }
+    }
+    public void Create_11_2()
+    {
+        for (int i = 0; i < 25; i++)
+        {
+            Spawn11();
+        }
+    }
+    public void Create_12()
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            Spawn12();
+        }
+    }
+    public void Create_12_1()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            Spawn12();
+        }
+    }
+    public void Create_12_2()
+    {
+        for (int i = 0; i < 25; i++)
+        {
+            Spawn12();
+        }
+    }
+    public void Create_13()
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            Spawn13();
+        }
+    }
+    public void Create_13_1()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            Spawn13();
+        }
+    }
+    public void Create_13_2()
+    {
+        for (int i = 0; i < 25; i++)
+        {
+            Spawn13();
+        }
+    }
+    public void Create_14()
+    {
+        for (int i = 0; i < 13; i++)
+        {
+            Spawn14();
+        }
+    }
+    public void Create_14_1()
+    {
+        for (int i = 0; i < 18; i++)
+        {
+            Spawn14();
+        }
+    }
+    public void Create_14_2()
+    {
+        for (int i = 0; i < 25; i++)
+        {
+            Spawn14();
+        }
+    }
+    public void Create_Orc2()
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            SpawnOrc2();
         }
     }
     public void RepeatCreate_01()
@@ -351,7 +456,39 @@ public class GameManager : MonoBehaviour
     }
     void Spawn10()
     {
-        Wasp cow2 = poolManager.GetFromPool<Wasp>();
+        Larva orc = poolManager.GetFromPool<Larva>();
+    }
+    void Spawn11()
+    {
+        Larva2 orc = poolManager.GetFromPool<Larva2>();
+    }
+    void Spawn12()
+    {
+        Larva3 orc = poolManager.GetFromPool<Larva3>();
+    }
+    void Spawn13()
+    {
+        Larva4 orc = poolManager.GetFromPool<Larva4>();
+    }
+    void Spawn14()
+    {
+        Rat orc = poolManager.GetFromPool<Rat>();
+    }
+    void Spawn15()
+    {
+        Rat2 orc = poolManager.GetFromPool<Rat2>();
+    }
+    void Spawn16()
+    {
+        Rat3 orc = poolManager.GetFromPool<Rat3>();
+    }
+    void Spawn17()
+    {
+        Lizard orc = poolManager.GetFromPool<Lizard>();
+    }
+    void SpawnOrc2()
+    {
+        Orc2 orc = poolManager.GetFromPool<Orc2>();
     }
     void RepeatSpawn()
     {
@@ -439,6 +576,42 @@ public class GameManager : MonoBehaviour
     public void ReturnPool(Orc clone)
     {
         poolManager.TakeToPool<Orc>(clone.idName, clone);
+    }
+    public void ReturnPool(Larva clone)
+    {
+        poolManager.TakeToPool<Larva>(clone.idName, clone);
+    }
+    public void ReturnPool(Larva2 clone)
+    {
+        poolManager.TakeToPool<Larva2>(clone.idName, clone);
+    }
+    public void ReturnPool(Larva3 clone)
+    {
+        poolManager.TakeToPool<Larva3>(clone.idName, clone);
+    }
+    public void ReturnPool(Larva4 clone)
+    {
+        poolManager.TakeToPool<Larva4>(clone.idName, clone);
+    }
+    public void ReturnPool(Rat clone)
+    {
+        poolManager.TakeToPool<Rat>(clone.idName, clone);
+    }
+    public void ReturnPool(Rat2 clone)
+    {
+        poolManager.TakeToPool<Rat2>(clone.idName, clone);
+    }
+    public void ReturnPool(Rat3 clone)
+    {
+        poolManager.TakeToPool<Rat3>(clone.idName, clone);
+    }
+    public void ReturnPool(Lizard clone)
+    {
+        poolManager.TakeToPool<Lizard>(clone.idName, clone);
+    }
+    public void ReturnPool(Orc2 clone)
+    {
+        poolManager.TakeToPool<Orc2>(clone.idName, clone);
     }
     #endregion
 
@@ -572,9 +745,29 @@ public class GameManager : MonoBehaviour
         Invoke("GoStage01", 0.68f);
     }
 
+    public void Retry02()
+    {
+        uiSet = false;
+        GameManager.Instance.state = GameManager.SceneState.Home;
+        Player.Instance.PlayerStop_1();
+        Player.Instance.SkillReset();
+        GameManager.Instance.TimeScaleSet();
+        AchievementManager.Instance.AchievementCheck();
+        BGManager.Instance.countBG = 0;
+        Time.timeScale = 1;
+        SimpleSceneFader.ChangeSceneWithFade("Main");
+
+        Invoke("GoStage02", 0.68f);
+    }
+
     void GoStage01()
     {
         HomeManager.Instance.StageButton_Stage01();
+    }
+
+    void GoStage02()
+    {
+        HomeManager.Instance.StageButton_Stage02();
     }
 
     public void TimeScaleSet()
@@ -624,7 +817,6 @@ public class GameManager : MonoBehaviour
             paymentGold = 0;
             storCount = 0;
             stageDiamond = 0;
-            curStage = 1;
             killCount = 0;
 
             switch (curStage)

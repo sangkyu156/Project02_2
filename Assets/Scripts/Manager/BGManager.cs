@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static GameManager;
@@ -93,7 +91,7 @@ public class BGManager : MonoBehaviour
                     }
                 }
                 //포션상자 생성
-                if(Random.Range(0,13) <= Player.Instance.potionChestLevel)
+                if (Random.Range(0, 13) <= Player.Instance.potionChestLevel)
                     GameManager.Instance.CreateBox2();
 
                 //배경 2번 넘어갈때마다 50%확률로 상점,바위 생성
@@ -140,6 +138,7 @@ public class BGManager : MonoBehaviour
                             break;
                         case 2:
                             GameManager.Instance.Create_10();
+                            Destroy(information);
                             break;
                     }
                 }
@@ -329,7 +328,7 @@ public class BGManager : MonoBehaviour
                             break;
                     }
                 }
-                else if(countBG == 30)
+                else if (countBG == 30)
                 {
                     GameManager.Instance.CreateClearPortal();
                 }
@@ -356,6 +355,25 @@ public class BGManager : MonoBehaviour
             goldChestCount = 2;
 
             TargetSpot.Instance.SetMaxProgress(30);
+
+            for (int i = 0; i < map.Length; i++)
+            {
+                Destroy(map[i]);
+            }
+
+            switch (GameManager.Instance.curStage)
+            {
+                case 1:
+                    map[0] = Instantiate(Resources.Load<GameObject>("Field/Map01_A"), this.transform);
+                    map[1] = Instantiate(Resources.Load<GameObject>("Field/Map01_B"), this.transform);
+                    map[2] = Instantiate(Resources.Load<GameObject>("Field/Map01_C"), this.transform);
+                    break;
+                case 2:
+                    map[0] = Instantiate(Resources.Load<GameObject>("Field/Map02_A"), this.transform);
+                    map[1] = Instantiate(Resources.Load<GameObject>("Field/Map02_B"), this.transform);
+                    map[2] = Instantiate(Resources.Load<GameObject>("Field/Map02_C"), this.transform);
+                    break;
+            }
 
             map[0].transform.position = new Vector3(-50, 0, 0);
             map[1].transform.position = new Vector3(0, 0, 0);
