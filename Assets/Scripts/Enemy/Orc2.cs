@@ -76,7 +76,7 @@ public class Orc2 : EnemyBase, IPoolObject
     void SetAbility()
     {
         maxHealth = 900;
-        speed = 2f;
+        speed = 2.4f;
         power = 12;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);

@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
                             RepeatCreate_01();
                             break;
                         case 2:
-                            RepeatCreate_10();
+                            RepeatCreate_02();
                             break;
                     }
                 }
@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
                             RepeatCreate_02();
                             break;
                         case 2:
-                            RepeatCreate_10();
+                            RepeatCreate_03();
                             break;
                     }
                 }
@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour
                             RepeatCreate_03();
                             break;
                         case 2:
-                            RepeatCreate_10();
+                            RepeatCreate_04();
                             break;
                     }
                 }
@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
                             RepeatCreate_04();
                             break;
                         case 2:
-                            RepeatCreate_10();
+                            RepeatCreate_05();
                             break;
                     }
                 }
@@ -364,27 +364,6 @@ public class GameManager : MonoBehaviour
             Spawn13();
         }
     }
-    public void Create_14()
-    {
-        for (int i = 0; i < 13; i++)
-        {
-            Spawn14();
-        }
-    }
-    public void Create_14_1()
-    {
-        for (int i = 0; i < 18; i++)
-        {
-            Spawn14();
-        }
-    }
-    public void Create_14_2()
-    {
-        for (int i = 0; i < 25; i++)
-        {
-            Spawn14();
-        }
-    }
     public void Create_Orc2()
     {
         for (int i = 0; i < 1; i++)
@@ -420,11 +399,11 @@ public class GameManager : MonoBehaviour
             RepeatSpawn4();
         }
     }
-    public void RepeatCreate_10()
+    public void RepeatCreate_05()
     {
         for (int i = 0; i < 2; i++)
         {
-            RepeatSpawn10();
+            RepeatSpawn5();
         }
     }
     #endregion
@@ -456,34 +435,22 @@ public class GameManager : MonoBehaviour
     }
     void Spawn10()
     {
-        Larva orc = poolManager.GetFromPool<Larva>();
+        Larva larva = poolManager.GetFromPool<Larva>();
+        Larva2 larva2 = poolManager.GetFromPool<Larva2>();
     }
     void Spawn11()
     {
-        Larva2 orc = poolManager.GetFromPool<Larva2>();
+        Larva3 larva3 = poolManager.GetFromPool<Larva3>();
+        Larva4 larva4 = poolManager.GetFromPool<Larva4>();
     }
     void Spawn12()
     {
-        Larva3 orc = poolManager.GetFromPool<Larva3>();
+        Rat rat = poolManager.GetFromPool<Rat>();
+        Rat2 rat2 = poolManager.GetFromPool<Rat2>();
     }
     void Spawn13()
     {
-        Larva4 orc = poolManager.GetFromPool<Larva4>();
-    }
-    void Spawn14()
-    {
-        Rat orc = poolManager.GetFromPool<Rat>();
-    }
-    void Spawn15()
-    {
-        Rat2 orc = poolManager.GetFromPool<Rat2>();
-    }
-    void Spawn16()
-    {
-        Rat3 orc = poolManager.GetFromPool<Rat3>();
-    }
-    void Spawn17()
-    {
+        Rat3 rat3 = poolManager.GetFromPool<Rat3>();
         Lizard orc = poolManager.GetFromPool<Lizard>();
     }
     void SpawnOrc2()
@@ -505,6 +472,10 @@ public class GameManager : MonoBehaviour
     void RepeatSpawn4()
     {
         Pig4 pig4 = poolManager.GetFromPool<Pig4>();
+    }
+    void RepeatSpawn5()
+    {
+        Pig5 pig5 = poolManager.GetFromPool<Pig5>();
     }
     void RepeatSpawn10()
     {
@@ -564,6 +535,10 @@ public class GameManager : MonoBehaviour
     public void ReturnPool(Pig4 clone)
     {
         poolManager.TakeToPool<Pig4>(clone.idName, clone);
+    }
+    public void ReturnPool(Pig5 clone)
+    {
+        poolManager.TakeToPool<Pig5>(clone.idName, clone);
     }
     public void ReturnPool(Wasp clone)
     {

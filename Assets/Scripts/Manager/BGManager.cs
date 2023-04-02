@@ -150,7 +150,7 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_01_1();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_10_1();
                             break;
                     }
                 }
@@ -162,7 +162,7 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_01_2();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_10_2();
                             break;
                     }
                 }
@@ -174,7 +174,7 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_02();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_11();
                             break;
                     }
                 }
@@ -186,7 +186,7 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_02_1();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_11_1();
                             break;
                     }
                 }
@@ -198,7 +198,7 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_02_2();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_11_2();
                             break;
                     }
                 }
@@ -210,7 +210,7 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_03();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_12();
                             break;
                     }
                 }
@@ -222,7 +222,7 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_03_1();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_12_1();
                             break;
                     }
                 }
@@ -234,7 +234,7 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_03_2();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_12_2();
                             break;
                     }
                 }
@@ -246,7 +246,7 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_04();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_13();
                             break;
                     }
                 }
@@ -258,7 +258,7 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_04_1();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_13_1();
                             break;
                     }
                 }
@@ -270,7 +270,7 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_Orc();
                             break;
                         case 2:
-                            GameManager.Instance.Create_Orc();
+                            GameManager.Instance.Create_Orc2();
                             break;
                     }
                 }
@@ -282,7 +282,7 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_04_2();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_13_2();
                             break;
                     }
                 }
@@ -291,12 +291,14 @@ public class BGManager : MonoBehaviour
                     switch (GameManager.Instance.curStage)
                     {
                         case 1:
-                            GameManager.Instance.Create_01_2();
-                            GameManager.Instance.Create_02_2();
-                            GameManager.Instance.Create_03_2();
+                            GameManager.Instance.Create_01_1();
+                            GameManager.Instance.Create_02_1();
+                            GameManager.Instance.Create_03_1();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_10_1();
+                            GameManager.Instance.Create_11_1();
+                            GameManager.Instance.Create_12_1();
                             break;
                     }
                 }
@@ -310,7 +312,9 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_03_2();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_10_2();
+                            GameManager.Instance.Create_11_2();
+                            GameManager.Instance.Create_12_2();
                             break;
                     }
                 }
@@ -324,7 +328,9 @@ public class BGManager : MonoBehaviour
                             GameManager.Instance.Create_04_2();
                             break;
                         case 2:
-                            GameManager.Instance.Create_10();
+                            GameManager.Instance.Create_11_2();
+                            GameManager.Instance.Create_12_2();
+                            GameManager.Instance.Create_13_2();
                             break;
                     }
                 }

@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Orc : EnemyBase, IPoolObject
+public class Pig5 : EnemyBase, IPoolObject
 {
     public string idName;
-    public int maxHealth = 700;
+    public int maxHealth = 37;
     bool drop = false;
 
     public GameObject Shadow;
@@ -24,18 +24,20 @@ public class Orc : EnemyBase, IPoolObject
             if (drop == false)
             {
                 drop = true;
+                AchievementManager.Instance.pigCount++;
                 GameManager.Instance.killCount++;
-                for (int i = 0; i < 13; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     Drop();
                 }
-                GameObject pottion = Instantiate(Resources.Load<GameObject>("Field/HP_Potion")) as GameObject;
-                float posX = Random.Range(-0.5f, 0.3f);
-                float posY = Random.Range(-0.5f, 0.3f);
-                pottion.transform.position = new Vector2(transform.position.x + posX, transform.position.y + posY);
+
+                if (Random.Range(0, 20) == 7)
+                {
+                    PotionDrop();
+                }
             }
 
-            Invoke("OnTargetReached", 0.4f);//0.7초뒤 회수
+            Invoke("OnTargetReached", 0.6f);//0.7초뒤 회수
         }
         else
         {
@@ -75,9 +77,9 @@ public class Orc : EnemyBase, IPoolObject
     //능력 설정
     void SetAbility()
     {
-        maxHealth = 700;
-        speed = 2.6f;
-        power = 10;
+        maxHealth = 37;
+        speed = 4f;
+        power = 6;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         drop = false;
@@ -96,7 +98,7 @@ public class Orc : EnemyBase, IPoolObject
     {
         SetAbility();
 
-        float ranPosX = Random.Range(30f, 40f);
+        float ranPosX = Random.Range(30f, 50f);
         float ranPosY = Random.Range(0f, -4f);
         transform.position = Player.Instance.skillPos.transform.position + new Vector3(ranPosX, ranPosY, 0);
     }
@@ -109,7 +111,7 @@ public class Orc : EnemyBase, IPoolObject
         Shadow.SetActive(true);
         knockback = false;
 
-        float ranPosX = Random.Range(30f, 40f);
+        float ranPosX = Random.Range(30f, 50f);
         float ranPosY = Random.Range(0f, -4f);
         transform.position = Player.Instance.skillPos.transform.position + new Vector3(ranPosX, ranPosY, 0);
     }
@@ -133,5 +135,14 @@ public class Orc : EnemyBase, IPoolObject
     void Drop()
     {
         GameManager.Instance.CoinSpawn();
+    }
+
+    //포션드랍
+    void PotionDrop()
+    {
+        GameObject potion = Instantiate(Resources.Load<GameObject>("Field/HP_Potion2")) as GameObject;
+        float posX = Random.Range(-0.5f, 0.3f);
+        float posY = Random.Range(-0.5f, 0.3f);
+        potion.transform.position = new Vector2(transform.position.x + posX, transform.position.y + posY);
     }
 }

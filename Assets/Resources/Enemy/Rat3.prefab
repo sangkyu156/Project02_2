@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: 1891424057218369137}
   m_Layer: 0
   m_Name: Rat3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
