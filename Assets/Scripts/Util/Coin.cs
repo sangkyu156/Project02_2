@@ -31,8 +31,6 @@ public class Coin : MonoBehaviour, IPoolObject
     {
         if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "NoDamage")
         {
-            GameManager.Instance.SFXPlay(GameManager.Sfx.Coin);
-
             Player.Instance.money += Random.Range(2, 3);
             GameManager.Instance.PrintPlayerMoney();
             if (gameObject.activeSelf)

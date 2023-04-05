@@ -1,6 +1,8 @@
 using Redcode.Pools;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 using static GameManager;
 
 public class Player : MonoBehaviour
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour
     public int money = 0;
     public int attackSkillCount = 0;
     float dist = 0f;
+    bool isCoin = false;
 
     public PlayerHealthBar healthBar;
     public GameObject mainCamera;
@@ -683,6 +686,26 @@ public class Player : MonoBehaviour
         effect_Heal.SetActive(false);
     }
 
+    //코인한번에 여러게 먹었을때 사운드 컨트롤 하기위해만든 함수
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Coin")
+            StartCoroutine("CoinSound");
+    }
+
+    IEnumerator CoinSound()
+    {
+        if (isCoin)
+            yield break;
+
+        isCoin = true;
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Coin);
+
+        yield return new WaitForSeconds(0.08f);
+
+        isCoin = false;
+    }
+
     //공격스킬 4개 정해졌을때 나머지 공격스킬 랜덤목록에서 제외
     public void AttackSkillCheck()
     {
@@ -698,7 +721,7 @@ public class Player : MonoBehaviour
             ItemManager.Instance.weightedRandom.Remove("Spark_Store");
         if (tridentLevel == 0)
             ItemManager.Instance.weightedRandom.Remove("Trident_Store");
-        if (regenerateLevel == 0)
+        if (rageExplosionLevel == 0)
             ItemManager.Instance.weightedRandom.Remove("RageExplosion_Store");
         if (volcanoLevel == 0)
             ItemManager.Instance.weightedRandom.Remove("Volcano_Store");

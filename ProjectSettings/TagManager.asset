@@ -10,6 +10,7 @@ TagManager:
   - Boss
   - SceneFader
   - Portal
+  - Coin
   layers:
   - Default
   - TransparentFX
