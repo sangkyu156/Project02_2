@@ -232,7 +232,8 @@ public class TitleManager : MonoBehaviour
 
     public void GoIntro()
     {
-        GameManager.Instance.state = GameManager.SceneState.StartScene;
+        GameManager.Instance.state = GameManager.SceneState.Intro;
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         Time.timeScale = 1.0f;
 
         SimpleSceneFader.ChangeSceneWithFade("Intro");
@@ -245,10 +246,12 @@ public class TitleManager : MonoBehaviour
         set_upPopup = Instantiate(Resources.Load<GameObject>("Home/Set-upPopup_Title"), popups.transform);
         set_upPopup.transform.SetAsLastSibling();
         set_upPopup.SetActive(true);
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
     }
 
     public void Set_upPopupOff()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         popups = GameObject.Find("Canvas").gameObject;
         for (int i = 0; i < popups.transform.childCount; i++)
         {

@@ -117,6 +117,8 @@ public class State_Gold : MonoBehaviour
     public void StartGoldBuy()
     {
         GameManager.Instance.mainDiamond -= int.Parse(diaValue.text);
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Upgrade);
+
         StateManager.Instance.state_StartGoldLevel++;
         StartGoldSet();
         HomeManager.Instance.PrintDiamond();

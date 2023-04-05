@@ -15,6 +15,8 @@ public class BlackHole_Store : BlackHole_Skill
 
     void Start()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.LegendarySkill);
+
         int min = (int)Math.Round((int)SkillData.SkillPrice.Three * 0.9f);
         int max = (int)Math.Round((int)SkillData.SkillPrice.Three * 1.1f);
 
@@ -79,13 +81,15 @@ public class BlackHole_Store : BlackHole_Skill
 
         if (Player.Instance.money < priceValue)
         {
-            //버튼 흔들리는 액션
+            GameManager.Instance.SFXPlay(GameManager.Sfx.DonotBuy);
             return;
         }
 
         Player.Instance.money -= priceValue;
         GameManager.Instance.paymentGold += priceValue;
         AchievementManager.Instance.legendSkillCount++;
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Buy);
+
         if (Player.Instance.blackholeLevel == 0)
         {
             Player.Instance.blackholeLevel++;

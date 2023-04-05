@@ -51,6 +51,7 @@ public class IntroSceneManager : MonoBehaviour
     void GoStage01()
     {
         GameManager.Instance.state = GameManager.SceneState.Stage;
+        //GameManager.Instance.BGMPlay();
         Time.timeScale = 1.0f;
 
         GameManager.Instance.curStage = 1;
@@ -61,6 +62,7 @@ public class IntroSceneManager : MonoBehaviour
     {
         GameManager.Instance.uiSet = false;
         GameManager.Instance.state = GameManager.SceneState.Home;
+        //GameManager.Instance.BGMPlay();
         Player.Instance.PlayerStop_1();
         Player.Instance.SkillReset();
         GameManager.Instance.TimeScaleSet();

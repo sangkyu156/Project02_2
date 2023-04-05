@@ -7,6 +7,7 @@ using System.Diagnostics;
 using UnityEngine.SceneManagement;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 using UnityEngine.UI;
+using UnityEngine.LowLevel;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,11 +36,21 @@ public class GameManager : MonoBehaviour
     public System.Action buyCheckAction;//스킬 구매시 남은돈으로 다른스킬 구매 가능한지 색구분하도록
     public System.Action skillLockAction;//공격스킬 4개 모두 정해졌을때 다른 공격스킬 구매못하도록
 
+    public AudioSource bgmPlayer;
+    public AudioSource[] sfxPlayer;
+    public AudioClip[] sfxClip;
+    int sfxCursor;
+    public enum Sfx
+    {
+        BlackHole, Button01, Buy, ClearBox, ClearPopup, Coin, DonotBuy, EnemyDie, EnergyBall, FireBall, GameOver, Heal, LegendarySkill, PlayerHit,
+        RageExplosion, Spark, Tornado, Trident, Upgrade, Volcano, DiamondReward
+    };
+
     public enum SceneState
     {
-        Home,Stage,StartScene
+        Home,Stage,Title,Intro
     }
-    public SceneState state = SceneState.StartScene;
+    public SceneState state = SceneState.Title;
 
     private static GameManager instance = null;
 
@@ -79,11 +90,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //임시 테스트
-        //mainDiamond = 10;
-
-        state = SceneState.StartScene;
-
+        state = SceneState.Title;
 
         //스테이지씬 아니면 아래 함수 사용x
         if (GameManager.Instance.state != SceneState.Stage)
@@ -633,6 +640,12 @@ public class GameManager : MonoBehaviour
 
     public void PlayerClear()
     {
+        Player.Instance.SkillReset();
+        Player.Instance.ColliderOff();
+
+        bgmPlayer.Stop();
+        GameManager.Instance.SFXPlay(GameManager.Sfx.ClearPopup);
+
         try
         {
             if (clearPopup.activeSelf == false)
@@ -686,6 +699,12 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDeath()
     {
+        Player.Instance.SkillReset();
+        Player.Instance.ColliderOff();
+
+        bgmPlayer.Stop();
+        GameManager.Instance.SFXPlay(Sfx.GameOver);
+
         try
         {
             if(deadPopup.activeSelf == false)
@@ -694,12 +713,12 @@ public class GameManager : MonoBehaviour
                     store.SetActive(false);
 
                 deadPopup.SetActive(true);
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
             }
         }
         catch (MissingReferenceException e)
         {
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             if (deadPopup != null && deadPopup.activeSelf == false)
                 deadPopup.SetActive(true);
             UnityEngine.Debug.Log($"{e}에러 뜸");
@@ -756,12 +775,114 @@ public class GameManager : MonoBehaviour
         if (GameManager.Instance.state == GameManager.SceneState.Home)
         {
             Time.timeScale = 1;
+            Player.Instance.PlayerStop();
             GameObject fader = GameObject.Find("Scene Fader Canvas(Clone)");
             Color color_ = fader.GetComponentInChildren<Image>().color;
             color_.a = 0;
             fader.GetComponentInChildren<Image>().color = color_;
             UnityEngine.Debug.Log("페이드 이미지 버그 수정 완료");
         }
+    }
+    
+    void BGMPlay_1()
+    {
+        Invoke("BGMPlay", 0.3f);
+    }
+
+    public void BGMPlay()
+    {
+        switch (state)
+        {
+            case SceneState.Home:
+                bgmPlayer.clip = Instantiate(Resources.Load<AudioClip>("Sound/Home_BGM"));
+                bgmPlayer.Play();
+                break;
+            case SceneState.Stage:
+                bgmPlayer.clip = Instantiate(Resources.Load<AudioClip>("Sound/Stage_BGM"));
+                bgmPlayer.Play();
+                break;
+            case SceneState.Title:
+                bgmPlayer.clip = Instantiate(Resources.Load<AudioClip>("Sound/TitleBGM"));
+                bgmPlayer.Play();
+                break;
+            case SceneState.Intro:
+                bgmPlayer.clip = Instantiate(Resources.Load<AudioClip>("Sound/Home_BGM"));
+                bgmPlayer.Play();
+                break;
+        }
+    }
+
+    public void SFXPlay(Sfx type)
+    {
+        switch (type)
+        {
+            case Sfx.BlackHole:
+                sfxPlayer[sfxCursor].clip = sfxClip[0];
+                break;
+            case Sfx.Button01:
+                sfxPlayer[sfxCursor].clip = sfxClip[1];
+                break;
+            case Sfx.Buy:
+                sfxPlayer[sfxCursor].clip = sfxClip[2];
+                break;
+            case Sfx.ClearBox:
+                sfxPlayer[sfxCursor].clip = sfxClip[3];
+                break;
+            case Sfx.ClearPopup:
+                sfxPlayer[sfxCursor].clip = sfxClip[4];
+                break;
+            case Sfx.Coin:
+                sfxPlayer[sfxCursor].clip = sfxClip[5];
+                break;
+            case Sfx.DonotBuy:
+                sfxPlayer[sfxCursor].clip = sfxClip[6];
+                break;
+            case Sfx.EnemyDie:
+                sfxPlayer[sfxCursor].clip = sfxClip[7];
+                break;
+            case Sfx.EnergyBall:
+                sfxPlayer[sfxCursor].clip = sfxClip[8];
+                break;
+            case Sfx.FireBall:
+                sfxPlayer[sfxCursor].clip = sfxClip[9];
+                break;
+            case Sfx.GameOver:
+                sfxPlayer[sfxCursor].clip = sfxClip[10];
+                break;
+            case Sfx.Heal:
+                sfxPlayer[sfxCursor].clip = sfxClip[11];
+                break;
+            case Sfx.LegendarySkill:
+                sfxPlayer[sfxCursor].clip = sfxClip[12];
+                break;
+            case Sfx.PlayerHit:
+                sfxPlayer[sfxCursor].clip = sfxClip[13];
+                break;
+            case Sfx.RageExplosion:
+                sfxPlayer[sfxCursor].clip = sfxClip[14];
+                break;
+            case Sfx.Spark:
+                sfxPlayer[sfxCursor].clip = sfxClip[15];
+                break;
+            case Sfx.Tornado:
+                sfxPlayer[sfxCursor].clip = sfxClip[16];
+                break;
+            case Sfx.Trident:
+                sfxPlayer[sfxCursor].clip = sfxClip[17];
+                break;
+            case Sfx.Upgrade:
+                sfxPlayer[sfxCursor].clip = sfxClip[18];
+                break;
+            case Sfx.Volcano:
+                sfxPlayer[sfxCursor].clip = sfxClip[19];
+                break;
+            case Sfx.DiamondReward:
+                sfxPlayer[sfxCursor].clip = sfxClip[20];
+                break;
+        }
+
+        sfxPlayer[sfxCursor].Play();
+        sfxCursor = (sfxCursor + 1) % sfxPlayer.Length;
     }
 
     void OnDisable()
@@ -805,5 +926,9 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
+        else if (GameManager.Instance.state == SceneState.Home)
+            Player.Instance.PlayerStop();
+
+        BGMPlay_1();
     }
 }

@@ -14,6 +14,8 @@ public class Redraw3_Store : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.LegendarySkill);
+
         price.text = "+100";
         priceValue = Int32.Parse("100");
 
@@ -39,6 +41,8 @@ public class Redraw3_Store : MonoBehaviour
     //±¸¸Å
     public void Redraw3Buy()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Buy);
+
         Player.Instance.money += priceValue;
         AchievementManager.Instance.legendSkillCount++;
 

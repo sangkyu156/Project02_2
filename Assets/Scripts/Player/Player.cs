@@ -247,6 +247,7 @@ public class Player : MonoBehaviour
             if(rageExplosionTime < 0)
             {
                 rageExplosionSkill.SetActive(true);
+                GameManager.Instance.SFXPlay(Sfx.RageExplosion);
                 Invoke("RageExplosionOff", 0.7f);
                 rageExplosionTime = rageExplosionSkill.GetComponent<RageExplosion_Skill>().rageExplosionCooldown;
             }
@@ -413,30 +414,37 @@ public class Player : MonoBehaviour
     //오브젝트풀링 생성
     void Spawn()
     {
+        GameManager.Instance.SFXPlay(Sfx.FireBall);
         FireBall_Skill fireBall_Skill = poolManager.GetFromPool<FireBall_Skill>();
     }
     void Spawn2()
     {
+        GameManager.Instance.SFXPlay(Sfx.Tornado);
         Tornado_Skill tornado_Skill = poolManager.GetFromPool<Tornado_Skill>();
     }
     void Spawn3()
     {
+        GameManager.Instance.SFXPlay(Sfx.BlackHole);
         BlackHole_Skill blackHole_Skill = poolManager.GetFromPool<BlackHole_Skill>();
     }
     void Spawn4()
     {
+        GameManager.Instance.SFXPlay(Sfx.Spark);
         Spark_Skill spark_Skill = poolManager.GetFromPool<Spark_Skill>();
     }
     void Spawn5()
     {
+        GameManager.Instance.SFXPlay(Sfx.EnergyBall);
         WaveEnergy_Skill waveEnergy_Skill = poolManager.GetFromPool<WaveEnergy_Skill>();
     }
     void Spawn6()
     {
+        GameManager.Instance.SFXPlay(Sfx.Volcano);
         Volcano_Skill volcano_Skill = poolManager.GetFromPool<Volcano_Skill>();
     }
     void Spawn7()
     {
+        GameManager.Instance.SFXPlay(Sfx.Trident);
         Trident_Skill volcano_Skill = poolManager.GetFromPool<Trident_Skill>();
     }
 
@@ -480,6 +488,7 @@ public class Player : MonoBehaviour
         GameObject damageUI = Instantiate(Resources.Load<GameObject>($"DamageTextCanvas")) as GameObject;
         damageUI.GetComponentInChildren<DamageText>().damage = damage_;
         damageUI.transform.SetParent(textPostion, false);
+        GameManager.Instance.SFXPlay(Sfx.PlayerHit);
 
         gameObject.tag = "NoDamage";
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
@@ -522,6 +531,7 @@ public class Player : MonoBehaviour
     public void GetHP_Potion(ItemManager.Potion potion_)
     {
         effect_Heal.SetActive(true);
+        GameManager.Instance.SFXPlay(Sfx.Heal);
 
         switch (potion_)
         {
@@ -567,6 +577,8 @@ public class Player : MonoBehaviour
     {
         regenerateCooldown = 10;
         effect_Heal.SetActive(true);
+
+        GameManager.Instance.SFXPlay(Sfx.Heal);
 
         switch (Player.Instance.regenerateLevel)
         {
@@ -753,17 +765,21 @@ public class Player : MonoBehaviour
     //홈화면으로 왔을때 플레이어 정지시키기
     public void PlayerStop()
     {
-
         this.transform.position = new Vector3(-7.7f, -7, 0);
         rigidbody2D.velocity = new Vector2(0, 0);
         this.rigidbody2D.AddForce(new Vector2(0, 0));
+        Time.timeScale = 1;
+    }
+
+    public void ColliderOff()
+    {
+        collider.enabled = false;
     }
 
     public void PlayerStop_1()
     {
         collider.enabled = false;
         Invoke("PlayerStop", 0.2f);
-        Debug.Log("실행됨");
     }
 
     void OnDisable()

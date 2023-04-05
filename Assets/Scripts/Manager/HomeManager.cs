@@ -73,6 +73,8 @@ public class HomeManager : MonoBehaviour
         popups.transform.SetAsLastSibling();
         stagePopup.SetActive(true);
 
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
+
         for (int i = 0; i < 5; i++)//스테이지 개수만큼 반복
         {
             if (curStage == i)
@@ -89,6 +91,7 @@ public class HomeManager : MonoBehaviour
 
     public void StagePopupOff()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         Destroy(stagePopup);
     }
 
@@ -96,6 +99,7 @@ public class HomeManager : MonoBehaviour
     {
         PopupParentsDesignate();
 
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         set_upPopup = Instantiate(Resources.Load<GameObject>("Home/Set-upPopup"), popups.transform);
         popups.transform.SetAsLastSibling();
         set_upPopup.SetActive(true);
@@ -103,6 +107,7 @@ public class HomeManager : MonoBehaviour
 
     public void Set_upPopupOff()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         Destroy(set_upPopup);
     }
 
@@ -110,6 +115,7 @@ public class HomeManager : MonoBehaviour
     {
         PopupParentsDesignate();
 
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         storePopup = Instantiate(Resources.Load<GameObject>("Home/DiaStorePopup"), popups.transform);
         popups.transform.SetAsLastSibling();
         storePopup.SetActive(true);
@@ -117,6 +123,7 @@ public class HomeManager : MonoBehaviour
 
     public void StorePopupOff()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         Destroy(storePopup);
     }
 
@@ -124,6 +131,7 @@ public class HomeManager : MonoBehaviour
     {
         PopupParentsDesignate();
 
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         achievementPopup = Instantiate(Resources.Load<GameObject>("Home/AchievementPopup"), popups.transform);
         popups.transform.SetAsLastSibling();
         achievementPopup.SetActive(true);
@@ -131,6 +139,7 @@ public class HomeManager : MonoBehaviour
 
     public void AchievementPopupOff()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         Destroy(achievementPopup);
     }
 
@@ -138,6 +147,7 @@ public class HomeManager : MonoBehaviour
     {
         PopupParentsDesignate();
 
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         creditPopup = Instantiate(Resources.Load<GameObject>("Home/CreditPopup"), popups.transform);
         popups.transform.SetAsLastSibling();
         creditPopup.SetActive(true);
@@ -145,6 +155,7 @@ public class HomeManager : MonoBehaviour
 
     public void CreditPopupOff()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         Destroy(creditPopup);
     }
 
@@ -197,16 +208,19 @@ public class HomeManager : MonoBehaviour
 
     public void LanguageEnglishChoice()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         TextUtil.languageNumber = 2;
     }
 
     public void LanguageKoreanChoice()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         TextUtil.languageNumber = 1;
     }
 
     public void StageButton_Stage01()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         GameManager.Instance.state = GameManager.SceneState.Stage;
         Time.timeScale = 1.0f;
 
@@ -220,6 +234,7 @@ public class HomeManager : MonoBehaviour
         if (GameManager.Instance.stageCheck[0] == false)
             return;
 
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         GameManager.Instance.state = GameManager.SceneState.Stage;
         Time.timeScale = 1.0f;
 

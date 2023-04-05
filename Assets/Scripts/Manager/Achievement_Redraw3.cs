@@ -50,6 +50,8 @@ public class Achievement_Redraw3 : MonoBehaviour
 
     public void Reward()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.DiamondReward);
+
         AchievementManager.Instance.achievement07 = 2;
         GameManager.Instance.mainDiamond += 3;
 

@@ -111,6 +111,8 @@ public class FirstItemManager : MonoBehaviour
 
     public void ExitButton_DestroyItem()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
+
         for (int i = 0; i < items.Length; i++)
         {
             Destroy(items[i].transform.GetChild(0).gameObject);

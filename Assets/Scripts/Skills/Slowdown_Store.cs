@@ -15,6 +15,8 @@ public class Slowdown_Store : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.LegendarySkill);
+
         int min = (int)Math.Round((int)SkillData.SkillPrice.Three * 0.9f);
         int max = (int)Math.Round((int)SkillData.SkillPrice.Three * 1.1f);
 
@@ -101,12 +103,14 @@ public class Slowdown_Store : MonoBehaviour
     {
         if (Player.Instance.money < priceValue)
         {
-            //버튼 흔들리는 액션
+            GameManager.Instance.SFXPlay(GameManager.Sfx.DonotBuy);
             return;
         }
 
         Player.Instance.money -= priceValue;
         GameManager.Instance.paymentGold += priceValue;
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Buy);
+
         AchievementManager.Instance.legendSkillCount++;
         Player.Instance.slowdownLevel++;
         GameManager.Instance.PrintPlayerMoney();

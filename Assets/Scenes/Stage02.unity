@@ -13390,7 +13390,6 @@ GameObject:
   m_Component:
   - component: {fileID: 902127128}
   - component: {fileID: 902127127}
-  - component: {fileID: 902127130}
   - component: {fileID: 902127129}
   m_Layer: 0
   m_Name: Main Camera
@@ -13472,14 +13471,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraSpeed: 5
   player: {fileID: 534748732}
---- !u!81 &902127130
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 902127126}
-  m_Enabled: 1
 --- !u!1 &932878483
 GameObject:
   m_ObjectHideFlags: 0
@@ -26570,6 +26561,7 @@ MonoBehaviour:
   storCount: 0
   curStage: 0
   killCount: 0
+  bgmPlayer: {fileID: 0}
   state: 0
 --- !u!4 &1674151576
 Transform:

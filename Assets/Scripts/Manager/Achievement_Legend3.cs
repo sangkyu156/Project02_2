@@ -50,6 +50,8 @@ public class Achievement_Legend3 : MonoBehaviour
 
     public void Reward()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.DiamondReward);
+
         AchievementManager.Instance.achievement10 = 2;
         GameManager.Instance.mainDiamond += 20;
 

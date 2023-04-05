@@ -11,7 +11,7 @@ public class Chicken2 : EnemyBase, IPoolObject
 
     void Update()
     {
-        if (currentHealth <= 0) //나중에 EnemyBase로 움겨야함
+        if (currentHealth <= 0 && drop == false)
         {
             Shadow.SetActive(false);//그림자 x
             collider.enabled = false;//콜라이더 x
@@ -31,7 +31,7 @@ public class Chicken2 : EnemyBase, IPoolObject
 
             Invoke("OnTargetReached", 0.4f);//0.7초뒤 회수
         }
-        else
+        else if(drop == false)
         {
             TargetConfirm();
         }

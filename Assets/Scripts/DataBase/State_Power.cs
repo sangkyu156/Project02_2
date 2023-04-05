@@ -118,6 +118,8 @@ public class State_Power : MonoBehaviour
     public void PowerBuy()
     {
         GameManager.Instance.mainDiamond -= int.Parse(diaValue.text);
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Upgrade);
+
         StateManager.Instance.state_PowerLevel++;
         PowerSet();
         HomeManager.Instance.PrintDiamond();

@@ -61,6 +61,8 @@ public class GameOverManager : MonoBehaviour
 
     public void ExitButton_Home()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
+
         GameManager.Instance.uiSet = false;
         GameManager.Instance.state = GameManager.SceneState.Home;
         Player.Instance.PlayerStop_1();

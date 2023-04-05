@@ -105,12 +105,14 @@ public class GoldChest_Store : MonoBehaviour
     {
         if (Player.Instance.money < priceValue)
         {
-            //버튼 흔들리는 액션
+            GameManager.Instance.SFXPlay(GameManager.Sfx.DonotBuy);
             return;
         }
 
         Player.Instance.money -= priceValue;
         GameManager.Instance.paymentGold += priceValue;
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Buy);
+
         Player.Instance.goldChestLevel++;
         GameManager.Instance.PrintPlayerMoney();
         GameManager.Instance.buyCheckAction();

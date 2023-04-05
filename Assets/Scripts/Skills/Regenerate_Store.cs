@@ -106,12 +106,14 @@ public class Regenerate_Store : MonoBehaviour
     {
         if (Player.Instance.money < priceValue)
         {
-            //버튼 흔들리는 액션
+            GameManager.Instance.SFXPlay(GameManager.Sfx.DonotBuy);
             return;
         }
 
         Player.Instance.money -= priceValue;
         GameManager.Instance.paymentGold += priceValue;
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Buy);
+
         Player.Instance.regenerateLevel++;
         Player.Instance.regenerateCooldown = 10;
         Player.Instance.regenerate = true;

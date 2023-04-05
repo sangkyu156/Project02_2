@@ -117,6 +117,8 @@ public class State_Health : MonoBehaviour
     public void HealthBuy()
     {
         GameManager.Instance.mainDiamond -= int.Parse(diaValue.text);
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Upgrade);
+
         StateManager.Instance.state_HealthLevel++;
         HealthSet();
         HomeManager.Instance.PrintDiamond();

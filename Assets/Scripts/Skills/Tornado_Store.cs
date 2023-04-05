@@ -76,12 +76,14 @@ public class Tornado_Store : Tornado_Skill
 
         if (Player.Instance.money < priceValue)
         {
-            //버튼 흔들리는 액션
+            GameManager.Instance.SFXPlay(GameManager.Sfx.DonotBuy);
             return;
         }
 
         Player.Instance.money -= priceValue;
         GameManager.Instance.paymentGold += priceValue;
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Buy);
+
         if (Player.Instance.tornadoLevel == 0)
         {
             Player.Instance.tornadoLevel++;

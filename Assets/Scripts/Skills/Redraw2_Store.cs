@@ -39,6 +39,8 @@ public class Redraw2_Store : MonoBehaviour
     //±¸¸Å
     public void Redraw2Buy()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Buy);
+
         GameManager.Instance.PrintPlayerMoney();
         GameManager.Instance.buyCheckAction();
 

@@ -50,6 +50,8 @@ public class Achievement_Pig2 : MonoBehaviour
 
     public void Reward()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.DiamondReward);
+
         AchievementManager.Instance.achievement03 = 2;
         GameManager.Instance.mainDiamond += 1;
 

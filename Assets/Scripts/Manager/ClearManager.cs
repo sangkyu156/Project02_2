@@ -11,6 +11,8 @@ public class ClearManager : MonoBehaviour
 
     public void RewardPopupOn()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.ClearBox);
+
         switch (GameManager.Instance.curStage)
         {
             case 1:
@@ -41,6 +43,7 @@ public class ClearManager : MonoBehaviour
                 GameManager.Instance.stageCheck[1] = true;
                 break;
         }
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         GameManager.Instance.uiSet = false;
         GameManager.Instance.state = GameManager.SceneState.Home;
         Player.Instance.PlayerStop_1();

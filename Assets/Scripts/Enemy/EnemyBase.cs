@@ -43,6 +43,7 @@ public class EnemyBase : MonoBehaviour
     //∏ÿ√„
     protected void PositionStop()
     {
+        //GameManager.Instance.SFXPlay(GameManager.Sfx.EnemyDie);
         transform.position = Vector2.MoveTowards(transform.position, target.position, 0 * Time.deltaTime);
     }
 

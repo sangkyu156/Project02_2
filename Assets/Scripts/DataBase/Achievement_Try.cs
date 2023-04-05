@@ -50,6 +50,8 @@ public class Achievement_Try : MonoBehaviour
 
     public void Reward()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.DiamondReward);
+
         AchievementManager.Instance.achievement02 = 2;
         GameManager.Instance.mainDiamond += 1;
 

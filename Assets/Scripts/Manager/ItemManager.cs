@@ -129,10 +129,11 @@ public class ItemManager : MonoBehaviour
     {
         if (Player.Instance.money < 200)
         {
-            //돈모잘라서 버튼 흔들리는 애니매이션
+            GameManager.Instance.SFXPlay(GameManager.Sfx.DonotBuy);
             return;
         }
 
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         Player.Instance.money -= 200; //돈차감
         AchievementManager.Instance.redrawCount++;
 
@@ -157,6 +158,8 @@ public class ItemManager : MonoBehaviour
 
     public void ExitButton_DestroyItem()
     {
+        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
+
         for (int i = 0; i < items.Length; i++)
         {
             Destroy(items[i].transform.GetChild(0).gameObject);
