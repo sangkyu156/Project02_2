@@ -5,6 +5,8 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     public GameObject pausePopup;
+    public GameObject Canvas2;
+    GameObject set_upPopup;
 
     public void PausePopupOn()
     {
@@ -20,18 +22,18 @@ public class PauseManager : MonoBehaviour
         pausePopup.SetActive(false);
     }
 
-    public void RetryStage01()
+    public void Set_upPopupOn()
     {
         GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
-        GameManager.Instance.curStage = 1;
-        GameManager.Instance.Retry01();
+        set_upPopup = Instantiate(Resources.Load<GameObject>("Home/Set-upPopup_Title"), Canvas2.transform);
+        set_upPopup.transform.SetAsLastSibling();
+        set_upPopup.SetActive(true);
     }
 
-    public void RetryStage02()
+    public void Set_upPopupOff()
     {
         GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
-        GameManager.Instance.curStage = 2;
-        GameManager.Instance.Retry02();
+        Destroy(set_upPopup);
     }
 
     public void GoMenu()

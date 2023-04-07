@@ -9,10 +9,38 @@ public class CameraController : MonoBehaviour
 
     public GameObject player;
 
+    private static CameraController instance = null;
+
     private void OnEnable()
     {
         // 델리게이트 체인 추가
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void Awake()
+    {
+        if (null == instance)
+        {
+            instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public static CameraController Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
     }
 
     void OnDisable()
@@ -21,26 +49,19 @@ public class CameraController : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        player = GameObject.Find("Player");
+        transform.position = new Vector3(0, 0, -10);
     }
 
     private void FixedUpdate()
     {
-        try
+        Vector3 dir = player.transform.position - this.transform.position;
+        if (dir.x > 0)
         {
-            Vector3 dir = player.transform.position - this.transform.position;
-            if (dir.x > 0)
-            {
-                Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.fixedDeltaTime, 0, 0.0f);
-                this.transform.Translate(moveVector);
-            }
-        }
-        catch (MissingReferenceException e)
-        {
-            player = GameObject.Find("Player");
-            Debug.Log($"{e}에러가 떴는데 플레이어 다시 찾아서 넣음");
+            Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.fixedDeltaTime, 0, 0.0f);
+            this.transform.Translate(moveVector);
         }
     }
 }

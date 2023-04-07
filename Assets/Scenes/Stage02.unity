@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePopup: {fileID: 14125434}
+  Canvas2: {fileID: 18362815}
 --- !u!114 &14125437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26562,6 +26563,8 @@ MonoBehaviour:
   curStage: 0
   killCount: 0
   bgmPlayer: {fileID: 0}
+  sfxPlayer: []
+  sfxClip: []
   state: 0
 --- !u!4 &1674151576
 Transform:
@@ -42520,7 +42523,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 14125436}
         m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
-        m_MethodName: RetryStage02
+        m_MethodName: Set_upPopupOn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

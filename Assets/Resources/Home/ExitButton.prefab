@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 5590505605158898597}
   - component: {fileID: 5590505605158898598}
   - component: {fileID: 5590505605158898599}
+  - component: {fileID: 5813561793220406010}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -365,9 +366,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ExitButton
+      - m_Target: {fileID: 5813561793220406010}
+        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
+        m_MethodName: GameExit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -397,3 +398,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &5813561793220406010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5590505605158898617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f99a36301ae3e3642a54a73fe1c6a597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

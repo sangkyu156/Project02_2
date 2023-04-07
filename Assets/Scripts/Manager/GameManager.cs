@@ -5,7 +5,6 @@ using UnityEngine;
 using TMPro;
 using System.Diagnostics;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 using UnityEngine.UI;
 using UnityEngine.LowLevel;
 
@@ -883,6 +882,11 @@ public class GameManager : MonoBehaviour
 
         sfxPlayer[sfxCursor].Play();
         sfxCursor = (sfxCursor + 1) % sfxPlayer.Length;
+    }
+
+    public void GameExit()
+    {
+        Application.Quit();
     }
 
     void OnDisable()

@@ -352,7 +352,6 @@ public class BGManager : MonoBehaviour
     {
         if (GameManager.Instance.state == SceneState.Stage)
         {
-            player = GameObject.Find("Player");
             information = GameObject.Find("Information");
 
             Time.timeScale = 1;
