@@ -25,7 +25,9 @@ public class Orc2 : EnemyBase, IPoolObject
             {
                 drop = true;
                 GameManager.Instance.killCount++;
-                for (int i = 0; i < 13; i++)
+                Drop2();
+                Drop2();
+                for (int i = 0; i < 3; i++)
                 {
                     Drop();
                 }
@@ -133,5 +135,10 @@ public class Orc2 : EnemyBase, IPoolObject
     void Drop()
     {
         GameManager.Instance.CoinSpawn();
+    }
+
+    void Drop2()
+    {
+        GameManager.Instance.Coin2Spawn();
     }
 }

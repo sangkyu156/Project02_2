@@ -25,10 +25,7 @@ public class Rat3 : EnemyBase, IPoolObject
             {
                 drop = true;
                 GameManager.Instance.killCount++;
-                for (int i = 0; i < 5; i++)
-                {
-                    Drop();
-                }
+                Drop2();
             }
 
             Invoke("OnTargetReached", 0.4f);//0.7초뒤 회수
@@ -129,5 +126,10 @@ public class Rat3 : EnemyBase, IPoolObject
     void Drop()
     {
         GameManager.Instance.CoinSpawn();
+    }
+
+    void Drop2()
+    {
+        GameManager.Instance.Coin2Spawn();
     }
 }

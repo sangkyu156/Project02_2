@@ -26,10 +26,7 @@ public class Pig5 : EnemyBase, IPoolObject
                 drop = true;
                 AchievementManager.Instance.pigCount++;
                 GameManager.Instance.killCount++;
-                for (int i = 0; i < 5; i++)
-                {
-                    Drop();
-                }
+                Drop2();
 
                 if (Random.Range(0, 20) == 7)
                 {
@@ -135,6 +132,11 @@ public class Pig5 : EnemyBase, IPoolObject
     void Drop()
     {
         GameManager.Instance.CoinSpawn();
+    }
+
+    void Drop2()
+    {
+        GameManager.Instance.Coin2Spawn();
     }
 
     //포션드랍

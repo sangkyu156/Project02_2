@@ -5703,6 +5703,11 @@ MonoBehaviour:
     _count: 0
     _container: {fileID: 0}
     _nonLazy: 0
+  - _name: Coin_2
+    _component: {fileID: 6646990167756978638, guid: 12bc6d23923e06444bba5546c4475489, type: 3}
+    _count: 0
+    _container: {fileID: 0}
+    _nonLazy: 0
 --- !u!114 &1807266651
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,10 +25,8 @@ public class Lizard : EnemyBase, IPoolObject
             {
                 drop = true;
                 GameManager.Instance.killCount++;
-                for (int i = 0; i < 6; i++)
-                {
-                    Drop();
-                }
+                Drop2();
+                Drop();
             }
 
             Invoke("OnTargetReached", 0.4f);//0.7초뒤 회수
@@ -129,5 +127,10 @@ public class Lizard : EnemyBase, IPoolObject
     void Drop()
     {
         GameManager.Instance.CoinSpawn();
+    }
+
+    void Drop2()
+    {
+        GameManager.Instance.Coin2Spawn();
     }
 }

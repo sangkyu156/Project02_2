@@ -484,13 +484,13 @@ public class GameManager : MonoBehaviour
     {
         Pig5 pig5 = poolManager.GetFromPool<Pig5>();
     }
-    void RepeatSpawn10()
-    {
-
-    }
     public void CoinSpawn()
     {
         Coin coin = poolManager.GetFromPool<Coin>();
+    }
+    public void Coin2Spawn()
+    {
+        Coin2 coin = poolManager.GetFromPool<Coin2>();
     }
     #endregion
 
@@ -554,6 +554,10 @@ public class GameManager : MonoBehaviour
     public void ReturnPool(Coin clone)
     {
         poolManager.TakeToPool<Coin>(clone.idName, clone);
+    }
+    public void ReturnPool(Coin2 clone)
+    {
+        poolManager.TakeToPool<Coin2>(clone.idName, clone);
     }
     public void ReturnPool(Orc clone)
     {
