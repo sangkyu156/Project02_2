@@ -748,9 +748,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4131534038001821242, guid: ffa0445bf5246404ea115cfd4478199f, type: 3}
-        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
-        m_MethodName: Set_upPopupOff
+      - m_Target: {fileID: 2424926005657316200}
+        m_TargetAssemblyTypeName: SoundControl, Assembly-CSharp
+        m_MethodName: SetUpPopupOff
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1524,13 +1524,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 4565788972015149499}
   m_HandleRect: {fileID: 4565788971667665141}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2424926005657316200}
+        m_TargetAssemblyTypeName: SoundControl, Assembly-CSharp
+        m_MethodName: SetSFXVolme
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4565788972355325695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,13 +1776,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 4565788971825981176}
   m_HandleRect: {fileID: 4565788971959889354}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2424926005657316200}
+        m_TargetAssemblyTypeName: SoundControl, Assembly-CSharp
+        m_MethodName: SetBGMVolme
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4565788972524950926
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,6 +2844,7 @@ GameObject:
   - component: {fileID: 4565788973474017555}
   - component: {fileID: 4565788973474017565}
   - component: {fileID: 4565788973474017554}
+  - component: {fileID: 2424926005657316200}
   m_Layer: 5
   m_Name: Set-upPopup_Title
   m_TagString: Untagged
@@ -2887,6 +2912,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2424926005657316200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565788973474017552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad601a18e40e3cb489cd17096da9c356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 1cd8177559aa0b04c9da64136ce1f742, type: 2}
+  bgmSlider: {fileID: 4565788972363873564}
+  sfxSlider: {fileID: 4565788972344689680}
 --- !u!1 &4565788973495422077
 GameObject:
   m_ObjectHideFlags: 0

@@ -100,7 +100,7 @@ public class HomeManager : MonoBehaviour
         PopupParentsDesignate();
 
         GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
-        set_upPopup = Instantiate(Resources.Load<GameObject>("Home/Set-upPopup"), popups.transform);
+        set_upPopup = Instantiate(Resources.Load<GameObject>("Home/Set-upPopup_Title"), popups.transform);
         popups.transform.SetAsLastSibling();
         set_upPopup.SetActive(true);
     }
