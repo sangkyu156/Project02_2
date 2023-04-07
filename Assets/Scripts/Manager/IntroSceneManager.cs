@@ -36,9 +36,9 @@ public class IntroSceneManager : MonoBehaviour
 
     void Start()
     {
-        //Invoke("GoStage01", 9.8f);
+        Invoke("GoStage01", 9.8f);
 
-        Invoke("GoStage01", 0.3f);
+        //Invoke("GoStage01", 0.3f);
 
         GameObject homeManager = Instantiate(Resources.Load<GameObject>("Home/HomeManager"));
     }

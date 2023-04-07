@@ -51,9 +51,6 @@ public class BGManager : MonoBehaviour
         //스테이지씬 아니면 아래 함수 사용x
         if (GameManager.Instance.state != SceneState.Stage)
             return;
-
-        //GameManager.Instance.Create_01();
-        //GameManager.Instance.Create_02();
     }
 
     void Update()

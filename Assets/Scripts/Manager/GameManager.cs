@@ -793,11 +793,11 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case SceneState.Home:
-                bgmPlayer.clip = Instantiate(Resources.Load<AudioClip>("Sound/Home_BGM"));
+                bgmPlayer.clip = Instantiate(Resources.Load<AudioClip>("Sound/HomeBGM"));
                 bgmPlayer.Play();
                 break;
             case SceneState.Stage:
-                bgmPlayer.clip = Instantiate(Resources.Load<AudioClip>("Sound/Stage_BGM"));
+                bgmPlayer.clip = Instantiate(Resources.Load<AudioClip>("Sound/StageBGM"));
                 bgmPlayer.Play();
                 break;
             case SceneState.Title:
@@ -805,7 +805,7 @@ public class GameManager : MonoBehaviour
                 bgmPlayer.Play();
                 break;
             case SceneState.Intro:
-                bgmPlayer.clip = Instantiate(Resources.Load<AudioClip>("Sound/Home_BGM"));
+                bgmPlayer.clip = Instantiate(Resources.Load<AudioClip>("Sound/IntroBGM"));
                 bgmPlayer.Play();
                 break;
         }
