@@ -728,46 +728,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Retry01()
-    {
-        uiSet = false;
-        GameManager.Instance.state = GameManager.SceneState.Home;
-        Player.Instance.PlayerStop_1();
-        Player.Instance.SkillReset();
-        GameManager.Instance.TimeScaleSet();
-        AchievementManager.Instance.AchievementCheck();
-        BGManager.Instance.countBG = 0;
-        Time.timeScale = 1;
-        SimpleSceneFader.ChangeSceneWithFade("Main");
-
-        Invoke("GoStage01", 0.68f);
-    }
-
-    public void Retry02()
-    {
-        uiSet = false;
-        GameManager.Instance.state = GameManager.SceneState.Home;
-        Player.Instance.PlayerStop_1();
-        Player.Instance.SkillReset();
-        GameManager.Instance.TimeScaleSet();
-        AchievementManager.Instance.AchievementCheck();
-        BGManager.Instance.countBG = 0;
-        Time.timeScale = 1;
-        SimpleSceneFader.ChangeSceneWithFade("Main");
-
-        Invoke("GoStage02", 0.68f);
-    }
-
-    void GoStage01()
-    {
-        HomeManager.Instance.StageButton_Stage01();
-    }
-
-    void GoStage02()
-    {
-        HomeManager.Instance.StageButton_Stage02();
-    }
-
     public void TimeScaleSet()
     {
         Invoke("TimeScaleSet_1", 1.5f);

@@ -25,27 +25,45 @@ public class Achievement_Redraw : MonoBehaviour
 
     public void ButtonSet()
     {
-        if (AchievementManager.Instance.reward05 == false)
+        switch (AchievementManager.Instance.achievement05)
         {
-            switch (AchievementManager.Instance.achievement05)
-            {
-                case 0:
-                    button1.SetActive(true);
-                    button2.SetActive(false);
-                    button3.SetActive(false);
-                    break;
-                case 1:
-                    button1.SetActive(false);
-                    button2.SetActive(true);
-                    button3.SetActive(false);
-                    break;
-                case 2:
-                    button1.SetActive(false);
-                    button2.SetActive(false);
-                    button3.SetActive(true);
-                    break;
-            }
+            case 0:
+                button1.SetActive(true);
+                button2.SetActive(false);
+                button3.SetActive(false);
+                break;
+            case 1:
+                button1.SetActive(false);
+                button2.SetActive(true);
+                button3.SetActive(false);
+                break;
+            case 2:
+                button1.SetActive(false);
+                button2.SetActive(false);
+                button3.SetActive(true);
+                break;
         }
+        //if (AchievementManager.Instance.reward05 == false)
+        //{
+        //    switch (AchievementManager.Instance.achievement05)
+        //    {
+        //        case 0:
+        //            button1.SetActive(true);
+        //            button2.SetActive(false);
+        //            button3.SetActive(false);
+        //            break;
+        //        case 1:
+        //            button1.SetActive(false);
+        //            button2.SetActive(true);
+        //            button3.SetActive(false);
+        //            break;
+        //        case 2:
+        //            button1.SetActive(false);
+        //            button2.SetActive(false);
+        //            button3.SetActive(true);
+        //            break;
+        //    }
+        //}
     }
 
     public void Reward()
@@ -58,7 +76,7 @@ public class Achievement_Redraw : MonoBehaviour
         ButtonSet();
         HomeManager.Instance.PrintDiamond();
 
-        AchievementManager.Instance.reward05 = true;
+        //AchievementManager.Instance.reward05 = true;
     }
 
     public void SliderSet()

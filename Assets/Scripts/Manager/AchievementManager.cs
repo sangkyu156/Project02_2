@@ -9,46 +9,46 @@ public class AchievementManager : MonoBehaviour
     //돼지 1000마리 잡기
     public int achievement01 = 0;
     public int pigCount = 0;
-    public bool reward01 = false;
+    //public bool reward01 = false;
 
     //3번 도전하기
     public int achievement02 = 0;
     public int tryCount = 0;
-    public bool reward02 = false;
+    //public bool reward02 = false;
 
     //돼지 100마리집기
     public int achievement03 = 0;
-    public bool reward03 = false;
+    //public bool reward03 = false;
 
     //돼지 500마리집기
     public int achievement04 = 0;
-    public bool reward04 = false;
+    //public bool reward04 = false;
 
     //'다시뽑기'3번 구매
     public int achievement05 = 0;
     public int redrawCount = 0;
-    public bool reward05 = false;
+    //public bool reward05 = false;
 
     //'다시뽑기'10번 구매
     public int achievement06 = 0;
-    public bool reward06 = false;
+    //public bool reward06 = false;
 
     //'다시뽑기'50번 구매
     public int achievement07 = 0;
-    public bool reward07 = false;
+    //public bool reward07 = false;
 
     //'레전드'등급 스킬 10번 구매
     public int achievement08 = 0;
     public int legendSkillCount = 0;
-    public bool reward08 = false;
+    //public bool reward08 = false;
 
     //'레전드'등급 스킬 50번 구매
     public int achievement09 = 0;
-    public bool reward09 = false;
+    //public bool reward09 = false;
 
     //'레전드'등급 스킬 100번 구매
     public int achievement10 = 0;
-    public bool reward10 = false;
+    //public bool reward10 = false;
 
     private static AchievementManager instance = null;
 
@@ -91,5 +91,23 @@ public class AchievementManager : MonoBehaviour
 
         if (pigCount >= 500 && achievement04 == 0)
             achievement04 = 1;
+
+        if (redrawCount >= 3 && achievement05 == 0)
+            achievement05 = 1;
+
+        if (redrawCount >= 10 && achievement06 == 0)
+            achievement06 = 1;
+
+        if (redrawCount >= 50 && achievement07 == 0)
+            achievement07 = 1;
+
+        if(legendSkillCount >= 10 && achievement08 == 0)
+            achievement08 = 1;
+
+        if (legendSkillCount >= 50 && achievement09 == 0)
+            achievement09 = 1;
+
+        if (legendSkillCount >= 100 && achievement10 == 0)
+            achievement10 = 1;
     }
 }

@@ -201,6 +201,31 @@ public class HomeManager : MonoBehaviour
         }
     }
 
+    public void GoStage01()
+    {
+        GameManager.Instance.SFXPlay(Sfx.Button01);
+        GameManager.Instance.state = GameManager.SceneState.Stage;
+        Time.timeScale = 1.0f;
+
+        GameManager.Instance.curStage = 1;
+        SimpleSceneFader.ChangeSceneWithFade("Stage01");
+    }
+
+    public void GoStage02()
+    {
+        if (GameManager.Instance.stageCheck[0] == true)
+        {
+            GameManager.Instance.SFXPlay(Sfx.Button01);
+            GameManager.Instance.state = GameManager.SceneState.Stage;
+            Time.timeScale = 1.0f;
+
+            GameManager.Instance.curStage = 2;
+            SimpleSceneFader.ChangeSceneWithFade("Stage02");
+        }
+        else
+            return;
+    }
+
     public void PrintDiamond()
     {
         playerMainDiamond.GetComponent<TextMeshProUGUI>().text = (GameManager.Instance.mainDiamond).ToString();
@@ -216,31 +241,6 @@ public class HomeManager : MonoBehaviour
     {
         GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         TextUtil.languageNumber = 1;
-    }
-
-    public void StageButton_Stage01()
-    {
-        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
-        GameManager.Instance.state = GameManager.SceneState.Stage;
-        Time.timeScale = 1.0f;
-
-        AchievementManager.Instance.tryCount++;
-        GameManager.Instance.curStage = 1;
-        SimpleSceneFader.ChangeSceneWithFade("Stage01");
-    }
-
-    public void StageButton_Stage02()
-    {
-        if (GameManager.Instance.stageCheck[0] == false)
-            return;
-
-        GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
-        GameManager.Instance.state = GameManager.SceneState.Stage;
-        Time.timeScale = 1.0f;
-
-        AchievementManager.Instance.tryCount++;
-        GameManager.Instance.curStage = 2;
-        SimpleSceneFader.ChangeSceneWithFade("Stage02");
     }
 
     void OnDisable()

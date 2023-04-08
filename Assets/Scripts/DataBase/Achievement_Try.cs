@@ -25,27 +25,45 @@ public class Achievement_Try : MonoBehaviour
 
     public void ButtonSet()
     {
-        if (AchievementManager.Instance.reward02 == false)
+        switch (AchievementManager.Instance.achievement02)
         {
-            switch (AchievementManager.Instance.achievement02)
-            {
-                case 0:
-                    button1.SetActive(true);
-                    button2.SetActive(false);
-                    button3.SetActive(false);
-                    break;
-                case 1:
-                    button1.SetActive(false);
-                    button2.SetActive(true);
-                    button3.SetActive(false);
-                    break;
-                case 2:
-                    button1.SetActive(false);
-                    button2.SetActive(false);
-                    button3.SetActive(true);
-                    break;
-            }
+            case 0:
+                button1.SetActive(true);
+                button2.SetActive(false);
+                button3.SetActive(false);
+                break;
+            case 1:
+                button1.SetActive(false);
+                button2.SetActive(true);
+                button3.SetActive(false);
+                break;
+            case 2:
+                button1.SetActive(false);
+                button2.SetActive(false);
+                button3.SetActive(true);
+                break;
         }
+        //if (AchievementManager.Instance.reward02 == false)
+        //{
+        //    switch (AchievementManager.Instance.achievement02)
+        //    {
+        //        case 0:
+        //            button1.SetActive(true);
+        //            button2.SetActive(false);
+        //            button3.SetActive(false);
+        //            break;
+        //        case 1:
+        //            button1.SetActive(false);
+        //            button2.SetActive(true);
+        //            button3.SetActive(false);
+        //            break;
+        //        case 2:
+        //            button1.SetActive(false);
+        //            button2.SetActive(false);
+        //            button3.SetActive(true);
+        //            break;
+        //    }
+        //}
     }
 
     public void Reward()
@@ -58,7 +76,7 @@ public class Achievement_Try : MonoBehaviour
         ButtonSet();
         HomeManager.Instance.PrintDiamond();
 
-        AchievementManager.Instance.reward02 = true;
+        //AchievementManager.Instance.reward02 = true;
     }
 
     public void SliderSet()

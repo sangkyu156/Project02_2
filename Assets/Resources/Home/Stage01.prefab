@@ -202,7 +202,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4885441515858014269, guid: 8817878a1fd1bfa4997637f9445d302c, type: 3}
         m_TargetAssemblyTypeName: HomeManager, Assembly-CSharp
-        m_MethodName: StageButton_Stage01
+        m_MethodName: GoStage01
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

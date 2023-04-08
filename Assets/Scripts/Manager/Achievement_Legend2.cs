@@ -25,27 +25,45 @@ public class Achievement_Legend2 : MonoBehaviour
 
     public void ButtonSet()
     {
-        if (AchievementManager.Instance.reward09 == false)
+        switch (AchievementManager.Instance.achievement09)
         {
-            switch (AchievementManager.Instance.achievement09)
-            {
-                case 0:
-                    button1.SetActive(true);
-                    button2.SetActive(false);
-                    button3.SetActive(false);
-                    break;
-                case 1:
-                    button1.SetActive(false);
-                    button2.SetActive(true);
-                    button3.SetActive(false);
-                    break;
-                case 2:
-                    button1.SetActive(false);
-                    button2.SetActive(false);
-                    button3.SetActive(true);
-                    break;
-            }
+            case 0:
+                button1.SetActive(true);
+                button2.SetActive(false);
+                button3.SetActive(false);
+                break;
+            case 1:
+                button1.SetActive(false);
+                button2.SetActive(true);
+                button3.SetActive(false);
+                break;
+            case 2:
+                button1.SetActive(false);
+                button2.SetActive(false);
+                button3.SetActive(true);
+                break;
         }
+        //if (AchievementManager.Instance.reward09 == false)
+        //{
+        //    switch (AchievementManager.Instance.achievement09)
+        //    {
+        //        case 0:
+        //            button1.SetActive(true);
+        //            button2.SetActive(false);
+        //            button3.SetActive(false);
+        //            break;
+        //        case 1:
+        //            button1.SetActive(false);
+        //            button2.SetActive(true);
+        //            button3.SetActive(false);
+        //            break;
+        //        case 2:
+        //            button1.SetActive(false);
+        //            button2.SetActive(false);
+        //            button3.SetActive(true);
+        //            break;
+        //    }
+        //}
     }
 
     public void Reward()
@@ -58,7 +76,7 @@ public class Achievement_Legend2 : MonoBehaviour
         ButtonSet();
         HomeManager.Instance.PrintDiamond();
 
-        AchievementManager.Instance.reward09 = true;
+        //AchievementManager.Instance.reward09 = true;
     }
 
     public void SliderSet()
