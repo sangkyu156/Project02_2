@@ -74,12 +74,6 @@ public class TitleManager : MonoBehaviour
         {
             BGReset();
         }
-
-        //юс╫ц
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Time.timeScale++;
-        }
     }
 
     void BG_1()
