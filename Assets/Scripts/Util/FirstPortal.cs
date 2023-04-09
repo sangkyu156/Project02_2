@@ -12,4 +12,9 @@ public class FirstPortal : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Start()
+    {
+        GameManager.Instance.BGMPlay();
+    }
 }

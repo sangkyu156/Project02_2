@@ -861,6 +861,11 @@ public class GameManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        BGMPlay();
+
+        if (state != SceneState.Title)
+            DataManager.Instance.SaveData();
+
         if (GameManager.Instance.state == SceneState.Stage)
         {
             bossDistance = GameObject.Find("Canvas2").transform.GetChild(1).gameObject;
@@ -895,7 +900,7 @@ public class GameManager : MonoBehaviour
             }
         }
         else if (GameManager.Instance.state == SceneState.Home)
-            Player.Instance.PlayerStop();
+            //Player.Instance.PlayerStop();
 
         BGMPlay_1();
     }

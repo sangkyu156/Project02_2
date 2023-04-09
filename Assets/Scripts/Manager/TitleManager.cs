@@ -1,7 +1,11 @@
+using DG.Tweening.Plugins.Core.PathCore;
+using System.IO;
 using UnityEngine;
 
 public class TitleManager : MonoBehaviour
 {
+    public GameObject savedFilePopup;
+    public GameObject questionPopup;
     public GameObject titleCamera;
     public GameObject[] bg_1;
     public GameObject[] bg_2;
@@ -232,6 +236,8 @@ public class TitleManager : MonoBehaviour
 
     public void GoIntro()
     {
+        DataManager.Instance.DataClear();
+
         GameManager.Instance.state = GameManager.SceneState.Intro;
         GameManager.Instance.SFXPlay(GameManager.Sfx.Button01);
         Time.timeScale = 1.0f;
@@ -259,5 +265,42 @@ public class TitleManager : MonoBehaviour
                 set_upPopup = popups.transform.GetChild(i).gameObject;
         }
         Destroy(set_upPopup);
+    }
+
+    public void StartButton()
+    {
+        DataManager.Instance.nowSlot = 0;
+
+        string subPath;
+        subPath = DataManager.Instance.path.Substring(0, DataManager.Instance.path.Length - 1);//뒤에 마지막 문자 자르기
+
+        if (File.Exists(subPath+0))
+            savedFilePopup.SetActive(true);
+        else if(File.Exists(subPath + 1))
+            savedFilePopup.SetActive(true);
+        else if (File.Exists(subPath + 2))
+            savedFilePopup.SetActive(true);
+        else
+            GoIntro();
+    }
+
+    public void QuestionPopupOn(int slotNum)
+    {
+        DataManager.Instance.nowSlot = slotNum;
+        DataManager.Instance.path = Application.persistentDataPath + slotNum.ToString();
+        questionPopup.SetActive(true);
+    }
+
+    public void FileDelete()
+    {
+        File.Delete(DataManager.Instance.path);
+        Debug.Log($"{DataManager.Instance.path} 삭제");
+        questionPopup.SetActive(false);
+        savedFilePopup.SetActive(false);
+    }
+
+    public void Exit()
+    {
+        questionPopup.SetActive(false);
     }
 }

@@ -22,6 +22,7 @@ public class IntroBoss : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.BGMPlay();
         time = 0;
         bossSpeed = 6;
     }
