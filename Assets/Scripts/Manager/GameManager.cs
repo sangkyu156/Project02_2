@@ -103,11 +103,6 @@ public class GameManager : MonoBehaviour
         {
             fieldUI[i].SetActive(false);
         }
-
-        //Create_01();
-        //Create_02();
-        //Create_03();
-        //Create_04();
     }
 
     void Update()
