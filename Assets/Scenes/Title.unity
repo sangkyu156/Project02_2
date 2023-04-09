@@ -8559,6 +8559,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   playerMoney: {fileID: 0}
   playerDiamond: {fileID: 0}
   distance: {fileID: 0}

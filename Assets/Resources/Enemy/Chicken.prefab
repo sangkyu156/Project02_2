@@ -282,7 +282,7 @@ MonoBehaviour:
   textPostion: {fileID: 5006195165357339412}
   collider: {fileID: 0}
   idName: Chicken
-  maxHealth: 10
+  maxHealth: 6
   Shadow: {fileID: 2770275542644750497}
 --- !u!50 &4728471265615811515
 Rigidbody2D:

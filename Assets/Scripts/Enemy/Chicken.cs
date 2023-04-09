@@ -4,7 +4,7 @@ using UnityEngine;
 public class Chicken : EnemyBase, IPoolObject
 {
     public string idName;
-    public int maxHealth = 10;
+    public int maxHealth = 6;
     bool drop = false;
 
     public GameObject Shadow;
@@ -58,7 +58,7 @@ public class Chicken : EnemyBase, IPoolObject
     //능력 설정
     void SetAbility()
     {
-        maxHealth = 10;
+        maxHealth = 6;
         speed = 3;
         power = 1;
         currentHealth = maxHealth;

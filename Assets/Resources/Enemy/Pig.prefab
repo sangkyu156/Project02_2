@@ -533,11 +533,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e07bb283d84e0f48b4bd09b53ab72c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
+  knockbackTime: 1
+  knockback: 0
   healthBar: {fileID: 2144700461352175538}
   textPostion: {fileID: 2144700460756084965}
   collider: {fileID: 0}
   idName: Pig
-  maxHealth: 15
+  maxHealth: 5
   Shadow: {fileID: 1896458541562712768}
 --- !u!1 &2144700459861334703
 GameObject:

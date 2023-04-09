@@ -843,7 +843,7 @@ MonoBehaviour:
   textPostion: {fileID: 5888322732099967764}
   collider: {fileID: 0}
   idName: Chick
-  maxHealth: 9
+  maxHealth: 5
   Shadow: {fileID: 7493553712701343287}
 --- !u!1 &6894152974228134387
 GameObject:

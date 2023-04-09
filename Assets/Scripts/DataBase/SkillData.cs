@@ -47,6 +47,6 @@ public static class SkillData
     public enum SkillPrice
     {
         //등급 별로 가격나눔 임시로 원,투,쓰리
-        One = 150, Two = 250, Three = 400
+        One = 150, Two = 250, Three = 200
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Pig : EnemyBase, IPoolObject
 {
     public string idName;
-    public int maxHealth = 9;
+    public int maxHealth = 5;
     bool drop = false;
 
     public GameObject Shadow;
@@ -75,7 +75,7 @@ public class Pig : EnemyBase, IPoolObject
     //능력 설정
     void SetAbility()
     {
-        maxHealth = 9;
+        maxHealth = 5;
         speed = 3f;
         power = 1;
         currentHealth = maxHealth;

@@ -866,11 +866,12 @@ public class GameManager : MonoBehaviour
             bossDistance = GameObject.Find("Canvas2").transform.GetChild(1).gameObject;
             store = GameObject.Find("Canvas2").transform.GetChild(2).gameObject;
             firstStore = GameObject.Find("Canvas2").transform.GetChild(3).gameObject;
-            fieldUI[0] = GameObject.Find("Canvas2").transform.GetChild(4).gameObject;
-            fieldUI[1] = GameObject.Find("Canvas2").transform.GetChild(5).gameObject;
-            fieldUI[2] = GameObject.Find("Canvas2").transform.GetChild(6).gameObject;
-            deadPopup = GameObject.Find("Canvas2").transform.GetChild(7).gameObject;
-            clearPopup = GameObject.Find("Canvas2").transform.GetChild(9).gameObject;
+            fieldUI[3] = GameObject.Find("Canvas2").transform.GetChild(4).gameObject;
+            fieldUI[0] = GameObject.Find("Canvas2").transform.GetChild(5).gameObject;
+            fieldUI[1] = GameObject.Find("Canvas2").transform.GetChild(6).gameObject;
+            fieldUI[2] = GameObject.Find("Canvas2").transform.GetChild(7).gameObject;
+            deadPopup = GameObject.Find("Canvas2").transform.GetChild(8).gameObject;
+            clearPopup = GameObject.Find("Canvas2").transform.GetChild(10).gameObject;
 
             playerMoney = fieldUI[0].transform.GetChild(0).GetChild(0).gameObject;
             playerDiamond = fieldUI[2].transform.GetChild(0).GetChild(0).gameObject;
