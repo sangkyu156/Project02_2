@@ -20452,7 +20452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bf5d476c39e9147a531cc533d3b0c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBaseID: game:ui:diamondstore
+  textBaseID: game:ui:achievement
 --- !u!1 &8300612866432796160
 GameObject:
   m_ObjectHideFlags: 0
